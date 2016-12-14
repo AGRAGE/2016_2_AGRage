@@ -11,7 +11,9 @@
 			this.money = money;
 		}
 
-
+		losing_money(value){
+			this.money -= value;
+		}
 
 		draw (ctx) {
 			ctx.beginPath();

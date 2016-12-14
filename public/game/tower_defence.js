@@ -21,7 +21,7 @@
 			this.width = width;
 			this.height = height;
 
-			this.user = new User({});
+			this.user_panel = new User_panel({});
 			this.unit1 = new Unit1({});
 
 			this.counter = 1;
@@ -136,7 +136,7 @@
 
 				this.tower.draw(this.ctx);
 				this.tower.drawHp(this.ctx);
-				this.user.draw(this.ctx);
+				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
 			
 		};
@@ -224,11 +224,13 @@
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				this.units[this.units.length] = new Unit1({});
+				this.user_panel.losing_money(10);
 			});
 			this.buttonRegister._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				this.units[this.units.length] = new Unit1({});
+				this.user_panel.losing_money(10);
 
 			});
 		}
