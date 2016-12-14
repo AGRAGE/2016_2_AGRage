@@ -13,7 +13,7 @@
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
-			this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]);
+			this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 		}
 
 		// dv ({vx = 0}) {
@@ -29,7 +29,7 @@
 		checkRectangleIntersection ({width, height}, action = 'reflect') {
 			let result = {};
 			if (this.x + 280 > width || this.x < 0) {
-				result.x = true;	
+				result.x = true;
 				this.vx = 0;
 			}
 
