@@ -97,11 +97,12 @@
 			// 	bullet.draw(this.ctx);
 			// });
 
-			this.tower.incrementCounter(dt);
+			//this.tower.incrementCounter(dt);
 
 			this.units.forEach(unit => {
 				unit.update(dt);
 				unit.sprite.update(dt);
+				unit.incrementCounter(dt);
 
 			});
 			//this.unit1.update(dt);
@@ -117,13 +118,17 @@
 				unit.checkRectangleIntersection({
 					width: this.width,
 					height: this.height
-				}, 'reflect');
+				}, 'reflect', dt);
 
-				console.log(unit.get_damage());
-				this.tower.checkRectangleIntersection({
-					width: this.width,
-					height: this.height
-				}, 'reflect', unit.coordinate(), unit.get_damage());
+				if(unit.getCounter() > 2000){
+					//console.log(unit.get_damage());
+					this.tower.checkRectangleIntersection({
+						width: this.width,
+						height: this.height
+					}, 'reflect', unit.coordinate(), unit.get_damage());
+					unit.nullCounter();
+				}
+
 				//this.unit1.coordinate());
 
 				//unit.going();
@@ -133,6 +138,7 @@
 				unit.draw(this.ctx);
 				unit.drawHp(this.ctx);
 			})
+
 				if (this.tower.getHp() > 0)
 					this.tower.draw(this.ctx);
 				else

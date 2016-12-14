@@ -6,19 +6,18 @@
 		/**
 		 * Конструктор класса Tower
 		 */
-		constructor ({x = 1100, y = 60, hp =1000, counter = 0}) {
+		constructor ({x = 1100, y = 60, hp =1000}) {
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
-			this.counter = counter;
 		}
 
 
 		checkRectangleIntersection ({width, height}, action = 'reflect', coord, damage) {
 			let result = {};	
-			console.log(this.hp);	
-			console.log(damage);
-			if(this.counter >= 2000){
+			//console.log(this.hp);	
+			//console.log(damage);
+			//if(counter >= 2000){
 				if(this.hp == 0){
 					result.x = false;
 				}
@@ -27,12 +26,12 @@
 					this.hp -= damage;	
 					//this.update(2000);
 				
-					console.log(this.hp);	
+					//console.log(this.hp);	
 				}
 				else result.x = false;
 				
-				this.counter = 0;
-			}
+				//this.counter = 0;
+			//}
 
 			// if (coord + 280 > width || coord < 0) {
 			// 	result.x = true;	
@@ -98,13 +97,7 @@
 
 
 
-		incrementCounter(dt){
-			this.counter += dt;
-		}
-
-		getCounter(){
-			return this.counter;
-		}
+		
 	}
 
 	//export

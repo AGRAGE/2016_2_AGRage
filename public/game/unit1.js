@@ -10,12 +10,12 @@
 		/**
 		 * Конструктор класса Unit1
 		 */
-		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50}) {
+		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50, counter = 0}) {
 			this.vx = vx;
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
-
+			this.counter = counter;
 			this.damage = damage;
 
 			this.spriteNeedChange = 0;
@@ -35,12 +35,23 @@
 		// 	//this.vy += vy;
 		// }
 
+		incrementCounter(dt){
+			this.counter += dt;
+		}
+
+		getCounter(){
+			return this.counter;
+		}
+
+		nullCounter(){
+			this.counter = 0;
+		}
 		update (dt) {
 			this.x += this.vx * dt;
 			//this.y += this.vy * dt;
 		}
 
-		checkRectangleIntersection ({width, height}, action = 'reflect') {
+		checkRectangleIntersection ({width, height}, action = 'reflect', dt) {
 			let result = {};
 			if (this.x + 280 > width || this.x < 0) {
 				result.x = true;
@@ -49,6 +60,7 @@
 					this.spriteNeedChange = 1;
 					this.sprite = spriteSkeletonFight;
 				}
+				this.counter += dt;
 			}
 			this[action](result);
 		}
