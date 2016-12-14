@@ -5,7 +5,7 @@
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
-	const User = window.User;
+	const User_panel = window.User_panel;
 
 	class Tower_defence {
 
@@ -26,7 +26,7 @@
 
 			this.counter = 1;
 			this.units = [];
-			this.units[0] = new Unit1({});
+			//this.units[0] = new Unit1({});
 			this.tower = new Tower({});
 			this.readyToShot = true;
 			this.key = new keyMaster();
@@ -141,13 +141,13 @@
 			
 		};
 
-		collectGarbage() {
-			this.bullets.forEach((bullet, index, arr) => {
-				if (bullet.toDestroy) {
-					arr.splice(index, 1);
-				}
-			});
-		}
+		// collectGarbage() {
+		// 	this.bullets.forEach((bullet, index, arr) => {
+		// 		if (bullet.toDestroy) {
+		// 			arr.splice(index, 1);
+		// 		}
+		// 	});
+		// }
 
 		// createBullet () {
 		// 	if (!this.readyToShot) {
@@ -229,6 +229,7 @@
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				this.units[this.units.length] = new Unit1({});
+
 			});
 		}
 	}
