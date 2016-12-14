@@ -10,13 +10,14 @@
 		/**
 		 * Конструктор класса Unit1
 		 */
-		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50, counter = 0}) {
+		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50, counter = 0, poscoord = -15}) {
 			this.vx = vx;
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
 			this.counter = counter;
 			this.damage = damage;
+			this.poscoord = poscoord;
 
 			this.spriteNeedChange = 0;
 			//это бег гладиатора
