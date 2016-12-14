@@ -5,10 +5,13 @@
 	const Form = window.Form;
 	const Tower_defence = window.Tower_defence;
 
+
 	class gameView extends View {
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-game');
+
+
 			this.hide();
 		}
 
@@ -34,6 +37,7 @@
 		}
 	}
 
+	
 
 	// export
 	window.gameView = gameView;

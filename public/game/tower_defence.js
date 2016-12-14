@@ -5,7 +5,6 @@
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
 
-
 	class Tower_defence {
 
 		/**
@@ -23,6 +22,7 @@
 			this.bullets = [];
 
 			this.key = new keyMaster();
+
 		}
 
 		/**
