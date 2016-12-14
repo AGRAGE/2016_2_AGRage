@@ -2,6 +2,8 @@
 	'use strict';
 
 	const Sprite = window.Sprite;
+	const spriteSkeletonFight = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
+
 
 	class Unit1 {
 
@@ -13,9 +15,19 @@
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
+
 			this.damage = damage;
+
+			this.spriteNeedChange = 0;
+			//это бег гладиатора
+
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
+
+			//это бег скелета
 			this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
+
+
+
 		}
 
 		// dv ({vx = 0}) {
@@ -33,8 +45,11 @@
 			if (this.x + 280 > width || this.x < 0) {
 				result.x = true;
 				this.vx = 0;
+				if (this.spriteNeedChange == 0){
+					this.spriteNeedChange = 1;
+					this.sprite = spriteSkeletonFight;
+				}
 			}
-
 			this[action](result);
 		}
 
