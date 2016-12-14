@@ -5,8 +5,8 @@ body {
     margin: 0;
 
 }
+
 canvas {
-    /* border: 1px solid #000; */
 }
 
 html {
@@ -14,6 +14,26 @@ html {
     font-size: 62.5%;
     height: 100%;
     width: 100%;
+}
+
+.HiringButton1{
+	    position: absolute;
+	    z-index: 1;
+	    top: 0px;
+	    left: 50%;
+		background-color: #fc0707;
+		margin: auto;
+		width: 100px;
+}
+
+.HiringButton2{
+	    position: absolute;
+	    z-index: 1;
+	    top: 30px;
+	    left: 50%;
+		background-color: #fc0707;
+		margin: auto;
+		width: 100px;
 }
 
 .divform {
@@ -27,13 +47,6 @@ html {
     width: 200px;
 }
 
-.HiringButton {
-    display: block;
-    background-color: #fc0707;
-    margin: auto;
-    width: 100px;
-
-}
 
 .loginButton {
     display: block;
