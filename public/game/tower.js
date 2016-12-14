@@ -81,6 +81,14 @@
 			ctx.closePath();
 		}
 
+		draw_destroyed(ctx){
+			var image = new Image();
+			image.src = "destroyed.png"; 
+
+			ctx.drawImage(image, this.x, this.y, 150, 360);
+			ctx.closePath();
+		}
+
 		drawHp(ctx){
 
 			ctx.fillStyle = "red";

@@ -133,8 +133,11 @@
 				unit.draw(this.ctx);
 				unit.drawHp(this.ctx);
 			})
-
-				this.tower.draw(this.ctx);
+				if (this.tower.getHp() > 0)
+					this.tower.draw(this.ctx);
+				else
+					this.tower.draw_destroyed(this.ctx);
+				
 				this.tower.drawHp(this.ctx);
 				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
