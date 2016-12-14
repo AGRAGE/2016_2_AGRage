@@ -2,7 +2,7 @@
 	'use strict';
 
 
-	class User {
+	class User_panel {
 
 		/**
 		 * Конструктор класса Unit1
@@ -10,6 +10,7 @@
 		constructor ({money = 100}) {
 			this.money = money;
 		}
+
 
 
 		draw (ctx) {
@@ -33,5 +34,5 @@
 	}
 
 	//export
-	window.User = User;
+	window.User_panel = User_panel;
 })();
