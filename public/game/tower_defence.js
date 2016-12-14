@@ -10,7 +10,7 @@
 	class Tower_defence {
 
 		/**
-		 * Конструктор 
+		 * Конструктор
 		 */
 		constructor({
 			ctx,
@@ -31,7 +31,7 @@
 			this.readyToShot = true;
 			this.key = new keyMaster();
 
-			this._el = document.querySelector('.js-main');
+			this._el = document.querySelector('.js-game');
 			this.createElements();
 			this.addElements();
 			this.addListeners();
@@ -138,7 +138,7 @@
 				this.tower.drawHp(this.ctx);
 				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
-			
+
 		};
 
 		// collectGarbage() {
