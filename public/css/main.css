@@ -27,6 +27,15 @@ html {
     width: 200px;
 }
 
+.HiringButton {
+    display: block;
+    background-color: #fc0707;
+    /*border-color: #337ab7; */
+    margin: auto;
+    width: 100px;
+
+}
+
 .loginButton {
     display: block;
     background-color: #337ab7;
