@@ -53,15 +53,8 @@
 
 		draw (ctx) {
 			ctx.beginPath();
-			/* ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-			ctx.fillStyle = this.color;
-			ctx.fill();
-			ctx.closePath(); */
-
 			//var canvas = document.getElementById("canvas");
 			//var image = document.getElementById("unit1.png");
-
-
 			//var image = new Image();
 			//image.src = "unit1.png";
 

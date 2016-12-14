@@ -5,12 +5,11 @@
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
-	//const Panel = window.Panel;
 
 	class Tower_defence {
 
 		/**
-		 * Конструктор класса Form
+		 * Конструктор 
 		 */
 		constructor({
 			ctx,
@@ -26,23 +25,14 @@
 			this.counter = 1;
 			this.units = [];
 			this.units[0] = new Unit1({});
-
 			this.tower = new Tower({});
-			//this.panel = new Panel({});
 			this.readyToShot = true;
-			//this.bullets = [];
-
 			this.key = new keyMaster();
 
-			//super(options);
 			this._el = document.querySelector('.js-main');
 			this.createElements();
 			this.addElements();
 			this.addListeners();
-			//this.hide();
-
-
-
 		}
 
 		/**
