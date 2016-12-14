@@ -5,6 +5,7 @@
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
+	const User = window.User;
 
 	class Tower_defence {
 
@@ -20,6 +21,7 @@
 			this.width = width;
 			this.height = height;
 
+			this.user = new User({});
 			this.unit1 = new Unit1({});
 
 			this.counter = 1;
@@ -134,7 +136,7 @@
 
 				this.tower.draw(this.ctx);
 				this.tower.drawHp(this.ctx);
-
+				this.user.draw(this.ctx);
 				//this.collectGarbage();
 			
 		};
