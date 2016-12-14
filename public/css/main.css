@@ -18,7 +18,7 @@ html {
 
 .divform {
     width: 300px;
-    margin: 270px 10px 10px 200px;
+    margin: auto;
 }
 
 .pink {
@@ -30,7 +30,6 @@ html {
 .HiringButton {
     display: block;
     background-color: #fc0707;
-    /*border-color: #337ab7; */
     margin: auto;
     width: 100px;
 
@@ -66,6 +65,22 @@ html {
     background-color: #337ab7;
     border-color: #337ab7;
     margin: auto;
+}
+.mainLoginButton{
+    display: block;
+    width: 300px;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    margin: 300px auto 25px;
+}
+
+.mainRegistrationButton{
+    display: block;
+    width: 300px;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    margin: auto;
+
 }
 
 .title {
