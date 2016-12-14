@@ -8,11 +8,12 @@
 		/**
 		 * Конструктор класса Unit1
 		 */
-		constructor ({x = 100, y = 300, vx = 0.1, hp = 10}) {
+		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50}) {
 			this.vx = vx;
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
+			this.damage = damage;
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 			this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
 		}
@@ -55,6 +56,10 @@
 			if (axis.x || axis.y) {
 				this.toDestroy = true;
 			}
+		}
+
+		get_damage(){
+			return this.damage;
 		}
 
 		reflect (axis) {

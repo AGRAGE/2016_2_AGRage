@@ -14,16 +14,17 @@
 		}
 
 
-		checkRectangleIntersection ({width, height}, action = 'reflect', coord) {
-			let result = {};
-			
+		checkRectangleIntersection ({width, height}, action = 'reflect', coord, damage) {
+			let result = {};	
+			console.log(this.hp);	
+			console.log(damage);
 			if(this.counter >= 2000){
 				if(this.hp == 0){
 					result.x = false;
 				}
-				else if (coord + 280 > width || coord < 0) {
+				else if (coord + 280 > width) {
 					result.x = true;	
-					this.hp -= 100;	
+					this.hp -= damage;	
 					//this.update(2000);
 				
 					console.log(this.hp);	
@@ -95,10 +96,7 @@
 			ctx.fillRect(1140, 20, (this.hp / 10), 20);
 		}
 
-		update (dt) {
-			this.hp -= 0.01 * dt;
-			//this.y += this.vy * dt;
-		}
+
 
 		incrementCounter(dt){
 			this.counter += dt;

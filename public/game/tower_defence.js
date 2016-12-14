@@ -119,11 +119,11 @@
 					height: this.height
 				}, 'reflect');
 
-
+				console.log(unit.get_damage());
 				this.tower.checkRectangleIntersection({
 					width: this.width,
 					height: this.height
-				}, 'reflect', unit.coordinate());
+				}, 'reflect', unit.coordinate(), unit.get_damage());
 				//this.unit1.coordinate());
 
 				//unit.going();
@@ -137,7 +137,7 @@
 					this.tower.draw(this.ctx);
 				else
 					this.tower.draw_destroyed(this.ctx);
-				
+
 				this.tower.drawHp(this.ctx);
 				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
