@@ -223,14 +223,31 @@
 			this.buttonLogin._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				this.units[this.units.length] = new Unit1({});
-				this.user_panel.losing_money(10);
+				console.log()
+				if(this.user_panel.get_money() === 0){
+					alert("You don't have enough money");
+				}
+				else{
+					
+					this.user_panel.losing_money(10);
+					this.units[this.units.length] = new Unit1({});
+				}
+				
+				
 			});
 			this.buttonRegister._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				this.units[this.units.length] = new Unit1({});
-				this.user_panel.losing_money(10);
+				if(this.user_panel.get_money() === 0){
+					alert("You don't have enough money");
+				}
+				else{
+					
+					this.user_panel.losing_money(10);
+					this.units[this.units.length] = new Unit1({});
+				}
+				
+				
 
 			});
 		}

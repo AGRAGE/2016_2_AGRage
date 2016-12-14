@@ -12,7 +12,12 @@
 		}
 
 		losing_money(value){
+
 			this.money -= value;
+		}
+
+		get_money(){
+			return this.money;
 		}
 
 		draw (ctx) {
