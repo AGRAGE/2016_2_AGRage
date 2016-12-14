@@ -19,9 +19,9 @@
 
 			this.unit1 = new Unit1({});
 			
-			// this.counter = 0;
-			// this.units = [];
-			// this.units[counter] = new Unit1({});
+			this.counter = 1;
+			this.units = [];
+			this.units[0] = new Unit1({});
 			
 			this.tower = new Tower({});
 			//this.panel = new Panel({});
@@ -108,23 +108,32 @@
 			//this.unit1.sprite.update(dt);
 
 			this.checkControl();
-			this.unit1.checkRectangleIntersection({
-				width: this.width,
-				height: this.height
-			}, 'reflect');
 
-
-			this.tower.checkRectangleIntersection({
+			var i;
+			for( i = 0; i < this.counter; i++){
+				//alert(this.units[i]);
+				//console.log[(this.units[i]);
+				//this.unit1.checkRectangleIntersection({
+				this.units[i].checkRectangleIntersection({
 					width: this.width,
 					height: this.height
-				}, 'reflect', this.unit1.coordinate());
+				}, 'reflect');
 
 
+				this.tower.checkRectangleIntersection({
+					width: this.width,
+					height: this.height
+				}, 'reflect', this.units[i].coordinate());
+				//this.unit1.coordinate());
 
-		    this.unit1.draw(this.ctx);
-		    this.tower.draw(this.ctx);
-		    this.tower.drawHp(this.ctx);
+				this.units[i].going();
 
+
+		    	//this.unit1.draw(this.ctx);
+		    	this.units[i].draw(this.ctx);
+		    	this.tower.draw(this.ctx);
+		    	this.tower.drawHp(this.ctx);
+			}
 			//this.collectGarbage();
 		}
 
@@ -156,19 +165,19 @@
 
 		checkControl () {
 			if (this.key.is('w')) {
-				this.unit1.dv({vy: -0.01});
+				this.units[0].dv({vy: -0.01});
 			}
 
 			if (this.key.is('s')) {
-				this.unit1.dv({vy: 0.01});
+				this.units[0].dv({vy: 0.01});
 			}
 
 			if (this.key.is('d')) {
-				this.unit1.dv({vx: 0.01});
+				this.units[0].dv({vx: 0.01});
 			}
 
 			if (this.key.is('a')) {
-				this.unit1.dv({vx: -0.01});
+				this.units[0].dv({vx: -0.01});
 			}
 
 			// if (this.key.is(' ')) {
@@ -183,6 +192,7 @@
                 el: document.createElement('game_button'),
 				classAttrs: ['HiringButton'],
                 text: 'Нанять unit1',
+
             });
 
             this.buttonRegister = new GameButton({
@@ -201,12 +211,15 @@
             this.buttonLogin._get().addEventListener('click', (event) => {
                 console.log('click login');
                 //this.router.go('/login', loginView);
-                this.unit1 = new Unit1({});
+                this.units[this.counter] = new Unit1({});
+                this.counter++;
             });
             this.buttonRegister._get().addEventListener('click', (event) => {
                 console.log('click register');
                 //this.router.go('/registration');
-                this.unit1 = new Unit1({});
+                this.units[this.counter] = new Unit1({});
+                this.counter++;
+                
             });
         }
     }
