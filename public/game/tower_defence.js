@@ -98,7 +98,9 @@
 			this.tower.incrementCounter(dt);
 
 			this.units.forEach(unit => {
+				unit.update(dt);
 				unit.sprite.update(dt);
+
 			});
 			//this.unit1.update(dt);
 			//this.unit1.sprite.update(dt);
@@ -122,16 +124,19 @@
 				}, 'reflect', unit.coordinate());
 				//this.unit1.coordinate());
 
-				unit.going();
+				//unit.going();
 
 
 				//this.unit1.draw(this.ctx);
 				unit.draw(this.ctx);
+				unit.drawHp(this.ctx);
+			})
+
 				this.tower.draw(this.ctx);
 				this.tower.drawHp(this.ctx);
 
 				//this.collectGarbage();
-			})
+			
 		};
 
 		collectGarbage() {
@@ -202,7 +207,7 @@
 
 			this.buttonRegister = new GameButton({
 				el: document.createElement('game_button'),
-				classAttrs: ['LoginButton'],
+				classAttrs: ['HiringButton'],
 				text: 'Нанять unit2',
 			});
 		}
