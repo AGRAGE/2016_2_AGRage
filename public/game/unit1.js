@@ -26,7 +26,7 @@
 					}*/
 		) {
 			this.vx = data.vx || 0.1;
-			this.x = data.x || 100;
+			this.x = data.x || 270;
 			this.y = data.y || 300;
 			this.hp = data.hp || 10;
 			this.counter = data.counter || 0;
@@ -95,7 +95,7 @@
 			// }
 
 			if (this.spriteType == 1) {	
-				if (this.x + 210 > width || this.x < 0) {
+				if (this.x + 210 > width || this.x - 210 < 0) {
 				result.x = true;
 				this.vx = 0;
 				if (this.spriteNeedChange == 0) {
@@ -110,7 +110,7 @@
 				}
 			}	
 			else{
-				if (this.x + 260 > width || this.x < 0) {
+				if (this.x + 260 > width || this.x - 260 < 0) {
 				result.x = true;
 				this.vx = 0;
 				if (this.spriteNeedChange == 0) {
