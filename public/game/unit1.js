@@ -106,6 +106,7 @@
 		}
 
 
+
 		reflect (axis) {
 			Object.keys(axis).forEach(dem => {
 				if (axis[dem]) {
