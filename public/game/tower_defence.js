@@ -12,11 +12,7 @@
 		/**
 		 * Конструктор
 		 */
-		constructor({
-			ctx,
-			width,
-			height
-		}) {
+		constructor({ctx, width, height, poscoord = 0}) {
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
@@ -27,9 +23,21 @@
 			this.counter = 1;
 			this.units = [];
 			//this.units[0] = new Unit1({});
-			this.tower = new Tower({});
+			this.tower = new Tower({
+				x:0, 
+				y:60, 
+				hp:1000});
+
+			this.bot_tower = new Tower({
+				x:1100, 
+				y:60, 
+				hp:1000});
+
+
 			this.readyToShot = true;
 			this.key = new keyMaster();
+
+			this.poscoord = poscoord;
 
 			this._el = document.querySelector('.js-game');
 			this.createElements();
@@ -116,14 +124,33 @@
 			this.units.forEach(unit => {
 				//alert(this.units[i]);
 				//console.log[(this.units[i]);
-				unit.checkRectangleIntersection({
-					width: this.width,
-					height: this.height
-				}, 'reflect', dt);
+				
+				if(unit.isStopped() === false){
+					unit.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', dt);
+					if(unit.isStopped() === true){
+						if(this.poscoord != 100){
+							unit.change_y(this.poscoord);
+							this.poscoord += 10;
+							if(this.poscoord % 20 === 0){
+								unit.change_x(30);
+							}
+							//console.log();
+						}
+						else{
+							this.poscoord = 0;
+							unit.change_y(this.poscoord);
+						}
+
+					}
+
+				}
 
 				if(unit.getCounter() > 2000){
 					//console.log(unit.get_damage());
-					this.tower.checkRectangleIntersection({
+					this.bot_tower.checkcollision({
 						width: this.width,
 						height: this.height
 					}, 'reflect', unit.coordinate(), unit.get_damage());
@@ -144,8 +171,14 @@
 					this.tower.draw(this.ctx);
 				else
 					this.tower.draw_destroyed(this.ctx);
-
 				this.tower.drawHp(this.ctx);
+
+				if (this.bot_tower.getHp() > 0)
+					this.bot_tower.draw(this.ctx);
+				else
+					this.bot_tower.draw_destroyed(this.ctx);
+				this.bot_tower.drawHp(this.ctx);
+
 				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
 

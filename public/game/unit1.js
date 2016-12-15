@@ -7,22 +7,24 @@
 	const spriteSkeletonFight = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
 
 	//это удар
-	const spriteOgrFight = new Sprite('DnD-OgreLeader.png', [255, 950], [170 * 0.8, 115 * 0.8], 0.007, [5, 4, 3, 2, 1, 0 , 3, 4, 5]);
+	const spriteOgrFight = new Sprite('DnD-OgreLeader.png', [255, 950], [170 * 0.8, 115 * 0.8], 0.007, [5, 4, 3, 2, 1, 0, 3, 4, 5]);
 	class Unit1 {
 		/**
 		 * Конструктор класса Unit1
 		 */
-		constructor(data = {}/*{
-			x = 100,
-			y = 300,
-			vx = 0.1,
-			hp = 10,
-			damage = 50,
-			counter = 0,
-			poscoord = -15,
-			spriteType = 1
-			*
-		}*/) {
+		constructor(data = {}
+			/*{
+						x = 100,
+						y = 300,
+						vx = 0.1,
+						hp = 10,
+						damage = 50,
+						counter = 0,
+						poscoord = -15,
+						spriteType = 1
+						*
+					}*/
+		) {
 			this.vx = data.vx || 0.1;
 			this.x = data.x || 100;
 			this.y = data.y || 300;
@@ -79,10 +81,9 @@
 				if (this.spriteNeedChange == 0) {
 					this.spriteNeedChange = 1;
 					//this.sprite = spriteSkeletonFight;
-					if (this.spriteType == 1){
+					if (this.spriteType == 1) {
 						this.sprite = spriteSkeletonFight;
-					}
-					else{
+					} else {
 						this.sprite = spriteOgrFight;
 					}
 				}

@@ -6,14 +6,14 @@
 		/**
 		 * Конструктор класса Tower
 		 */
-		constructor ({x = 1100, y = 60, hp =1000}) {
+		constructor ({x = 1100, y = 60, hp = 1000}) {
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
 		}
 
 
-		checkRectangleIntersection ({width, height}, action = 'reflect', coord, damage) {
+		checkcollision ({width, height}, action = 'reflect', coord, damage) {
 			let result = {};	
 			//console.log(this.hp);	
 			//console.log(damage);
@@ -21,7 +21,7 @@
 				if(this.hp == 0){
 					result.x = false;
 				}
-				else if (coord + 280 > width) {
+				else if (coord + 210 > width || coord < 210) {
 					result.x = true;	
 					this.hp -= damage;	
 					//this.update(2000);
@@ -85,14 +85,14 @@
 			var image = new Image();
 			image.src = "destroyed.png"; 
 
-			ctx.drawImage(image, this.x, this.y, 150, 360);
+			ctx.drawImage(image, this.x + 30, this.y, 150, 360);
 			ctx.closePath();
 		}
 
 		drawHp(ctx){
 
 			ctx.fillStyle = "red";
-			ctx.fillRect(1140, 20, (this.hp / 10), 20);
+			ctx.fillRect(this.x + 40, this.y - 20, (this.hp / 10), 20);
 		}
 
 
