@@ -23,7 +23,17 @@
 			this.counter = 1;
 			this.units = [];
 			//this.units[0] = new Unit1({});
-			this.tower = new Tower({});
+			this.tower = new Tower({
+				x:0, 
+				y:60, 
+				hp:1000});
+
+			this.bot_tower = new Tower({
+				x:1100, 
+				y:60, 
+				hp:1000});
+
+
 			this.readyToShot = true;
 			this.key = new keyMaster();
 
@@ -139,7 +149,7 @@
 
 				if(unit.getCounter() > 2000){
 					//console.log(unit.get_damage());
-					this.tower.checkcollision({
+					this.bot_tower.checkcollision({
 						width: this.width,
 						height: this.height
 					}, 'reflect', unit.coordinate(), unit.get_damage());
@@ -160,8 +170,14 @@
 					this.tower.draw(this.ctx);
 				else
 					this.tower.draw_destroyed(this.ctx);
-
 				this.tower.drawHp(this.ctx);
+
+				if (this.bot_tower.getHp() > 0)
+					this.bot_tower.draw(this.ctx);
+				else
+					this.bot_tower.draw_destroyed(this.ctx);
+				this.bot_tower.drawHp(this.ctx);
+
 				this.user_panel.draw(this.ctx);
 				//this.collectGarbage();
 
