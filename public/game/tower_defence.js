@@ -72,7 +72,7 @@
 
 			function step() {
 				var now = Date.now(),
-					dt = now - (time || now);
+				dt = now - (time || now);
 
 				time = now;
 
@@ -146,9 +146,22 @@
 			});
 
 
+
+
+
+			this.units.forEach(unit => {
+				//console.log(unit);
+				unit.update(dt);
+				unit.sprite.update(dt);
+				unit.incrementCounter(dt);
+
+			});
+
 			this.bot_units.forEach(bot_unit => {
+
 				this.units.forEach(unit => {
-					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
+
+					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 90) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
 						bot_unit.onBattleStatus(unit.get_damage());
 						unit.onBattleStatus(bot_unit.get_damage());
 					}
@@ -162,12 +175,13 @@
 						bot_unit.nullCounter();
 						console.log('2');
 					}
-				});
+					
 
+				});
 
 			});
 
-
+			
 
 
 
@@ -204,15 +218,6 @@
 
 
 
-
-
-			this.units.forEach(unit => {
-				//console.log(unit);
-				unit.update(dt);
-				unit.sprite.update(dt);
-				unit.incrementCounter(dt);
-
-			});
 
 			this.units.forEach(unit => {
 
@@ -339,6 +344,19 @@
 
 			});
 		}
+
+			collectGarbage() {
+				this.units.forEach((bullet, index, arr) => {
+					if (units.toDestroy) {
+						arr.splice(index, 1);
+					}
+				});
+				this.bot_units.forEach((bullet, index, arr) => {
+					if (units.toDestroy) {
+						arr.splice(index, 1);
+					}
+				});
+			}
 	}
 
 	//export

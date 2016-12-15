@@ -44,6 +44,7 @@
 				this.stopped = false;
 				this.onbattle = false;
 				this.enemy_damage = 0;
+				this.toDestroy = false;
 
 				//это бег гладиатора
 				//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
@@ -166,10 +167,11 @@
 			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4 * 0.1), 3);
 		}
 
-		destroy(axis) {
-			if (axis.x || axis.y) {
-				this.toDestroy = true;
-			}
+		destroy(){
+		//(axis) {
+//			if (axis.x || axis.y) {
+			this.toDestroy = true;
+			//}
 		}
 
 		get_damage() {
@@ -202,6 +204,9 @@
 				console.log(this.hp);
 				if(this.hp < 0){
 					this.hp = 0;
+				}
+				if(this.hp === 0){
+					this.toDestroy = true;
 				}
 
 			}
