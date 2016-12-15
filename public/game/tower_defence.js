@@ -252,14 +252,14 @@
 			this.buttonLogin = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton1'],
-				text: 'Нанять unit1',
+				text: ' ',
 
 			});
 
 			this.buttonRegister = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton2'],
-				text: 'Нанять unit2',
+				text: ' ',
 			});
 		}
 
