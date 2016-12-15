@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-
+	//Витя по-умолчанию пес
 	const Unit1 = window.Unit1;
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
@@ -24,13 +24,13 @@
 			this.units = [];
 			//this.units[0] = new Unit1({});
 			this.tower = new Tower({
-				x:0, 
-				y:60, 
+				x:0,
+				y:60,
 				hp:1000});
 
 			this.bot_tower = new Tower({
-				x:1100, 
-				y:60, 
+				x:1100,
+				y:60,
 				hp:1000});
 
 
@@ -124,7 +124,7 @@
 			this.units.forEach(unit => {
 				//alert(this.units[i]);
 				//console.log[(this.units[i]);
-				
+
 				if(unit.isStopped() === false){
 					unit.checkcollision({
 						width: this.width,
