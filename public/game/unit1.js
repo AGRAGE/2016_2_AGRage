@@ -116,7 +116,15 @@
 			return this.damage;
 		}
 
-		reflect(axis) {
+
+		isStopped(){
+			return this.stopped;
+		}
+
+
+
+		reflect (axis) {
+
 			Object.keys(axis).forEach(dem => {
 				if (axis[dem]) {
 					this[`v${dem}`] *= -1;
