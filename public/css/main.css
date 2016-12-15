@@ -21,10 +21,10 @@ html {
     z-index: 1;
     top: 0px;
     background-image: url("2.png");
-    margin-top:500px;
+    margin-top:480px;
     margin-left:10px;
     width: 80px;
-    height: 92px;
+    height: 122px;
 
 }
 
@@ -34,10 +34,10 @@ html {
     top: 0px;
     left: 100px;
     background-image: url("1.png");
-    margin-top:500px;
+    margin-top:480px;
     margin-left:10px;
     width: 80px;
-    height: 92px;
+    height: 122px;
 }
 
 
