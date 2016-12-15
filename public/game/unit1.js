@@ -76,21 +76,57 @@
 			height
 		}, action = 'reflect', poscoord) {
 			let result = {};
-			if (this.x + 210 > width || this.x < 0) {
+
+
+			// if (this.x + 210 > width || this.x < 0) {
+			// 	result.x = true;
+			// 	this.vx = 0;
+			// 	if (this.spriteNeedChange == 0) {
+			// 		this.spriteNeedChange = 1;
+			// 		if (this.spriteType == 1) {
+			// 			this.sprite = spriteSkeletonFight;
+			// 		} else {
+			// 			this.sprite = spriteOgrFight;
+			// 		}
+			// 	}
+			// 	//this.counter += dt;
+			// 	this.stopped = true;
+
+			// }
+
+			if (this.spriteType == 1) {	
+				if (this.x + 210 > width || this.x < 0) {
 				result.x = true;
 				this.vx = 0;
 				if (this.spriteNeedChange == 0) {
 					this.spriteNeedChange = 1;
-					if (this.spriteType == 1) {
+
 						this.sprite = spriteSkeletonFight;
-					} else {
+					
+				}
+				//this.counter += dt;
+				this.stopped = true;
+
+				}
+			}	
+			else{
+				if (this.x + 260 > width || this.x < 0) {
+				result.x = true;
+				this.vx = 0;
+				if (this.spriteNeedChange == 0) {
+					this.spriteNeedChange = 1;
+
 						this.sprite = spriteOgrFight;
-					}
+
 				}
 				//this.counter += dt;
 				this.stopped = true;
 
 			}
+			}
+
+
+
 			this[action](result);
 		}
 
