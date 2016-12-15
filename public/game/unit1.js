@@ -6,8 +6,16 @@
 	//это удар скелета
 	const spriteSkeletonFight = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
 
-	//это удар
-	const spriteOgrFight = new Sprite('DnD-OgreLeader.png', [255, 950], [170 * 0.8, 115 * 0.8], 0.007, [5, 4, 3, 2, 1, 0, 3, 4, 5]);
+	//симметричный удар скелета
+	const spriteSkeletonFightReverse = new Sprite('SkeletonReverse.jpg', [380, 170], [60, 75], 0.003, [0, 1]);
+
+	//это удар огра
+	const spriteOgrFight = new Sprite('DnD-OgreLeader.png', [255, 950], [136, 92], 0.007, [5, 4, 3, 2, 1, 0, 3, 4, 5]);
+
+	//симметричный удар огра
+	const spriteOgrFightReverse = new Sprite('DnD-OgreLeader.png', [0, 950], [136, 92], 0.007, [5, 4, 3, 2, 1, 0, 3, 4, 5]);
+
+
 	class Unit1 {
 		/**
 		 * Конструктор класса Unit1
@@ -45,8 +53,12 @@
 
 			if (this.spriteType === 1) {
 				this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
-			} else {
-				this.sprite = new Sprite('DnD-OgreLeader.png', [398 * 0.8, 270 * 0.8], [120 * 0.8, 115 * 0.8], 0.007, [6, 5, 4, 3, 2, 1, 0]);
+			} else if (this.spriteType === 2){
+				this.sprite = new Sprite('DnD-OgreLeader.png', [318.4, 216], [96, 92], 0.007, [6, 5, 4, 3, 2, 1, 0]);
+			}else if (this.spriteType === 3){
+				this.sprite = new Sprite('SkeletonReverse.jpg', [335, 335], [55, 60], 0.005, [2, 1, 0]);
+			}else if (this.spriteType === 4){
+				this.sprite = new Sprite('DnD-OgreLeaderReverse.png',  [34, 216], [96, 92], 0.007, [0, 1, 2, 3, 4, 5, 6]);;
 			}
 
 
@@ -96,7 +108,11 @@
 
 			// }
 
+<<<<<<< HEAD
+			if (this.spriteType == 1) {
+=======
 			if (this.spriteType == 1) {	
+>>>>>>> origin/master
 				if (this.x + 210 > width || this.x - 210 < 0) {
 				result.x = true;
 				this.vx = 0;
@@ -104,13 +120,13 @@
 					this.spriteNeedChange = 1;
 
 					this.sprite = spriteSkeletonFight;
-					
+
 				}
 				//this.counter += dt;
 				this.stopped = true;
 
 				}
-			}	
+			}
 			else{
 				if (this.x + 260 > width || this.x - 260 < 0) {
 				result.x = true;

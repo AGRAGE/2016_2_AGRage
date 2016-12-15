@@ -19,8 +19,6 @@
 			this.height = height;
 
 			this.user_panel = new User_panel({});
-			//this.unit1 = new Unit1({});
-
 			this.bot = new Bot({});
 
 			//this.counter = 1;
@@ -115,7 +113,7 @@
 							vx: -0.1,
 							x: 1000,
 							damage: 50,
-							spriteType: 1
+							spriteType: 3
 						});
 						this.bot.losing_money(10);
 					}
@@ -126,7 +124,7 @@
 							vx: -0.1,
 							x: 1000,
 							damage: 100,
-							spriteType: 2
+							spriteType: 4
 						});
 						this.bot.losing_money(20);
 					}

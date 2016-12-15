@@ -1,3 +1,5 @@
 node_modules/
 public/api
 swagger-editor/
+.idea/
+.DC_Store
