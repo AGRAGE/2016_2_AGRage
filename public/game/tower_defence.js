@@ -18,7 +18,6 @@
 			this.height = height;
 
 			this.user_panel = new User_panel({});
-			this.unit1 = new Unit1({});
 
 			this.counter = 1;
 			this.units = [];
