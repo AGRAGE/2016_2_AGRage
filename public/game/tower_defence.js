@@ -101,6 +101,10 @@
 
 			this.bot.incrementCounter(dt);
 
+
+
+
+
 			if(this.bot.getCounter() > 2000){
 				var i = this.bot.command();
 				if(i === 1){
@@ -126,7 +130,7 @@
 					}
 				}
 
-				console.log(this.bot.get_money());
+				//console.log(this.bot.get_money());
 
 				this.bot.nullCounter();
 			}
@@ -138,6 +142,26 @@
 				unit.incrementCounter(dt);
 
 			});
+
+
+			this.bot_units.forEach(bot_unit => {
+				this.units.forEach(unit => {
+					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
+						bot_unit.onBattleStatus(unit.get_damage());
+						unit.onBattleStatus(bot_unit.get_damage());
+						if(unit.getCounter() > 2000){
+							bot_unit.battle();
+						}
+						if(bot_unit.getCounter() > 2000){
+							unit.battle();
+						}
+					}
+				});
+
+			});
+
+
+
 
 
 			this.bot_units.forEach(unit => {
@@ -218,6 +242,9 @@
 
 					unit.nullCounter();
 				}
+
+
+
 
 				//this.unit1.coordinate());
 
