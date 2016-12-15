@@ -100,6 +100,7 @@
 			//this.tower.incrementCounter(dt);
 
 			this.units.forEach(unit => {
+				console.log(unit);
 				unit.update(dt);
 				unit.sprite.update(dt);
 				unit.incrementCounter(dt);
@@ -232,17 +233,18 @@
 			this.buttonLogin._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				console.log()
 				if(this.user_panel.get_money() === 0){
 					alert("You don't have enough money");
 				}
 				else{
-					
+
 					this.user_panel.losing_money(10);
-					this.units[this.units.length] = new Unit1({});
+					this.units[this.units.length] = new Unit1({
+						spriteType: 1
+					});
 				}
-				
-				
+
+
 			});
 			this.buttonRegister._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
@@ -251,12 +253,14 @@
 					alert("You don't have enough money");
 				}
 				else{
-					
+
 					this.user_panel.losing_money(10);
-					this.units[this.units.length] = new Unit1({});
+					this.units[this.units.length] = new Unit1({
+						spriteType: 2
+					});
 				}
-				
-				
+
+
 
 			});
 		}

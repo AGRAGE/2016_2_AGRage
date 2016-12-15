@@ -46,7 +46,7 @@
 			var image = new Image();
 			image.src = this.url;
 
-			console.log("something");
+
 			ctx.drawImage(image,
 				x, y,
 				this.size[0], this.size[1],
