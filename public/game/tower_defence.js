@@ -144,15 +144,21 @@
 			});
 
 
-			// this.bot_units.forEach(bot_unit => {
-			// 	this.units.forEach(unit => {
-			// 		if(Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15 ){
-			// 			bot_unit.onBattle();
-			// 			unit.onBattle();
-			// 		}
-			// 	});
+			this.bot_units.forEach(bot_unit => {
+				this.units.forEach(unit => {
+					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
+						bot_unit.onBattleStatus(unit.get_damage());
+						unit.onBattleStatus(bot_unit.get_damage());
+						if(unit.getCounter() > 2000){
+							bot_unit.battle();
+						}
+						if(bot_unit.getCounter() > 2000){
+							unit.battle();
+						}
+					}
+				});
 
-			// });
+			});
 
 
 

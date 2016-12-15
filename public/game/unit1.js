@@ -44,7 +44,7 @@
 			this.spriteNeedChange = 0;
 			this.stopped = false;
 			this.onbattle = false;
-
+			this.enemy_damage = 0;
 			//это бег гладиатора
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 
@@ -108,11 +108,9 @@
 
 			// }
 
-<<<<<<< HEAD
-			if (this.spriteType == 1) {
-=======
+
 			if (this.spriteType == 1) {	
->>>>>>> origin/master
+
 				if (this.x + 210 > width || this.x - 210 < 0) {
 				result.x = true;
 				this.vx = 0;
@@ -187,13 +185,18 @@
 			return this.stopped;
 		}
 
-		onBattle(){
-			this.stopped = true;
+		onBattleStatus(en_damage){
+			this.vx = 0;
 			this.onbattle = true;
+			this.enemy_damage = en_damage;
 		}
 
 		get_battle_status(){
 			return this.onbattle;
+		}
+
+		battle(){
+			this.hp -= this.enemy_damage 
 		}
 
 
