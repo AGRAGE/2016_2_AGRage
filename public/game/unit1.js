@@ -1,6 +1,5 @@
 (function() {
 		'use strict';
-		//Витя пес
 		const Sprite = window.Sprite;
 
 		//это удар скелета
