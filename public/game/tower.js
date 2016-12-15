@@ -92,7 +92,7 @@
 		drawHp(ctx){
 
 			ctx.fillStyle = "red";
-			ctx.fillRect(this.x + 40, this.y - 40, (this.hp / 10), 20);
+			ctx.fillRect(this.x + 40, this.y - 20, (this.hp / 10), 20);
 		}
 
 
