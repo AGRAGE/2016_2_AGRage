@@ -13,7 +13,7 @@
 		}
 
 
-		checkRectangleIntersection ({width, height}, action = 'reflect', coord, damage) {
+		checkcollision ({width, height}, action = 'reflect', coord, damage) {
 			let result = {};	
 			//console.log(this.hp);	
 			//console.log(damage);
@@ -85,7 +85,7 @@
 			var image = new Image();
 			image.src = "destroyed.png"; 
 
-			ctx.drawImage(image, this.x, this.y, 150, 360);
+			ctx.drawImage(image, this.x + 30, this.y, 150, 360);
 			ctx.closePath();
 		}
 

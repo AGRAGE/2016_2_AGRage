@@ -12,11 +12,7 @@
 		/**
 		 * Конструктор
 		 */
-		constructor({
-			ctx,
-			width,
-			height
-		}) {
+		constructor({ctx, width, height, poscoord = 0}) {
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
@@ -30,6 +26,8 @@
 			this.tower = new Tower({});
 			this.readyToShot = true;
 			this.key = new keyMaster();
+
+			this.poscoord = poscoord;
 
 			this._el = document.querySelector('.js-game');
 			this.createElements();
@@ -115,14 +113,33 @@
 			this.units.forEach(unit => {
 				//alert(this.units[i]);
 				//console.log[(this.units[i]);
-				unit.checkRectangleIntersection({
-					width: this.width,
-					height: this.height
-				}, 'reflect', dt);
+				
+				if(unit.isStopped() === false){
+					unit.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', dt);
+					if(unit.isStopped() === true){
+						if(this.poscoord != 100){
+							unit.change_y(this.poscoord);
+							this.poscoord += 10;
+							if(this.poscoord % 20 === 0){
+								unit.change_x(30);
+							}
+							//console.log();
+						}
+						else{
+							this.poscoord = 0;
+							unit.change_y(this.poscoord);
+						}
+
+					}
+
+				}
 
 				if(unit.getCounter() > 2000){
 					//console.log(unit.get_damage());
-					this.tower.checkRectangleIntersection({
+					this.tower.checkcollision({
 						width: this.width,
 						height: this.height
 					}, 'reflect', unit.coordinate(), unit.get_damage());

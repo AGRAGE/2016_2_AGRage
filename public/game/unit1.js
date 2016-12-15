@@ -10,14 +10,14 @@
 		/**
 		 * Конструктор класса Unit1
 		 */
-		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50, counter = 0, poscoord = -15}) {
+		constructor ({x = 100, y = 300, vx = 0.1, hp = 10, damage = 50, counter = 0, stopped = false}) {
 			this.vx = vx;
 			this.x = x;
 			this.y = y;
 			this.hp = hp;
 			this.counter = counter;
 			this.damage = damage;
-			this.poscoord = poscoord;
+			this.stopped = stopped;
 
 			this.spriteNeedChange = 0;
 			//это бег гладиатора
@@ -52,18 +52,29 @@
 			//this.y += this.vy * dt;
 		}
 
-		checkRectangleIntersection ({width, height}, action = 'reflect', dt) {
+		checkcollision ({width, height}, action = 'reflect', poscoord) {
 			let result = {};
-			if (this.x + 280 > width || this.x < 0) {
+			if (this.x + 210 > width || this.x < 0) {
 				result.x = true;
 				this.vx = 0;
 				if (this.spriteNeedChange == 0){
 					this.spriteNeedChange = 1;
 					this.sprite = spriteSkeletonFight;
 				}
-				this.counter += dt;
+				//this.counter += dt;
+				this.stopped = true;
+
+
 			}
 			this[action](result);
+		}
+
+		change_y(coord){
+			this.y += coord;
+		}
+
+		change_x(coord){
+			this.x -= coord;
 		}
 
 		coordinate (){
@@ -89,6 +100,11 @@
 		get_damage(){
 			return this.damage;
 		}
+
+		isStopped(){
+			return this.stopped;
+		}
+
 
 		reflect (axis) {
 			Object.keys(axis).forEach(dem => {
