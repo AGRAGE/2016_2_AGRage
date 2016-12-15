@@ -6,6 +6,7 @@
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
 	const User_panel = window.User_panel;
+	const Bot = window.Bot;
 
 	class Tower_defence {
 
@@ -20,7 +21,11 @@
 			this.user_panel = new User_panel({});
 			//this.unit1 = new Unit1({});
 
-			this.counter = 1;
+			this.bot = new Bot({});
+
+			//this.counter = 1;
+
+			this.bot_units = [];
 			this.units = [];
 			//this.units[0] = new Unit1({});
 			this.tower = new Tower({
@@ -95,17 +100,82 @@
 			let keys = this.keys;
 			this.clear();
 
-			// this.bullets.forEach(bullet => {
-			// 	bullet.update(dt);
-			// 	bullet.checkRectangleIntersection({
-			// 		width: this.width,
-			// 		height: this.height
-			// 	}, 'destroy');
 
-			// 	bullet.draw(this.ctx);
-			// });
+			this.bot.incrementCounter(dt);
 
-			//this.tower.incrementCounter(dt);
+			if(this.bot.getCounter() > 2000){
+				var i = this.bot.command();
+				if(i === 1){
+					if(this.bot.get_money() >= 10){
+						this.bot_units[this.bot_units.length] = new Unit1({
+							vx: -0.1,
+							x: 900,
+							damage: 50,
+							spriteType: 1
+						});
+						this.bot.losing_money(10);
+					}
+				}
+				else{
+					if(this.bot.get_money() >= 20){
+						this.bot_units[this.bot_units.length] = new Unit1({
+							vx: -0.1,
+							x: 900,
+							damage: 100,
+							spriteType: 2
+						});
+						this.bot.losing_money(20);
+					}
+				}
+
+				console.log(this.bot.get_money());
+
+				this.bot.nullCounter();
+			}
+
+			this.bot_units.forEach(unit => {
+				//console.log(unit);
+				unit.update(dt);
+				unit.sprite.update(dt);
+				unit.incrementCounter(dt);
+
+			});
+
+
+			this.bot_units.forEach(unit => {
+
+
+				if(unit.isStopped() === false){
+					unit.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', dt);
+
+				}
+
+				if(unit.getCounter() > 2000){
+					//console.log(unit.get_damage());
+					this.tower.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', unit.coordinate(), unit.get_damage(), unit.get_spriteType());
+
+					unit.nullCounter();
+				}
+
+				//this.unit1.coordinate());
+
+				//unit.going();
+
+
+				//this.unit1.draw(this.ctx);
+				unit.draw(this.ctx);
+				unit.drawHp(this.ctx);
+			})
+
+
+
+
 
 			this.units.forEach(unit => {
 				//console.log(unit);
@@ -114,16 +184,9 @@
 				unit.incrementCounter(dt);
 
 			});
-			//this.unit1.update(dt);
-			//this.unit1.sprite.update(dt);
 
-			//this.checkControl();
-
-			//var i;
-			//for (i = 0; i < this.counter; i++) {
 			this.units.forEach(unit => {
-				//alert(this.units[i]);
-				//console.log[(this.units[i]);
+
 
 				if(unit.isStopped() === false){
 					unit.checkcollision({
