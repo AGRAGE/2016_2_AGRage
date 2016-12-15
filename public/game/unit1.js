@@ -36,7 +36,7 @@
 			this.spriteNeedChange = 0;
 			this.stopped = false;
 			this.onbattle = false;
-			
+
 			//это бег гладиатора
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 
@@ -140,6 +140,11 @@
 			return this.hp;
 		}
 
+		remove_hp(health){
+			this.hp -= health;
+
+		}
+
 		drawHp(ctx) {
 
 			ctx.fillStyle = "red";
@@ -165,6 +170,17 @@
 		isStopped() {
 			return this.stopped;
 		}
+
+		onBattle(){
+			this.stopped = true;
+			this.onbattle = true;
+		}
+
+		get_battle_status(){
+			return this.onbattle;
+		}
+
+
 
 
 

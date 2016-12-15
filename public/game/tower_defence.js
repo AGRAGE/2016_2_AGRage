@@ -103,6 +103,10 @@
 
 			this.bot.incrementCounter(dt);
 
+
+
+
+
 			if(this.bot.getCounter() > 2000){
 				var i = this.bot.command();
 				if(i === 1){
@@ -128,7 +132,7 @@
 					}
 				}
 
-				console.log(this.bot.get_money());
+				//console.log(this.bot.get_money());
 
 				this.bot.nullCounter();
 			}
@@ -140,6 +144,20 @@
 				unit.incrementCounter(dt);
 
 			});
+
+
+			// this.bot_units.forEach(bot_unit => {
+			// 	this.units.forEach(unit => {
+			// 		if(Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15 ){
+			// 			bot_unit.onBattle();
+			// 			unit.onBattle();
+			// 		}
+			// 	});
+
+			// });
+
+
+
 
 
 			this.bot_units.forEach(unit => {
@@ -222,7 +240,7 @@
 				}
 
 
-				
+
 
 				//this.unit1.coordinate());
 
