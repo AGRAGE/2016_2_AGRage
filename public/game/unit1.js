@@ -34,6 +34,7 @@
 			this.poscoord = data.poscoord || -15;
 			this.spriteType = data.spriteType || 1;
 			this.spriteNeedChange = 0;
+			this.stopped = false;
 			//это бег гладиатора
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 
@@ -70,24 +71,25 @@
 			//this.y += this.vy * dt;
 		}
 
-		checkRectangleIntersection({
+		checkcollision({
 			width,
 			height
-		}, action = 'reflect', dt) {
+		}, action = 'reflect', poscoord) {
 			let result = {};
-			if (this.x + 280 > width || this.x < 0) {
+			if (this.x + 210 > width || this.x < 0) {
 				result.x = true;
 				this.vx = 0;
 				if (this.spriteNeedChange == 0) {
 					this.spriteNeedChange = 1;
-					//this.sprite = spriteSkeletonFight;
 					if (this.spriteType == 1) {
 						this.sprite = spriteSkeletonFight;
 					} else {
 						this.sprite = spriteOgrFight;
 					}
 				}
-				this.counter += dt;
+				//this.counter += dt;
+				this.stopped = true;
+
 			}
 			this[action](result);
 		}
@@ -117,13 +119,13 @@
 		}
 
 
-		isStopped(){
+		isStopped() {
 			return this.stopped;
 		}
 
 
 
-		reflect (axis) {
+		reflect(axis) {
 
 			Object.keys(axis).forEach(dem => {
 				if (axis[dem]) {
