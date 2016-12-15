@@ -13,7 +13,7 @@
 		}
 
 
-		checkcollision ({width, height}, action = 'reflect', coord, damage) {
+		checkcollision ({width, height}, action = 'reflect', coord, damage, spriteType) {
 			let result = {};	
 			//console.log(this.hp);	
 			//console.log(damage);
@@ -21,14 +21,23 @@
 				if(this.hp == 0){
 					result.x = false;
 				}
-				else if (coord + 210 > width || coord < 210) {
+				else if(spriteType === 1){
+					if (coord + 210 > width || coord < 210) {
 					result.x = true;	
 					this.hp -= damage;	
+					//console.log(damage);
+					//console.log(this.hp);
 					//this.update(2000);
 				
 					//console.log(this.hp);	
+					}
 				}
-				else result.x = false;
+				else {
+					if (coord + 260 > width || coord < 210) {
+						result.x = true;	
+						this.hp -= damage;
+					}
+				}
 				
 				//this.counter = 0;
 			//}

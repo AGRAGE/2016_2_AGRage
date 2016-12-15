@@ -6,6 +6,7 @@
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
 	const User_panel = window.User_panel;
+	const Bot = window.Bot;
 
 	class Tower_defence {
 
@@ -18,8 +19,11 @@
 			this.height = height;
 
 			this.user_panel = new User_panel({});
+			this.bot = new Bot({});
 
-			this.counter = 1;
+			//this.counter = 1;
+
+			this.bot_units = [];
 			this.units = [];
 			//this.units[0] = new Unit1({});
 			this.tower = new Tower({
@@ -94,56 +98,114 @@
 			let keys = this.keys;
 			this.clear();
 
-			// this.bullets.forEach(bullet => {
-			// 	bullet.update(dt);
-			// 	bullet.checkRectangleIntersection({
-			// 		width: this.width,
-			// 		height: this.height
-			// 	}, 'destroy');
 
-			// 	bullet.draw(this.ctx);
-			// });
+			this.bot.incrementCounter(dt);
 
-			//this.tower.incrementCounter(dt);
+			if(this.bot.getCounter() > 2000){
+				var i = this.bot.command();
+				if(i === 1){
+					if(this.bot.get_money() >= 10){
+						this.bot_units[this.bot_units.length] = new Unit1({
+							vx: -0.1,
+							x: 900,
+							damage: 50,
+							spriteType: 3
+						});
+						this.bot.losing_money(10);
+					}
+				}
+				else{
+					if(this.bot.get_money() >= 20){
+						this.bot_units[this.bot_units.length] = new Unit1({
+							vx: -0.1,
+							x: 900,
+							damage: 100,
+							spriteType: 4
+						});
+						this.bot.losing_money(20);
+					}
+				}
 
-			this.units.forEach(unit => {
-				console.log(unit);
+				console.log(this.bot.get_money());
+
+				this.bot.nullCounter();
+			}
+
+			this.bot_units.forEach(unit => {
+				//console.log(unit);
 				unit.update(dt);
 				unit.sprite.update(dt);
 				unit.incrementCounter(dt);
 
 			});
-			//this.unit1.update(dt);
-			//this.unit1.sprite.update(dt);
 
-			//this.checkControl();
 
-			//var i;
-			//for (i = 0; i < this.counter; i++) {
-			this.units.forEach(unit => {
-				//alert(this.units[i]);
-				//console.log[(this.units[i]);
+			this.bot_units.forEach(unit => {
+
 
 				if(unit.isStopped() === false){
 					unit.checkcollision({
 						width: this.width,
 						height: this.height
 					}, 'reflect', dt);
-					if(unit.isStopped() === true){
-						if(this.poscoord != 100){
-							unit.change_y(this.poscoord);
-							this.poscoord += 10;
-							if(this.poscoord % 20 === 0){
-								unit.change_x(30);
-							}
-							//console.log();
-						}
-						else{
-							this.poscoord = 0;
-							unit.change_y(this.poscoord);
-						}
 
-					}
+				}
+
+				if(unit.getCounter() > 2000){
+					//console.log(unit.get_damage());
+					this.tower.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', unit.coordinate(), unit.get_damage(), unit.get_spriteType());
+
+					unit.nullCounter();
+				}
+
+				//this.unit1.coordinate());
+
+				//unit.going();
+
+
+				//this.unit1.draw(this.ctx);
+				unit.draw(this.ctx);
+				unit.drawHp(this.ctx);
+			})
+
+
+
+
+
+			this.units.forEach(unit => {
+				//console.log(unit);
+				unit.update(dt);
+				unit.sprite.update(dt);
+				unit.incrementCounter(dt);
+
+			});
+
+			this.units.forEach(unit => {
+
+
+				if(unit.isStopped() === false){
+					unit.checkcollision({
+						width: this.width,
+						height: this.height
+					}, 'reflect', dt);
+					// if(unit.isStopped() === true){
+					// 	if(this.poscoord != 100){
+					// 		unit.change_y(this.poscoord);
+					// 		this.poscoord += 10;
+					// 		if(this.poscoord % 20 === 0){
+					// 			unit.change_x(30);
+					// 		}
+					// 		//console.log();
+					// 	}
+					// 	else{
+					// 		this.poscoord = 0;
+					// 		unit.change_y(this.poscoord);
+					// 	}
+
+					// }
 
 				}
 
@@ -152,7 +214,8 @@
 					this.bot_tower.checkcollision({
 						width: this.width,
 						height: this.height
-					}, 'reflect', unit.coordinate(), unit.get_damage());
+					}, 'reflect', unit.coordinate(), unit.get_damage(), unit.get_spriteType());
+
 					unit.nullCounter();
 				}
 
@@ -183,76 +246,18 @@
 
 		};
 
-		// collectGarbage() {
-		// 	this.bullets.forEach((bullet, index, arr) => {
-		// 		if (bullet.toDestroy) {
-		// 			arr.splice(index, 1);
-		// 		}
-		// 	});
-		// }
-
-		// createBullet () {
-		// 	if (!this.readyToShot) {
-		// 		return;
-		// 	}
-
-		// 	this.readyToShot = false;
-		// 	this.bullets.push(new Unit1({
-		// 		color: '#' + technolibs.colorHash('bullet' + Date.now()),
-		// 		r: 10,
-		// 		x: this.unit1.x,
-		// 		y: this.unit1.y,
-		// 		vx: this.unit1.vx * 5,
-		// 		vy: this.unit1.vy * 5
-		// 	}));
-
-		// 	setTimeout(() => this.readyToShot = true, 300);
-		// }
-
-		/*checkControl() {
-			if (this.key.is('w')) {
-				this.units[0].dv({
-					vy: -0.01
-				});
-			}
-
-			if (this.key.is('s')) {
-				this.units[0].dv({
-					vy: 0.01
-				});
-			}
-
-			if (this.key.is('d')) {
-				this.units[0].dv({
-					vx: 0.01
-				});
-			}
-
-			if (this.key.is('a')) {
-				this.units[0].dv({
-					vx: -0.01
-				});
-			}
-
-			// if (this.key.is(' ')) {
-			// 	this.createBullet();
-			// }
-		}*/
-
-
-
 		createElements() {
 			this.buttonLogin = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton1'],
-				text: 'Нанять unit1',
+				text: ' ',
 
 			});
 
 			this.buttonRegister = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton2'],
-				text: 'Нанять unit2',
+				text: ' ',
 			});
 		}
 
@@ -265,13 +270,14 @@
 			this.buttonLogin._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if(this.user_panel.get_money() === 0){
+				if(this.user_panel.get_money() < 10){
 					alert("You don't have enough money");
 				}
 				else{
 
 					this.user_panel.losing_money(10);
 					this.units[this.units.length] = new Unit1({
+						damage: 50,
 						spriteType: 1
 					});
 				}
@@ -281,13 +287,14 @@
 			this.buttonRegister._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if(this.user_panel.get_money() === 0){
+				if(this.user_panel.get_money() < 20){
 					alert("You don't have enough money");
 				}
 				else{
 
-					this.user_panel.losing_money(10);
+					this.user_panel.losing_money(20);
 					this.units[this.units.length] = new Unit1({
+						damage: 100,
 						spriteType: 2
 					});
 				}
