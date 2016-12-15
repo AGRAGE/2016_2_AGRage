@@ -13,7 +13,12 @@
 		/**
 		 * Конструктор
 		 */
-		constructor({ctx, width, height, poscoord = 0}) {
+		constructor({
+			ctx,
+			width,
+			height,
+			poscoord = 0
+		}) {
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
@@ -27,14 +32,16 @@
 			this.units = [];
 			//this.units[0] = new Unit1({});
 			this.tower = new Tower({
-				x:0,
-				y:60,
-				hp:1000});
+				x: 0,
+				y: 60,
+				hp: 1000
+			});
 
 			this.bot_tower = new Tower({
-				x:1100,
-				y:60,
-				hp:1000});
+				x: 1100,
+				y: 60,
+				hp: 1000
+			});
 
 
 			this.readyToShot = true;
@@ -72,7 +79,7 @@
 
 			function step() {
 				var now = Date.now(),
-				dt = now - (time || now);
+					dt = now - (time || now);
 
 				time = now;
 
@@ -105,10 +112,10 @@
 
 
 
-			if(this.bot.getCounter() > 2000){
+			if (this.bot.getCounter() > 2000) {
 				var i = this.bot.command();
-				if(i === 1){
-					if(this.bot.get_money() >= 10){
+				if (i === 1) {
+					if (this.bot.get_money() >= 10) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
@@ -118,9 +125,8 @@
 						});
 						this.bot.losing_money(10);
 					}
-				}
-				else{
-					if(this.bot.get_money() >= 20){
+				} else {
+					if (this.bot.get_money() >= 20) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
@@ -161,34 +167,34 @@
 
 				this.units.forEach(unit => {
 
-					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 90) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
+					if ((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 90) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)) {
 						bot_unit.onBattleStatus(unit.get_damage());
 						unit.onBattleStatus(bot_unit.get_damage());
 					}
-					if((unit.getCounter() > 2000) && (unit.get_battle_status() === true)){
+					if ((unit.getCounter() > 2000) && (unit.get_battle_status() === true)) {
 						bot_unit.battle();
 						unit.nullCounter();
 						console.log('1');
 					}
-					if((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)){
+					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)) {
 						unit.battle();
 						bot_unit.nullCounter();
 						console.log('2');
 					}
-					
+
 
 				});
 
 			});
 
-			
+
 
 
 
 			this.bot_units.forEach(unit => {
 
 
-				if(unit.isStopped() === false){
+				if (unit.isStopped() === false) {
 					unit.checkcollision({
 						width: this.width,
 						height: this.height
@@ -196,7 +202,7 @@
 
 				}
 
-				if(unit.getCounter() > 2000){
+				if (unit.getCounter() > 2000) {
 					//console.log(unit.get_damage());
 					this.tower.checkcollision({
 						width: this.width,
@@ -222,7 +228,7 @@
 			this.units.forEach(unit => {
 
 
-				if(unit.isStopped() === false){
+				if (unit.isStopped() === false) {
 					unit.checkcollision({
 						width: this.width,
 						height: this.height
@@ -245,7 +251,7 @@
 
 				}
 
-				if(unit.getCounter() > 2000){
+				if (unit.getCounter() > 2000) {
 					//console.log(unit.get_damage());
 					this.bot_tower.checkcollision({
 						width: this.width,
@@ -268,20 +274,20 @@
 				unit.drawHp(this.ctx);
 			})
 
-				if (this.tower.getHp() > 0)
-					this.tower.draw(this.ctx);
-				else
-					this.tower.draw_destroyed(this.ctx);
-				this.tower.drawHp(this.ctx);
+			if (this.tower.getHp() > 0)
+				this.tower.draw(this.ctx);
+			else
+				this.tower.draw_destroyed(this.ctx);
+			this.tower.drawHp(this.ctx);
 
-				if (this.bot_tower.getHp() > 0)
-					this.bot_tower.draw(this.ctx);
-				else
-					this.bot_tower.draw_destroyed(this.ctx);
-				this.bot_tower.drawHp(this.ctx);
+			if (this.bot_tower.getHp() > 0)
+				this.bot_tower.draw(this.ctx);
+			else
+				this.bot_tower.draw_destroyed(this.ctx);
+			this.bot_tower.drawHp(this.ctx);
 
-				this.user_panel.draw(this.ctx);
-				//this.collectGarbage();
+			this.user_panel.draw(this.ctx);
+			this.collectGarbage();
 
 		};
 
@@ -309,10 +315,9 @@
 			this.buttonLogin._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if(this.user_panel.get_money() < 10){
+				if (this.user_panel.get_money() < 10) {
 					alert("You don't have enough money");
-				}
-				else{
+				} else {
 
 					this.user_panel.losing_money(10);
 					this.units[this.units.length] = new Unit1({
@@ -327,10 +332,9 @@
 			this.buttonRegister._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if(this.user_panel.get_money() < 20){
+				if (this.user_panel.get_money() < 20) {
 					alert("You don't have enough money");
-				}
-				else{
+				} else {
 
 					this.user_panel.losing_money(20);
 					this.units[this.units.length] = new Unit1({
@@ -345,18 +349,18 @@
 			});
 		}
 
-			collectGarbage() {
-				this.units.forEach((bullet, index, arr) => {
-					if (units.toDestroy) {
-						arr.splice(index, 1);
-					}
-				});
-				this.bot_units.forEach((bullet, index, arr) => {
-					if (units.toDestroy) {
-						arr.splice(index, 1);
-					}
-				});
-			}
+		collectGarbage() {
+			this.units.forEach((unit, index, arr) => {
+				if (unit.toDestroy) {
+					arr.splice(index, 1);
+				}
+			});
+			this.bot_units.forEach((unit, index, arr) => {
+				if (unit.toDestroy) {
+					arr.splice(index, 1);
+				}
+			});
+		}
 	}
 
 	//export
