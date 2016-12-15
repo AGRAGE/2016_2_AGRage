@@ -221,6 +221,9 @@
 					unit.nullCounter();
 				}
 
+
+				
+
 				//this.unit1.coordinate());
 
 				//unit.going();

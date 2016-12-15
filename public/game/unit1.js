@@ -35,6 +35,8 @@
 			this.spriteType = data.spriteType || 1;
 			this.spriteNeedChange = 0;
 			this.stopped = false;
+			this.onbattle = false;
+			
 			//это бег гладиатора
 			//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
 
