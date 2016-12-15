@@ -108,7 +108,11 @@
 
 			// }
 
+<<<<<<< HEAD
 			if (this.spriteType == 1) {
+=======
+			if (this.spriteType == 1) {	
+>>>>>>> origin/master
 				if (this.x + 210 > width || this.x - 210 < 0) {
 				result.x = true;
 				this.vx = 0;

@@ -107,7 +107,7 @@
 					if(this.bot.get_money() >= 10){
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
-							x: 900,
+							x: 1000,
 							damage: 50,
 							spriteType: 3
 						});
@@ -118,7 +118,7 @@
 					if(this.bot.get_money() >= 20){
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
-							x: 900,
+							x: 1000,
 							damage: 100,
 							spriteType: 4
 						});

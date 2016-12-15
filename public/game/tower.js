@@ -33,7 +33,7 @@
 					}
 				}
 				else {
-					if (coord + 260 > width || coord < 210) {
+					if (coord + 260 > width || coord < 260) {
 						result.x = true;	
 						this.hp -= damage;
 					}
