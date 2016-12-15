@@ -112,6 +112,7 @@
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
+							hp: 100,
 							damage: 50,
 							spriteType: 3
 						});
@@ -123,6 +124,7 @@
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
+							hp: 200,
 							damage: 100,
 							spriteType: 4
 						});
@@ -149,14 +151,19 @@
 					if((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 15) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)){
 						bot_unit.onBattleStatus(unit.get_damage());
 						unit.onBattleStatus(bot_unit.get_damage());
-						if(unit.getCounter() > 2000){
-							bot_unit.battle();
-						}
-						if(bot_unit.getCounter() > 2000){
-							unit.battle();
-						}
+					}
+					if((unit.getCounter() > 2000) && (unit.get_battle_status() === true)){
+						bot_unit.battle();
+						unit.nullCounter();
+						console.log('1');
+					}
+					if((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)){
+						unit.battle();
+						bot_unit.nullCounter();
+						console.log('2');
 					}
 				});
+
 
 			});
 
@@ -304,6 +311,7 @@
 
 					this.user_panel.losing_money(10);
 					this.units[this.units.length] = new Unit1({
+						hp: 100,
 						damage: 50,
 						spriteType: 1
 					});
@@ -321,6 +329,7 @@
 
 					this.user_panel.losing_money(20);
 					this.units[this.units.length] = new Unit1({
+						hp: 200,
 						damage: 100,
 						spriteType: 2
 					});
