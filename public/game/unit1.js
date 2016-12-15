@@ -163,7 +163,7 @@
 		drawHp(ctx) {
 
 			ctx.fillStyle = "red";
-			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4), 3);
+			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4 * 0.1), 3);
 		}
 
 		destroy(axis) {
@@ -197,7 +197,14 @@
 		}
 
 		battle(){
-			this.hp -= this.enemy_damage 
+			if(this.hp > 0){
+				this.hp -= this.enemy_damage;
+				console.log(this.hp);
+				if(this.hp < 0){
+					this.hp = 0;
+				}
+
+			}
 		}
 
 
