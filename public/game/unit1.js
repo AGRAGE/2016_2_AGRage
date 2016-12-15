@@ -101,7 +101,7 @@
 				if (this.spriteNeedChange == 0) {
 					this.spriteNeedChange = 1;
 
-						this.sprite = spriteSkeletonFight;
+					this.sprite = spriteSkeletonFight;
 					
 				}
 				//this.counter += dt;
@@ -116,13 +116,13 @@
 				if (this.spriteNeedChange == 0) {
 					this.spriteNeedChange = 1;
 
-						this.sprite = spriteOgrFight;
+					this.sprite = spriteOgrFight;
 
 				}
 				//this.counter += dt;
 				this.stopped = true;
 
-			}
+				}
 			}
 
 
@@ -151,9 +151,14 @@
 		}
 
 		get_damage() {
+			//console.log(this.damage);
 			return this.damage;
 		}
 
+
+		get_spriteType(){
+			return this.spriteType;
+		}
 
 		isStopped() {
 			return this.stopped;
