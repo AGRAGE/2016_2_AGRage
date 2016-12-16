@@ -1,15 +1,15 @@
 (function() {
 	'use strict';
-	//Витя по-умолчанию пес
 	const Unit1 = window.Unit1;
 	const keyMaster = window.keyMaster;
 	const Tower = window.Tower;
 	const GameButton = window.GameButton;
 	const User_panel = window.User_panel;
 	const Bot = window.Bot;
+	const Router = window.Router;
 
 
-	class Tower_defence {
+	class Tower_defence{
 
 		/**
 		 * Конструктор
@@ -202,6 +202,7 @@
 
 			});
 
+			this.router = new Router();
 
 //продолжение движения после боя
 			this.bot_units.forEach(bot_unit => {
@@ -329,14 +330,18 @@
 //рисуем разрушенную башню
 			if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
-			else
+			else{
+				//alert("Вы проиграли!");
 				this.tower.draw_destroyed(this.ctx);
+			}
 			this.tower.drawHp(this.ctx);
 
 			if (this.bot_tower.getHp() > 0)
 				this.bot_tower.draw(this.ctx);
-			else
+			else{
+				//alert("Вы выиграли!");
 				this.bot_tower.draw_destroyed(this.ctx);
+			}
 			this.bot_tower.drawHp(this.ctx);
 
 			this.user_panel.draw(this.ctx);
