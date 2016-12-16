@@ -15,6 +15,11 @@
         }
 
         createElements() {
+            this.buttonSingleGame = new Button({
+                el: document.createElement('button'),
+                classAttrs: ['LoginButton'],
+                text: 'одиночная игра',
+            });
             this.buttonSearchGame = new Button({
                 el: document.createElement('button'),
 				classAttrs: ['LoginButton'],
@@ -40,7 +45,7 @@
         }
 
         addElements() {
-
+            this._el.appendChild(this.buttonSingleGame._get());
 			this._el.appendChild(this.buttonSearchGame._get());
 			this._el.appendChild(this.buttonRating._get());
 			this._el.appendChild(this.buttonUserProfile._get());
@@ -48,21 +53,20 @@
         }
 
         addListeners() {
+            this.buttonSingleGame._get().addEventListener('click', (event) => {
+                this.router.go('/game/');
+            });            
             this.buttonSearchGame._get().addEventListener('click', (event) => {
-                console.log('click SearchGame');
-                this.router.go('/searchGame');
+                this.router.go('/searchGame/');
             });
             this.buttonRating._get().addEventListener('click', (event) => {
-                console.log('click rating');
-                this.router.go('/rating');
+                this.router.go('/rating/');
             });
 			this.buttonUserProfile._get().addEventListener('click', (event) => {
-				console.log('click profile');
-				this.router.go('/profile');
+				this.router.go('/profile/');
 			});
 			this.buttonConfig._get().addEventListener('click', (event) => {
-				console.log('click config');
-				this.router.go('/config');
+				this.router.go('/config/');
 			});
         }
     }

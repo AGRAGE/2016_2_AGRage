@@ -40,7 +40,10 @@
 			return this.money;
 		}
 
-
+		increaseMoney(coins){
+			this.money += coins;
+			console.log(coins);
+		}
 	}
 
 

@@ -37,11 +37,11 @@
         addListeners() {
             this.buttonLogin._get().addEventListener('click', (event) => {
                 console.log('click login');
-                this.router.go('/login', loginView);
+                this.router.go('/login/', loginView);
             });
             this.buttonRegister._get().addEventListener('click', (event) => {
                 console.log('click register');
-                this.router.go('/registration');
+                this.router.go('/registration/');
             });
         }
     }

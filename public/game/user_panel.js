@@ -20,6 +20,10 @@
 			return this.money;
 		}
 
+		increaseMoney(coins){
+			this.money += coins;
+		}
+
 		draw (ctx) {
 			ctx.beginPath();
 			var canvas = document.getElementById("canvas");

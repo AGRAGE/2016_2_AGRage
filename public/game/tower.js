@@ -16,7 +16,8 @@
 		checkcollision ({width, height}, action = 'reflect', coord, damage, spriteType) {
 			let result = {};	
 
-				if(this.hp == 0){
+				if(this.hp <= 0){
+					this.hp = 0;
 					result.x = false;
 				}
 				else if(spriteType === 1){

@@ -68,7 +68,7 @@
 						.then((responseObj) => {
 							if (responseObj.status == 200) {
 								this.sender.isAuth = 1;
-								this.router.go('/menu');
+								this.router.go('/menu/');
 							}
 						})
 						.catch(() => {

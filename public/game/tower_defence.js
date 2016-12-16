@@ -8,6 +8,7 @@
 	const User_panel = window.User_panel;
 	const Bot = window.Bot;
 
+
 	class Tower_defence {
 
 		/**
@@ -53,6 +54,7 @@
 			this.createElements();
 			this.addElements();
 			this.addListeners();
+			this.battle_number = 1;
 		}
 
 		/**
@@ -173,18 +175,27 @@
 				this.units.forEach(unit => {
 
 					if ((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 90) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)) {
-						bot_unit.onBattleStatus(0, true, unit.get_damage());
-						unit.onBattleStatus(0, true, bot_unit.get_damage());
+						bot_unit.onBattleStatus(0, true, unit.get_damage(), true);
+						unit.onBattleStatus(0, true, bot_unit.get_damage(), true);
+						bot_unit.setBattle_number(this.battle_number);
+						unit.setBattle_number(this.battle_number);
+						if(this.battle_number == 10){
+							this.battle_number = 1;
+						}
+						else{
+							this.battle_number++;
+						}
+
 					}
 					if ((unit.getCounter() > 2000) && (unit.get_battle_status() === true)) {
 						bot_unit.battle();
 						unit.nullCounter();
-						console.log('1');
+						//console.log('1');
 					}
 					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)) {
 						unit.battle();
 						bot_unit.nullCounter();
-						console.log('2');
+						//console.log('2');
 					}
 
 				});
@@ -192,12 +203,20 @@
 			});
 
 
-
+//продолжение движения после боя
 			this.bot_units.forEach(bot_unit => {
 				if(bot_unit.isDestroyed()){
+					if(bot_unit.get_damage() === 50)
+						this.bot.increaseMoney(5);
+					else{
+						this.bot.increaseMoney(10);
+					}
+					//console.log(bot_unit.isDestroyed());
 					this.units.forEach(unit => {
-						if(Math.abs(unit.coordinate() - bot_unit.coordinate()) === 90){
-							bot_unit.onBattleStatus(0.1, false, 0);
+						if(bot_unit.getBattle_number() === unit.getBattle_number()){
+							//console.log(bot_unit.getBattle_number());
+							unit.onBattleStatus(0.1, false, 0, false);
+							unit.setBattle_number(0);
 						}
 
 					});
@@ -207,9 +226,13 @@
 
 			this.units.forEach(unit => {
 				if(unit.isDestroyed()){
+					this.user_panel.increaseMoney(10);
+					//console.log(unit.isDestroyed());
 					this.bot_units.forEach(bot_unit => {
-						if(Math.abs(unit.coordinate() - bot_unit.coordinate()) === 90){
-							unit.onBattleStatus(0.1, false, 0);
+						if(bot_unit.getBattle_number() === unit.getBattle_number()){
+							//console.log(bot_unit.getBattle_number());
+							bot_unit.onBattleStatus(-0.1, false, 0, false);
+							bot_unit.setBattle_number(0);
 						}
 
 					});
@@ -317,6 +340,7 @@
 			this.bot_tower.drawHp(this.ctx);
 
 			this.user_panel.draw(this.ctx);
+
 			this.collectGarbage();
 
 		};
