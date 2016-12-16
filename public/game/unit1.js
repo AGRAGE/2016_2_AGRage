@@ -167,12 +167,7 @@
 			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4 * 0.1), 3);
 		}
 
-		destroy(){
-		//(axis) {
-//			if (axis.x || axis.y) {
-			this.toDestroy = true;
-			//}
-		}
+		
 
 		get_damage() {
 			//console.log(this.damage);
@@ -188,6 +183,8 @@
 			return this.stopped;
 		}
 
+//устанвливаем статус юнита, говорящий нам, что он находится в боб
+
 		onBattleStatus(en_damage){
 			this.vx = 0;
 			this.onbattle = true;
@@ -198,6 +195,7 @@
 			return this.onbattle;
 		}
 
+//получение урона во время боя
 		battle(){
 			if(this.hp > 0){
 				this.hp -= this.enemy_damage;
@@ -225,19 +223,9 @@
 
 		draw(ctx) {
 			ctx.beginPath();
-			//var canvas = document.getElementById("canvas");
-			//var image = document.getElementById("unit1.png");
-			//var image = new Image();
-			//image.src = "unit1.png";
-
 			this.sprite.render(ctx, this.x, this.y);
-			//ctx.drawImage(image, this.x, this.y, 100, 100);
 			ctx.closePath();
 		}
-
-		// going(){
-		// 	this.x += 1;
-		// }
 
 	}
 

@@ -59,6 +59,8 @@
 		 * Начало новой игры
 		 */
 
+
+
 		start() {
 			this._stopped = false;
 			this.key.init();
@@ -105,12 +107,12 @@
 			let keys = this.keys;
 			this.clear();
 
-
+// увеличиваем счетчик времени у бота
 			this.bot.incrementCounter(dt);
 
 
 
-
+//получаем команду от бота и, если хватает денег, нанимаем выбранные юниты
 
 			if (this.bot.getCounter() > 2000) {
 				var i = this.bot.command();
@@ -143,6 +145,8 @@
 				this.bot.nullCounter();
 			}
 
+
+//обновляем юниты бота и их счетчики
 			this.bot_units.forEach(unit => {
 				//console.log(unit);
 				unit.update(dt);
@@ -154,7 +158,7 @@
 
 
 
-
+//обновляем юниты и их счетчики
 			this.units.forEach(unit => {
 				//console.log(unit);
 				unit.update(dt);
@@ -163,6 +167,7 @@
 
 			});
 
+//обрабатываем столкновения между юнитами между собой
 			this.bot_units.forEach(bot_unit => {
 
 				this.units.forEach(unit => {
@@ -189,7 +194,7 @@
 
 
 
-
+//обрабатываем столкновения юнитов бота с башнями
 
 			this.bot_units.forEach(unit => {
 
@@ -224,7 +229,7 @@
 
 
 
-
+//обрабатываем столкновения юнитов бота с башнями
 			this.units.forEach(unit => {
 
 
@@ -274,6 +279,8 @@
 				unit.drawHp(this.ctx);
 			})
 
+
+//рисуем разрушенную башню
 			if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
 			else
@@ -292,14 +299,14 @@
 		};
 
 		createElements() {
-			this.buttonLogin = new GameButton({
+			this.buttonUnit1 = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton1'],
 				text: ' ',
 
 			});
 
-			this.buttonRegister = new GameButton({
+			this.buttonUnit2 = new GameButton({
 				el: document.createElement('game_button'),
 				classAttrs: ['HiringButton2'],
 				text: ' ',
@@ -307,12 +314,12 @@
 		}
 
 		addElements() {
-			this._el.appendChild(this.buttonLogin._get());
-			this._el.appendChild(this.buttonRegister._get());
+			this._el.appendChild(this.buttonUnit1._get());
+			this._el.appendChild(this.buttonUnit2._get());
 		}
 
 		addListeners() {
-			this.buttonLogin._get().addEventListener('click', (event) => {
+			this.buttonUnit1._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				if (this.user_panel.get_money() < 10) {
@@ -329,7 +336,7 @@
 
 
 			});
-			this.buttonRegister._get().addEventListener('click', (event) => {
+			this.buttonUnit2._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				if (this.user_panel.get_money() < 20) {

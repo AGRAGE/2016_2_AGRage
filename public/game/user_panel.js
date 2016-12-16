@@ -34,9 +34,7 @@
 			ctx.closePath();
 		}
 
-		// going(){
-		// 	this.x += 1;
-		// }
+
 
 	}
 
