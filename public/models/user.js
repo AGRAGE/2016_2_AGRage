@@ -42,7 +42,7 @@
 
 
 		registration() {
-			return this.sendRequest('registration', 'POST', {
+			return this.sendRequest('registration/', 'POST', {
 				login: this.login,
 				password: this.password,
 				email: this.email
@@ -50,7 +50,7 @@
 		}
 
 		autentification() {
-			return this.sendRequest('login', 'POST', {
+			return this.sendRequest('login/', 'POST', {
 				login: this.login,
 				password: this.password
 			});
