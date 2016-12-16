@@ -173,8 +173,8 @@
 				this.units.forEach(unit => {
 
 					if ((Math.abs(unit.coordinate() - bot_unit.coordinate()) < 90) && (bot_unit.get_battle_status() === false) && (unit.get_battle_status() === false)) {
-						bot_unit.onBattleStatus(unit.get_damage());
-						unit.onBattleStatus(bot_unit.get_damage());
+						bot_unit.onBattleStatus(0, true, unit.get_damage());
+						unit.onBattleStatus(0, true, bot_unit.get_damage());
 					}
 					if ((unit.getCounter() > 2000) && (unit.get_battle_status() === true)) {
 						bot_unit.battle();
@@ -187,12 +187,35 @@
 						console.log('2');
 					}
 
-
 				});
 
 			});
 
 
+
+			this.bot_units.forEach(bot_unit => {
+				if(bot_unit.isDestroyed()){
+					this.units.forEach(unit => {
+						if(Math.abs(unit.coordinate() - bot_unit.coordinate()) === 90){
+							bot_unit.onBattleStatus(0.1, false, 0);
+						}
+
+					});
+				}
+
+			});
+
+			this.units.forEach(unit => {
+				if(unit.isDestroyed()){
+					this.bot_units.forEach(bot_unit => {
+						if(Math.abs(unit.coordinate() - bot_unit.coordinate()) === 90){
+							unit.onBattleStatus(0.1, false, 0);
+						}
+
+					});
+				}
+
+			});
 
 //обрабатываем столкновения юнитов бота с башнями
 

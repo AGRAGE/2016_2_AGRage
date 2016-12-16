@@ -20,17 +20,6 @@
 			 * Конструктор класса Unit1
 			 */
 			constructor(data = {}
-				/*{
-							x = 100,
-							y = 300,
-							vx = 0.1,
-							hp = 10,
-							damage = 50,
-							counter = 0,
-							poscoord = -15,
-							spriteType = 1
-							*
-						}*/
 			) {
 				this.vx = data.vx || 0.1;
 				this.x = data.x || 270;
@@ -65,10 +54,6 @@
 
 			}
 
-			// dv ({vx = 0}) {
-			// 	this.vx += vx;
-			// 	//this.vy += vy;
-			// }
 
 			incrementCounter(dt) {
 				this.counter += dt;
@@ -86,28 +71,15 @@
 				//this.y += this.vy * dt;
 			}
 
+			isDestroyed(){
+				return this.toDestroy;
+			}
+
 			checkcollision({
 				width,
 				height
 			}, action = 'reflect', poscoord) {
 				let result = {};
-
-
-				// if (this.x + 210 > width || this.x < 0) {
-				// 	result.x = true;
-				// 	this.vx = 0;
-				// 	if (this.spriteNeedChange == 0) {
-				// 		this.spriteNeedChange = 1;
-				// 		if (this.spriteType == 1) {
-				// 			this.sprite = spriteSkeletonFight;
-				// 		} else {
-				// 			this.sprite = spriteOgrFight;
-				// 		}
-				// 	}
-				// 	//this.counter += dt;
-				// 	this.stopped = true;
-
-				// }
 
 
 				if (this.spriteType == 1 || this.spriteType == 3) {
@@ -123,8 +95,6 @@
 							}
 						}
 
-
-						//this.counter += dt;
 						this.stopped = true;
 
 					}
@@ -142,7 +112,6 @@
 						}
 					}
 
-					//this.counter += dt;
 					this.stopped = true;
 
 				}
@@ -185,9 +154,9 @@
 
 //устанвливаем статус юнита, говорящий нам, что он находится в боб
 
-		onBattleStatus(en_damage){
-			this.vx = 0;
-			this.onbattle = true;
+		onBattleStatus(speed, status, en_damage){
+			this.vx = speed;
+			this.onbattle = status;
 			this.enemy_damage = en_damage;
 		}
 
