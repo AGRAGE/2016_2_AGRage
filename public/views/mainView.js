@@ -38,6 +38,7 @@
 
         addListeners() {
 			document.addEventListener("DOMContentLoaded", (event) => {
+				console.log(myUserSession);
 				if (window.myUserSession ){
 					this.router.go('/menu');
 				}
