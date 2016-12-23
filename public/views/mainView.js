@@ -5,7 +5,6 @@
 	const loginView = window.loginView;
     const Cookie = window.Cookie;
 
-//lalala
     class mainView extends View {
         constructor(options = {}){
             super(options);
@@ -14,7 +13,10 @@
             this.addElements();
             this.addListeners();
             this.hide();
+
             this.cookie = new Cookie();
+
+
         }
 
         createElements() {
@@ -38,18 +40,19 @@
 
         addListeners() {
 
+
             document.addEventListener("DOMContentLoaded", (event) => {
                 if (this.cookie.get_cookie("username")){
                     this.router.go('/menu');
                 }
             });
+
+
             this.buttonLogin._get().addEventListener('click', (event) => {
-                console.log('click login');
-                this.router.go('/login/', loginView);
+                this.router.go('/login');
             });
             this.buttonRegister._get().addEventListener('click', (event) => {
-                console.log('click register');
-                this.router.go('/registration/');
+                this.router.go('/registration');
             });
         }
     }
