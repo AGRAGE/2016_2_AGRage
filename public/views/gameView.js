@@ -10,8 +10,9 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-game');
-
-
+			this.backGround  = document.getElementsByClassName('bg');
+			console.log(this.backGround);
+			this.backGround[0].hidden = "hidden";
 			this.hide();
 		}
 
@@ -37,7 +38,7 @@
 		}
 	}
 
-	
+
 
 	// export
 	window.gameView = gameView;
