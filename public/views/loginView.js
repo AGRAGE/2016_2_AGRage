@@ -59,11 +59,7 @@
 		}
 
 		addListeners() {
-			document.addEventListener("DOMContentLoaded", (event) => {
-				if (window.myUserSession ){
-					this.router.go('/menu');
-				}
-			});
+
 			this.loginForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.loginForm.getFormData();
