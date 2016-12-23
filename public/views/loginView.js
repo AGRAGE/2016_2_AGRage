@@ -6,6 +6,7 @@
 	const Form = window.Form;
 	const Model = window.Model;
 	const User = window.User;
+	const Cookie = window.Cookie;
 
 
 	class loginView extends View {
@@ -16,6 +17,7 @@
 			this.addElements();
 			this.addListeners();
 			this.hide();
+
 		}
 
 		createElements() {
@@ -62,12 +64,17 @@
 				let data = this.loginForm.getFormData();
 				this.sender = new User(data);
 				if (this.validation(data)) {
+					this.cookie = new Cookie("username", this.sender.getLogin());
+
 					//this.sender.autentification();
 					//this.sender.sendRequest('/login', 'POST', JSON.stringify(data))
 					this.sender.autentification()
 						.then((responseObj) => {
 							if (responseObj.status == 200) {
 								this.sender.isAuth = 1;
+
+								
+
 								this.router.go('/menu/');
 							}
 						})

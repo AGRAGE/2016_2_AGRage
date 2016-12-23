@@ -33,11 +33,11 @@
 		}
 
 		getPassword() {
-			return this.email;
+			return this.password;
 		}
 
 		getLogin() {
-			return this.email;
+			return this.login;
 		}
 
 
