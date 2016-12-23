@@ -37,6 +37,11 @@
         }
 
         addListeners() {
+			document.addEventListener("DOMContentLoaded", (event) => {
+				if (window.myUserSession ){
+					this.router.go('/menu');
+				}
+			});
             this.buttonLogin._get().addEventListener('click', (event) => {
                 this.router.go('/login');
             });
