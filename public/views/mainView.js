@@ -44,7 +44,13 @@
             document.addEventListener("DOMContentLoaded", (event) => {
                 if (this.cookie.get_cookie("username")){
                     console.log(this.cookie.get_cookie("username"));
+                    console.log('loged in');
                     this.router.go('/menu');
+                    
+                }
+                else{
+                    console.log('unloged');
+                    this.router.go('/');
                 }
             });
 
