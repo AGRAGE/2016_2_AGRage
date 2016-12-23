@@ -61,10 +61,19 @@
 		}
 
 		addListeners() {
+
 			document.addEventListener("DOMContentLoaded", (event) => {
-				if (window.myUserSession ){
-					this.router.go('/menu');
-				}
+                if (this.cookie.get_cookie("username")){
+                    console.log(this.cookie.get_cookie("username"));
+                    console.log('loged in');
+                    this.router.go('/menu');
+                    
+                }
+                else{
+                    console.log('unloged');
+                    this.router.go('/');
+                }
+            });
 			});
 			this.registForm._get().addEventListener('submit', event => {
 				event.preventDefault();
