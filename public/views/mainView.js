@@ -3,7 +3,7 @@
     const Button = window.Button;
     const View = window.View;
 	const loginView = window.loginView;
-
+	window.myUserSession = false;
 //lalala
     class mainView extends View {
         constructor(options = {}){
@@ -13,6 +13,8 @@
             this.addElements();
             this.addListeners();
             this.hide();
+
+
         }
 
         createElements() {
@@ -36,12 +38,10 @@
 
         addListeners() {
             this.buttonLogin._get().addEventListener('click', (event) => {
-                console.log('click login');
-                this.router.go('/login/', loginView);
+                this.router.go('/login');
             });
             this.buttonRegister._get().addEventListener('click', (event) => {
-                console.log('click register');
-                this.router.go('/registration/');
+                this.router.go('/registration');
             });
         }
     }

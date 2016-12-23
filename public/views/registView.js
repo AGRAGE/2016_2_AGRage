@@ -61,6 +61,11 @@
 		}
 
 		addListeners() {
+			document.addEventListener("DOMContentLoaded", (event) => {
+				if (window.myUserSession ){
+					this.router.go('/menu');
+				}
+			});
 			this.registForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.registForm.getFormData();
@@ -71,6 +76,7 @@
 						.then((responseObj) => {
 							if (responseObj.status == 200){
 	                        	this.sender.isAuth = 1;
+								window.myUserSession = true;
 	                        	this.router.go('/menu/');
 							}
 	                    })
