@@ -61,16 +61,14 @@
 		}
 
 		addListeners() {
-			document.addEventListener("DOMContentLoaded", (event) => {
-				if (window.myUserSession ){
-					this.router.go('/menu');
-				}
-			});
+
+
 			this.registForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.registForm.getFormData();
 				this.sender = new User(data);
 				if(this.validation(data)){
+					this.cookie = new Cookie("username", this.sender.getLogin());
 					//this.sender.sendRequest('/registration/', 'POST', JSON.stringify(data))
 					this.sender.registration()
 						.then((responseObj) => {

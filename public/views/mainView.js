@@ -3,8 +3,8 @@
     const Button = window.Button;
     const View = window.View;
 	const loginView = window.loginView;
-	window.myUserSession = false;
-//lalala
+    const Cookie = window.Cookie;
+
     class mainView extends View {
         constructor(options = {}){
             super(options);
@@ -13,6 +13,8 @@
             this.addElements();
             this.addListeners();
             this.hide();
+
+            this.cookie = new Cookie();
 
 
         }
@@ -37,12 +39,22 @@
         }
 
         addListeners() {
-			document.addEventListener("DOMContentLoaded", (event) => {
-				console.log(myUserSession);
-				if (window.myUserSession ){
-					this.router.go('/menu');
-				}
-			});
+
+
+            document.addEventListener("DOMContentLoaded", (event) => {
+                if (this.cookie.get_cookie("username")){
+                    console.log(this.cookie.get_cookie("username"));
+                    console.log('loged in');
+                    this.router.go('/menu');
+                    
+                }
+                else{
+                    console.log('unloged');
+                    this.router.go('/');
+                }
+            });
+
+
             this.buttonLogin._get().addEventListener('click', (event) => {
                 this.router.go('/login');
             });
