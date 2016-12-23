@@ -74,6 +74,7 @@
 							if (responseObj.status == 200) {
 								this.sender.isAuth = 1;
 								window.myUserSession = true;
+								console.log(myUserSession);
 								this.router.go('/menu/');
 
 							}
