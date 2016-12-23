@@ -43,6 +43,7 @@
 
             document.addEventListener("DOMContentLoaded", (event) => {
                 if (this.cookie.get_cookie("username")){
+                    console.log(this.cookie.get_cookie("username"));
                     this.router.go('/menu');
                 }
             });
