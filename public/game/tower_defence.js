@@ -119,7 +119,7 @@
 			if (this.bot.getCounter() > 2000) {
 				var i = this.bot.command();
 				if (i === 1) {
-					if (this.bot.get_money() >= 10) {
+					if (this.bot.get_money() >= 15) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
@@ -127,10 +127,10 @@
 							damage: 50,
 							spriteType: 3
 						});
-						this.bot.losing_money(10);
+						this.bot.losing_money(15);
 					}
 				} else {
-					if (this.bot.get_money() >= 20) {
+					if (this.bot.get_money() >= 30) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
 							x: 1000,
@@ -138,7 +138,7 @@
 							damage: 100,
 							spriteType: 4
 						});
-						this.bot.losing_money(20);
+						this.bot.losing_money(30);
 					}
 				}
 
@@ -374,11 +374,11 @@
 			this.buttonUnit1._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if (this.user_panel.get_money() < 10) {
+				if (this.user_panel.get_money() < 15) {
 					alert("You don't have enough money");
 				} else {
 
-					this.user_panel.losing_money(10);
+					this.user_panel.losing_money(15);
 					this.units[this.units.length] = new Unit1({
 						hp: 100,
 						damage: 50,
@@ -391,11 +391,11 @@
 			this.buttonUnit2._get().addEventListener('click', (event) => {
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
-				if (this.user_panel.get_money() < 20) {
+				if (this.user_panel.get_money() < 30) {
 					alert("You don't have enough money");
 				} else {
 
-					this.user_panel.losing_money(20);
+					this.user_panel.losing_money(30);
 					this.units[this.units.length] = new Unit1({
 						hp: 200,
 						damage: 100,
