@@ -55,6 +55,8 @@
 			this.addElements();
 			this.addListeners();
 			this.battle_number = 1;
+
+			this.poverty = false
 		}
 
 		/**
@@ -108,6 +110,18 @@
 		exec(dt) {
 			let keys = this.keys;
 			this.clear();
+
+			if(this.poverty === true){
+				this.user_panel.incrementCounter(dt);
+				if(this.user_panel.getCounter() < 4000){
+					this.user_panel.draw_message(this.ctx);
+				}
+				else{
+					this.user_panel.nullCounter();
+					this.poverty = false;
+				}
+			}
+
 
 // увеличиваем счетчик времени у бота
 			this.bot.incrementCounter(dt);
@@ -375,7 +389,8 @@
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				if (this.user_panel.get_money() < 15) {
-					alert("You don't have enough money");
+					this.poverty = true;
+					//alert("You don't have enough money");
 				} else {
 
 					this.user_panel.losing_money(15);
@@ -392,7 +407,8 @@
 				//this.units[this.counter] = new Unit1({});
 				//this.counter++;
 				if (this.user_panel.get_money() < 30) {
-					alert("You don't have enough money");
+					this.poverty = true;
+					//alert("You don't have enough money");
 				} else {
 
 					this.user_panel.losing_money(30);
