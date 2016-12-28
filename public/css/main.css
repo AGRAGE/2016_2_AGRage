@@ -5,7 +5,10 @@ body {
     margin: 0;
 }
 
-canvas {}
+.js-canvas{
+	position: absolute;
+    left: 0px;
+}
 
 html {
     box-sizing: border-box;
@@ -159,8 +162,8 @@ html {
     width: 100%; */
     width: 1280px;
     height: 620px;
-    margin-top: 40px;
-    margin: 0 auto;
+    /*margin-top: 40px;*/
+    /*margin: 0 auto;*/
     /* padding-top: 40px; */
 }
 
