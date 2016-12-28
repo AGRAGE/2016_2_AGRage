@@ -24,7 +24,6 @@
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
-
 			this.user_panel = new User_panel({});
 			this.bot = new Bot({});
 
@@ -98,7 +97,7 @@
 					requestAnimationFrame(step);
 					exec(dt);
 				} else {
-					window.gameRouter.go("/menu/");
+					window.gameRouter.go('/menu/');
 				}
 
 			}

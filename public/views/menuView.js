@@ -6,8 +6,11 @@
 
     class menuView extends View {
         constructor(options = {}){
+
             super(options);
             this._el = document.querySelector('.js-menu');
+			this.backGround = document.getElementsByClassName('bg');
+			this.backGround[0].hidden = "";
             this.createElements();
             this.addElements();
             this.addListeners();

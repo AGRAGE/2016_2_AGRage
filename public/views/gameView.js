@@ -11,8 +11,8 @@
 			super(options);
 			this._el = document.querySelector('.js-game');
 			this.backGround = document.getElementsByClassName('bg');
-			console.log(this.backGround);
 			this.backGround[0].hidden = "hidden";
+			console.log(this.backGround);
 			this.addListeners();
 			this.hide();
 
@@ -37,6 +37,7 @@
 			});
 
 			this._game.start();
+			window.isGame = true;
 		}
 
 		addListeners() {
