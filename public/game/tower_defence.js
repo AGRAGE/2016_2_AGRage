@@ -56,7 +56,11 @@
 			this.addListeners();
 			this.battle_number = 1;
 
-			this.poverty = false
+			this.counter = 0;
+
+			this.poverty = false;
+
+			this.end = false;
 		}
 
 		/**
@@ -113,7 +117,7 @@
 
 			if(this.poverty === true){
 				this.user_panel.incrementCounter(dt);
-				if(this.user_panel.getCounter() < 4000){
+				if(this.user_panel.getCounter() < 3000){
 					this.user_panel.draw_message(this.ctx);
 				}
 				else{
@@ -347,6 +351,8 @@
 			else{
 				//alert("Вы проиграли!");
 				this.tower.draw_destroyed(this.ctx);
+				this.battle_end(this.ctx, "You lose((((");
+				this.end = true;
 			}
 			this.tower.drawHp(this.ctx);
 
@@ -355,10 +361,22 @@
 			else{
 				//alert("Вы выиграли!");
 				this.bot_tower.draw_destroyed(this.ctx);
+				this.battle_end(this.ctx, "You win!!!!")
+				this.end = true;
 			}
 			this.bot_tower.drawHp(this.ctx);
 
 			this.user_panel.draw(this.ctx);
+
+
+			if(this.end === true){
+				this.counter += dt;
+			}
+
+			if(this.counter >= 3000){
+				console.log("now you will go to the main menu");
+				
+			}
 
 			this.collectGarbage();
 
@@ -436,7 +454,20 @@
 				}
 			});
 		}
+
+		battle_end(ctx, words){
+
+			ctx.beginPath();
+			var canvas = document.getElementById("canvas");
+			ctx.fillStyle = " #FF0000";
+			ctx.font = "italic 60pt Arial";
+    		ctx.fillText(words, 500, 300);
+			ctx.closePath();
+
+		}
 	}
+
+
 
 	//export
 	window.Tower_defence = Tower_defence;
