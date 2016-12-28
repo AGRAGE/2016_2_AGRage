@@ -9,7 +9,7 @@
 	const Router = window.Router;
 
 
-	class Tower_defence{
+	class Tower_defence {
 
 		/**
 		 * Конструктор
@@ -20,6 +20,7 @@
 			height,
 			poscoord = 0
 		}) {
+			this.isGame = true;
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
@@ -95,11 +96,12 @@
 
 				if (!isStopped()) {
 					requestAnimationFrame(step);
+					exec(dt);
+				} else {
+					window.gameRouter.go("/menu/");
 				}
-				//console.log(dt);
-				exec(dt);
-			}
 
+			}
 			step();
 		}
 
@@ -115,24 +117,23 @@
 			let keys = this.keys;
 			this.clear();
 
-			if(this.poverty === true){
+			if (this.poverty === true) {
 				this.user_panel.incrementCounter(dt);
-				if(this.user_panel.getCounter() < 3000){
+				if (this.user_panel.getCounter() < 3000) {
 					this.user_panel.draw_message(this.ctx);
-				}
-				else{
+				} else {
 					this.user_panel.nullCounter();
 					this.poverty = false;
 				}
 			}
 
 
-// увеличиваем счетчик времени у бота
+			// увеличиваем счетчик времени у бота
 			this.bot.incrementCounter(dt);
 
 
 
-//получаем команду от бота и, если хватает денег, нанимаем выбранные юниты
+			//получаем команду от бота и, если хватает денег, нанимаем выбранные юниты
 
 			if (this.bot.getCounter() > 2000) {
 				var i = this.bot.command();
@@ -166,7 +167,7 @@
 			}
 
 
-//обновляем юниты бота и их счетчики
+			//обновляем юниты бота и их счетчики
 			this.bot_units.forEach(unit => {
 				//console.log(unit);
 				unit.update(dt);
@@ -178,7 +179,7 @@
 
 
 
-//обновляем юниты и их счетчики
+			//обновляем юниты и их счетчики
 			this.units.forEach(unit => {
 				//console.log(unit);
 				unit.update(dt);
@@ -187,7 +188,7 @@
 
 			});
 
-//обрабатываем столкновения между юнитами между собой
+			//обрабатываем столкновения между юнитами между собой
 			this.bot_units.forEach(bot_unit => {
 
 				this.units.forEach(unit => {
@@ -197,10 +198,9 @@
 						unit.onBattleStatus(0, true, bot_unit.get_damage(), true);
 						bot_unit.setBattle_number(this.battle_number);
 						unit.setBattle_number(this.battle_number);
-						if(this.battle_number == 10){
+						if (this.battle_number == 10) {
 							this.battle_number = 1;
-						}
-						else{
+						} else {
 							this.battle_number++;
 						}
 
@@ -222,17 +222,17 @@
 
 			this.router = new Router();
 
-//продолжение движения после боя
+			//продолжение движения после боя
 			this.bot_units.forEach(bot_unit => {
-				if(bot_unit.isDestroyed()){
-					if(bot_unit.get_damage() === 50)
+				if (bot_unit.isDestroyed()) {
+					if (bot_unit.get_damage() === 50)
 						this.bot.increaseMoney(5);
-					else{
+					else {
 						this.bot.increaseMoney(10);
 					}
 					//console.log(bot_unit.isDestroyed());
 					this.units.forEach(unit => {
-						if(bot_unit.getBattle_number() === unit.getBattle_number()){
+						if (bot_unit.getBattle_number() === unit.getBattle_number()) {
 							//console.log(bot_unit.getBattle_number());
 							unit.onBattleStatus(0.1, false, 0, false);
 							unit.setBattle_number(0);
@@ -244,11 +244,11 @@
 			});
 
 			this.units.forEach(unit => {
-				if(unit.isDestroyed()){
+				if (unit.isDestroyed()) {
 					this.user_panel.increaseMoney(10);
 					//console.log(unit.isDestroyed());
 					this.bot_units.forEach(bot_unit => {
-						if(bot_unit.getBattle_number() === unit.getBattle_number()){
+						if (bot_unit.getBattle_number() === unit.getBattle_number()) {
 							//console.log(bot_unit.getBattle_number());
 							bot_unit.onBattleStatus(-0.1, false, 0, false);
 							bot_unit.setBattle_number(0);
@@ -259,7 +259,7 @@
 
 			});
 
-//обрабатываем столкновения юнитов бота с башнями
+			//обрабатываем столкновения юнитов бота с башнями
 
 			this.bot_units.forEach(unit => {
 
@@ -294,7 +294,7 @@
 
 
 
-//обрабатываем столкновения юнитов бота с башнями
+			//обрабатываем столкновения юнитов бота с башнями
 			this.units.forEach(unit => {
 
 
@@ -345,10 +345,10 @@
 			})
 
 
-//рисуем разрушенную башню
+			//рисуем разрушенную башню
 			if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
-			else{
+			else {
 				//alert("Вы проиграли!");
 				this.tower.draw_destroyed(this.ctx);
 				this.battle_end(this.ctx, "You lose((((");
@@ -358,7 +358,7 @@
 
 			if (this.bot_tower.getHp() > 0)
 				this.bot_tower.draw(this.ctx);
-			else{
+			else {
 				//alert("Вы выиграли!");
 				this.bot_tower.draw_destroyed(this.ctx);
 				this.battle_end(this.ctx, "You win!!!!")
@@ -369,13 +369,14 @@
 			this.user_panel.draw(this.ctx);
 
 
-			if(this.end === true){
+			if (this.end === true) {
 				this.counter += dt;
 			}
 
-			if(this.counter >= 3000){
-				console.log("now you will go to the main menu");
-				
+			if (this.counter >= 3000) {
+				//console.log("now you will go to the main menu");
+				//window.gameRouter.go("/");
+				this._stopped = true;
 			}
 
 			this.collectGarbage();
@@ -455,13 +456,13 @@
 			});
 		}
 
-		battle_end(ctx, words){
+		battle_end(ctx, words) {
 
 			ctx.beginPath();
 			var canvas = document.getElementById("canvas");
 			ctx.fillStyle = " #FF0000";
 			ctx.font = "italic 60pt Arial";
-    		ctx.fillText(words, 500, 300);
+			ctx.fillText(words, 500, 300);
 			ctx.closePath();
 
 		}

@@ -55,7 +55,7 @@
         addListeners() {
             this.buttonSingleGame._get().addEventListener('click', (event) => {
                 this.router.go('/game/');
-            });            
+            });
             this.buttonSearchGame._get().addEventListener('click', (event) => {
                 this.router.go('/searchGame/');
             });
