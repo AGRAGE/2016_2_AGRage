@@ -7,6 +7,7 @@
 	const User_panel = window.User_panel;
 	const Bot = window.Bot;
 	const Router = window.Router;
+	const View = window.View;
 
 
 	class Tower_defence {
@@ -98,7 +99,14 @@
 					requestAnimationFrame(step);
 					exec(dt);
 				} else {
-					window.gameRouter.go("/menu/");
+
+                    this.router.go('/menu');
+                    //window.gameRouter.go("/menu/");
+
+
+           		 });
+
+				//	window.gameRouter.go("/menu/");
 				}
 
 			}

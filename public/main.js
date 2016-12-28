@@ -26,6 +26,7 @@
 		.addRoute('/profile',profileView)
 		.addRoute('/config',configView)
 		.addRoute('/game',gameView)
+		.addRoute('/menu',menuView)
 
 
 		.addRoute('/', mainView)
