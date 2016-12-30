@@ -10,11 +10,10 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-game');
-			this.backGround = document.getElementsByClassName('bg');
-			this.backGround[0].hidden = "hidden";
-			console.log(this.backGround);
 			this.addListeners();
 			this.hide();
+			this.backGround = document.getElementsByClassName('bg');
+			this.backGround[0].hidden = "hidden";
 
 		}
 
