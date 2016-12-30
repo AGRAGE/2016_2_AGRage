@@ -12,7 +12,7 @@
 		 * @param {Object} [options={}] - Дополнительные параметры, которые будут переданы во view при её создании и инициализации
 		 */
 		constructor(pathname, view, options = {}) {
-			//TODO: Сущий адище, нам нужно менеджерить депсы
+			
 			this.pathToRegex = window.pathToRegex;
 
 			this.id = 'p' + id;

@@ -25,7 +25,6 @@
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
-
 			this.user_panel = new User_panel({});
 			this.bot = new Bot({});
 
@@ -100,13 +99,15 @@
 					exec(dt);
 				} else {
 
-                    this.router.go('/menu');
-                    //window.gameRouter.go("/menu/");
+					// console.log(window.gameRouter);
+					// window.gameRouter.go('/menu/');
 
+					//window.gameRouter.go('/menu/');
+					new Router().go('/menu/');
+					
+					
+					//this.router.go('/menu/');
 
-           		 });
-
-				//	window.gameRouter.go("/menu/");
 				}
 
 			}
