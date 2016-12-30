@@ -214,12 +214,12 @@
 						}
 
 					}
-					if ((unit.getCounter() > 2000) && (unit.get_battle_status() === true)) {
+					if ((unit.getCounter() > 2000) && (unit.get_battle_status() === true) && (unit.getBattle_number() === bot_unit.getBattle_number())) {
 						bot_unit.battle();
 						unit.nullCounter();
 						//console.log('1');
 					}
-					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)) {
+					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)  && (unit.getBattle_number() === bot_unit.getBattle_number())) {
 						unit.battle();
 						bot_unit.nullCounter();
 						//console.log('2');
@@ -235,15 +235,16 @@
 			this.bot_units.forEach(bot_unit => {
 				if (bot_unit.isDestroyed()) {
 					if (bot_unit.get_damage() === 50)
-						this.bot.increaseMoney(5);
+						this.user_panel.increaseMoney(5);
 					else {
-						this.bot.increaseMoney(10);
+						this.user_panel.increaseMoney(10);
 					}
 					//console.log(bot_unit.isDestroyed());
 					this.units.forEach(unit => {
 						if (bot_unit.getBattle_number() === unit.getBattle_number()) {
 							//console.log(bot_unit.getBattle_number());
 							unit.onBattleStatus(0.1, false, 0, false);
+							//unit.noStopped();
 							unit.setBattle_number(0);
 						}
 
@@ -254,12 +255,20 @@
 
 			this.units.forEach(unit => {
 				if (unit.isDestroyed()) {
-					this.user_panel.increaseMoney(10);
+					if (unit.get_damage() === 50)
+						this.bot.increaseMoney(5);
+					else {
+						this.bot.increaseMoney(10);
+					}
+
+
 					//console.log(unit.isDestroyed());
 					this.bot_units.forEach(bot_unit => {
 						if (bot_unit.getBattle_number() === unit.getBattle_number()) {
 							//console.log(bot_unit.getBattle_number());
+
 							bot_unit.onBattleStatus(-0.1, false, 0, false);
+							//bot_unit.noStopped();
 							bot_unit.setBattle_number(0);
 						}
 
@@ -303,7 +312,7 @@
 
 
 
-			//обрабатываем столкновения юнитов бота с башнями
+			//обрабатываем столкновения юнитов с башнями
 			this.units.forEach(unit => {
 
 

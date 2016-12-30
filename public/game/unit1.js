@@ -179,6 +179,8 @@
 			return this.stopped;
 		}
 
+
+
 //устанвливаем статус юнита, говорящий нам, что он находится в боб
 
 		onBattleStatus(speed, status, en_damage, stop){
