@@ -9,7 +9,6 @@
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			this.cookieCheck();
 			if (this.cookieCheck()) {
 				this.createElements();
 				this.addElements();
@@ -34,8 +33,6 @@
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
-			console.log("resume");
-
 		}
 
 		pause() {
@@ -43,7 +40,6 @@
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
-			console.log("pause");
 		}
 
 		createElements() {

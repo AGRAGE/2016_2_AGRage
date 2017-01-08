@@ -8,43 +8,44 @@
 			super(options);
 			this._el = document.querySelector('.js-rating');
 			this._el.hidden = "";
-			window.myUser = new User();
+			if (this.cookieCheck()) {
+				window.myUser = new User();
+				window.myUser.rating()
+					.then((responseObj) => {
+						console.log(responseObj);
+						this.table(responseObj);
+					})
+					.catch((err) => {
+						alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
+					})
+				this.createElements();
+				this.addElements();
+				this.addListeners();
+			}
+		}
 
-			window.myUser.rating()
-				.then((responseObj) => {
-					console.log(responseObj);
-					this.table(responseObj);
-
-
-				})
-				.catch((err) => {
-					alert('Рейтинг временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
-				})
-
-			this.backGround = document.getElementsByClassName('bg');
-			this.backGround[0].hidden = "";
-			//console.log();
-			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
-
-			this.createElements();
-			this.addElements();
-			this.addListeners();
+		cookieCheck() {
+			if (window.cookie == undefined) {
+				this.router = new Router();
+				this.router.go('/');
+				this.pause();
+				return false;
+			} else {
+				this.resume();
+				return true;
+			}
 		}
 
 		resume() {
 			super.resume();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
 
 		}
 
-
-
 		pause() {
 			super.pause();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
