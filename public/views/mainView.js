@@ -13,7 +13,6 @@
             this.addElements();
             this.addListeners();
             this.hide();
-
             this.cookie = new Cookie();
 
 
@@ -46,7 +45,7 @@
                     console.log(this.cookie.get_cookie("username"));
                     console.log('loged in');
                     this.router.go('/menu');
-                    
+
                 }
                 else{
                     console.log('unloged');
