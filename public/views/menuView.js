@@ -66,7 +66,7 @@
 
 			this.buttonExit = new Button({
 				el: document.createElement('button'),
-				classAttrs: ['ExitButton'],
+				classAttrs: ['LoginButton'],
 				text: 'выход из профиля',
 			});
 		}

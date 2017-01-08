@@ -76,7 +76,7 @@
         createElements() {
             this.buttonBack = new Button({
                 el: document.createElement('button'),
-                classAttrs: ['BackButton'],
+                classAttrs: ['LoginButton'],
                 text: 'вернуться в меню',
             });
         }
