@@ -70,13 +70,15 @@
 			this._el.insertAdjacentHTML("beforeBegin", str);
 		}
 
-		createElements() {
-			this.buttonBack = new Button({
-				el: document.createElement('button'),
-				classAttrs: ['BackButton'],
-				text: 'вернуться в меню',
-			});
-		}
+
+        createElements() {
+            this.buttonBack = new Button({
+                el: document.createElement('button'),
+                classAttrs: ['LoginButton'],
+                text: 'вернуться в меню',
+            });
+        }
+
 
 		addElements() {
 			this._el.appendChild(this.buttonBack._get());
