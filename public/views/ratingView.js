@@ -8,8 +8,7 @@
             super(options);
             this._el = document.querySelector('.js-rating');
 
-            this.backGround = document.getElementsByClassName('bg');
-            this.backGround[0].hidden = "";
+
 
             window.myUser = new User();
 
@@ -23,10 +22,15 @@
             .catch((err) => {
                 alert('Неебучая проблема с атентификацией!!!' + err);
             })
+
+            this.backGround = document.getElementsByClassName('bg');
+            this.backGround[0].hidden = "";
            //console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
 
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
+
+
         }
 
          resume() {
