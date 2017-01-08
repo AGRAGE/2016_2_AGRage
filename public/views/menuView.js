@@ -1,56 +1,57 @@
-(function () {
-    // import
-    const Button = window.Button;
-    const View = window.View;
+(function() {
+	// import
+	const Button = window.Button;
+	const View = window.View;
 	const loginView = window.loginView;
 
-    class menuView extends View {
-        constructor(options = {}){
+	class menuView extends View {
+		constructor(options = {}) {
 
-            super(options);
-            this._el = document.querySelector('.js-menu');
+			super(options);
+			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
 			this.backGround[0].hidden = "";
-            this.createElements();
-            this.addElements();
-            this.addListeners();
-            this.hide();
-        }
+			this.createElements();
+			this.addElements();
+			this.addListeners();
+			this.hide();
+			this.resume();
+		}
 
-        resume() {
-            super.resume();
+		resume() {
+			super.resume();
 
-            if (this.backGround[0]) {
-                this.backGround[0].hidden = "";
-            }
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "";
+			}
 
-        }
+		}
 
-        pause() {
-           super.pause();
+		pause() {
+			super.pause();
 
-            if (this.backGround[0]) {
-                this.backGround[0].hidden = "hidden";
-           }
-        }
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "hidden";
+			}
+		}
 
-        createElements() {
-            this.buttonSingleGame = new Button({
-                el: document.createElement('button'),
-                classAttrs: ['LoginButton'],
-                text: 'одиночная игра',
-            });
-            this.buttonSearchGame = new Button({
-                el: document.createElement('button'),
+		createElements() {
+			this.buttonSingleGame = new Button({
+				el: document.createElement('button'),
 				classAttrs: ['LoginButton'],
-                text: 'поиск игры',
-            });
-
-            this.buttonRating = new Button({
-                el: document.createElement('button'),
+				text: 'одиночная игра',
+			});
+			this.buttonSearchGame = new Button({
+				el: document.createElement('button'),
 				classAttrs: ['LoginButton'],
-                text: 'общий рейтинг',
-            });
+				text: 'поиск игры',
+			});
+
+			this.buttonRating = new Button({
+				el: document.createElement('button'),
+				classAttrs: ['LoginButton'],
+				text: 'общий рейтинг',
+			});
 			this.buttonUserProfile = new Button({
 				el: document.createElement('button'),
 				classAttrs: ['LoginButton'],
@@ -68,27 +69,27 @@
 				classAttrs: ['ExitButton'],
 				text: 'выход из профиля',
 			});
-        }
+		}
 
-        addElements() {
-            this._el.appendChild(this.buttonSingleGame._get());
+		addElements() {
+			this._el.appendChild(this.buttonSingleGame._get());
 			this._el.appendChild(this.buttonSearchGame._get());
 			this._el.appendChild(this.buttonRating._get());
 			this._el.appendChild(this.buttonUserProfile._get());
 			this._el.appendChild(this.buttonConfig._get());
 			this._el.appendChild(this.buttonExit._get());
-        }
+		}
 
-        addListeners() {
-            this.buttonSingleGame._get().addEventListener('click', (event) => {
-                this.router.go('/game/');
-            });
-            this.buttonSearchGame._get().addEventListener('click', (event) => {
-                this.router.go('/searchGame/');
-            });
-            this.buttonRating._get().addEventListener('click', (event) => {
-                this.router.go('/rating/');
-            });
+		addListeners() {
+			this.buttonSingleGame._get().addEventListener('click', (event) => {
+				this.router.go('/game/');
+			});
+			this.buttonSearchGame._get().addEventListener('click', (event) => {
+				this.router.go('/searchGame/');
+			});
+			this.buttonRating._get().addEventListener('click', (event) => {
+				this.router.go('/rating/');
+			});
 			this.buttonUserProfile._get().addEventListener('click', (event) => {
 				this.router.go('/profile/');
 			});
@@ -99,8 +100,8 @@
 				window.cookie.deleteCookie();
 				this.router.go('/');
 			});
-        }
-    }
+		}
+	}
 
-    window.menuView = menuView;
+	window.menuView = menuView;
 }());
