@@ -68,7 +68,6 @@
 					window.myUser = new User(data);
 					window.myUser.autentification()
 						.then((responseObj) => {
-							if (responseObj.status == 200) {
 								window.myUser.setUser(responseObj);
 								console.log(myUser);
 								console.log(responseObj);
@@ -76,7 +75,6 @@
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
 
-							}
 						})
 						.catch(() => {
 								alert('Неправильные ты, дядя Федор, данные вводишь!');

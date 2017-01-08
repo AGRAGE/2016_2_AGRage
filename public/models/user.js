@@ -1,4 +1,3 @@
-
 (function() {
 	class User {
 		constructor(data = {}) {
@@ -75,18 +74,42 @@
 						},
 						body: JSON.stringify(curBody)
 					})
-					.then(function(response) {
+					.then(
+						function(response) {
+							if (response.status !== 200) {
+								console.log('Looks like there was a problem. Status Code: ' +
+									response.status);
+								return;
+							}
+
+							// Examine the text in the response
+							response.json().then(function(data) {
+								console.log(data);
+							});
+							return response.json();
+						}
+					)
+					.catch(function(err) {
+						console.log('Fetch Error :-S', err);
+						let responseObj = {
+							status: 0
+						};
+						reject(responseObj);
+					})
+					/*.then(function(response) {
 						console.log(response.json());
 						return response.json();
   					})
 					.then(function(data) {
 						resolve(data);
 					})
-					.catch(function(error) {
-						console.log('Request failed', error);
-						let responseObj = { status: 0};
-						reject(responseObj);
-					});
+									.catch(function(error) {
+										console.log('Request failed', error);
+										let responseObj = {
+											status: 0
+										};
+										reject(responseObj);
+									});*/
 			})
 		}
 	}
