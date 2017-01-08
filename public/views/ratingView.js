@@ -11,13 +11,15 @@
             this.backGround = document.getElementsByClassName('bg');
             this.backGround[0].hidden = "";
 
-           window.myUser.rating()
-           .then((responseObj) => {
+            window.myUser = new User();
+
+            window.myUser.rating()
+            .then((responseObj) => {
                 console.log(responseObj);
 
                 responseObj.forEach(user => {
-                    this._el.innerHTML = '<div> user.getLogin() <br> </div>';
-
+                   // this._el.innerHTML = '<div> user.getLogin() <br> </div>';
+                   console.log(window.myUser.getLogin());
                 })
 
             })
@@ -25,7 +27,7 @@
                 alert('Неебучая проблема с атентификацией!!!' + err);
             })
            //console.log();
-			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
+			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
 
