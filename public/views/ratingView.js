@@ -25,6 +25,7 @@
             })
            //console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
+            this.table(responseObj);
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
 
@@ -46,7 +47,7 @@
         }
 
 
-        table(){
+        table(responseObj){
             var html = '<table>';   
 
             responseObj.forEach(user => {
