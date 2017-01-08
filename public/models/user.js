@@ -112,38 +112,10 @@
 			})
 		}
 
-		sendRequestList(to, curMethod, curBody = {}) {
-			return new Promise((resolve, reject) => {
-				//let responseObj = {};
-				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
-				const myUrl = baseUrl + to;
-				fetch(myUrl, {
-						method: curMethod,
-						mode: 'cors',
-						credentials: 'include',
-						headers: {
-							"Content-type": "application/json; charset=UTF-8"
-						},
-						body: JSON.stringify(curBody)
-					})
-					.then(function(data) {
-						let responseObj = { status: data.status};
-						resolve(responseObj);
-					})
-					.catch(function(error) {
-						console.log('Request failed', error);
-						let responseObj = { status: 0};
-						reject(responseObj);
-					});
-			})
-		}
 
 
 		rating() {
-			return this.sendRequestList('rating/', 'POST', {
-				login: this.login,
-				
-			});
+			return this.sendRequest('rating/', 'POST', {});
 		}
 	}
 	// export
