@@ -10,6 +10,12 @@
 			this._el.hidden="";
 			window.myUser = new User();
 
+            this.createElements();
+            this.addElements();
+            this.addListeners();
+            this.hide();
+            this.resume();
+
 			window.myUser.rating()
 				.then((responseObj) => {
 					console.log(responseObj);
@@ -26,10 +32,7 @@
 			//console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
 
-            this.createElements();
-            this.addElements();
-            this.addListeners();
-            this.hide();
+
 		}
 
 		resume() {
