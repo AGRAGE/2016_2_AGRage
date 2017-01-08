@@ -8,6 +8,9 @@
             super(options);
             this._el = document.querySelector('.js-rating');
 
+            this.backGround = document.getElementsByClassName('bg');
+            this.backGround[0].hidden = "";
+
            window.myUser.rating()
            .then((responseObj) => {
                 console.log(responseObj);
@@ -19,6 +22,23 @@
            //console.log();
 			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
+        }
+
+         resume() {
+            super.resume();
+
+            if (this.backGround[0]) {
+                this.backGround[0].hidden = "";
+            }
+
+        }
+
+        pause() {
+           super.pause();
+
+            if (this.backGround[0]) {
+                this.backGround[0].hidden = "hidden";
+           }
         }
     }
 
