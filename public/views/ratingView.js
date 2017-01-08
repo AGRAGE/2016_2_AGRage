@@ -16,7 +16,7 @@
             window.myUser.rating()
             .then((responseObj) => {
                 console.log(responseObj);
-
+                this.table(responseObj);
                
 
             })
@@ -25,7 +25,7 @@
             })
            //console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
-            this.table(responseObj);
+
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
 
