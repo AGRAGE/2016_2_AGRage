@@ -7,7 +7,13 @@
         constructor(options = {}){
             super(options);
             this._el = document.querySelector('.js-rating');
-			this._el.innerHTML = '<h1> Здесь будет рейтинг! </h1>';
+
+
+            
+           this.sender = new User();
+           this.sender.rating();
+			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
+            this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
     }
 
