@@ -74,10 +74,11 @@
 								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
+								resolve();
 
 						})
 						.catch(() => {
-								alert('Неправильные ты, дядя Федор, данные вводишь!');
+								alert('Неебучая проблема с атентификацией!!!');
 						})
 				} else {
 					alert('Неправильные ты, дядя Федор, данные вводишь!');
