@@ -4,7 +4,7 @@
 	class Cookie {
 
 
-		constructor (str, name, value, exp_y, exp_m, exp_d, path, domain, secure )
+		constructor (name, value, exp_y, exp_m, exp_d, path, domain, secure )
 		{
 		  var cookie_string = name + "=" + escape ( value );
 

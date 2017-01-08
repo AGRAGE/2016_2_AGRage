@@ -68,9 +68,6 @@
 					window.myUser.autentification()
 						.then((responseObj) => {
 								window.myUser.setUser(responseObj);
-								console.log(window.myUser);
-								console.log(window.myUser.getID());
-								console.log(window.myUser.getLogin());
 								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin());
 								console.log(this.cookie);
 								window.myUser.isAuth = 1;
