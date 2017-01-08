@@ -5,6 +5,13 @@ body {
     margin: 0;
 }
 
+.table{
+    width: 500px !important;
+    color: #8B0000 !important;
+    background-color: #FFFFFF 
+    opacity: 0.5;
+}
+
 .js-canvas{
 	position: absolute;
     left: 0px;
