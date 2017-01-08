@@ -6,12 +6,8 @@ body {
 }
 
 .table{
-    border: 1 
-    cellspacing: 0 
-    cellpadding: 2
-    align: center
     width: 2000px
-    color = #8B0000
+    color: #8B0000
 }
 
 .js-canvas{
