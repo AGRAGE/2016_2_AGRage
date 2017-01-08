@@ -24,7 +24,7 @@
 
             })
             .catch((err) => {
-                alert('Неебучая проблема с атентификацией!!!' + err);
+                alert('Рейтинг временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
             })
            //console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
