@@ -81,6 +81,7 @@
 									response.status);
 								return;
 							}
+							
 							// Examine the text in the response
 							resolve(response.json());
 						}
