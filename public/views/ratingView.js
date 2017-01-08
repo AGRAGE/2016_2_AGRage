@@ -23,8 +23,7 @@
                 alert('Неебучая проблема с атентификацией!!!' + err);
             })
 
-            this.backGround = document.getElementsByClassName('bg');
-            this.backGround[0].hidden = "";
+
            //console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
 
@@ -52,6 +51,9 @@
 
 
         table(responseObj){
+
+            this.backGround = document.getElementsByClassName('bg');
+            this.backGround[0].hidden = "";
             // var html = '<table>';   
 
             // responseObj.forEach(user => {
@@ -76,6 +78,8 @@
             document.write("</tr>")
         })
         document.write("</table>")
+
+
 
         // for (i = 2; i <= 10; i++)
         // {document.write("<tr>");
