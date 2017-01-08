@@ -63,19 +63,18 @@
 			this.loginForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.loginForm.getFormData();
-				this.sender = new User(data);
-				if (this.validation(data)) {
-					this.cookie = new Cookie("username", this.sender.getLogin());
 
-					//this.sender.autentification();
-					//this.sender.sendRequest('/login', 'POST', JSON.stringify(data))
-					this.sender.autentification()
+				if (this.validation(data)) {
+					window.myUser = new User(data);
+					window.myUser.autentification()
 						.then((responseObj) => {
-							if (responseObj.status == 200) {
-								this.sender.isAuth = 1;
+								window.myUser.setUser(responseObj);
+								console.log(myUser);
+								console.log(responseObj);
+								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
+								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
 
-							}
 						})
 						.catch(() => {
 								alert('Неправильные ты, дядя Федор, данные вводишь!');

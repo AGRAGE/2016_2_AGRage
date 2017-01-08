@@ -1,4 +1,3 @@
-
 (function() {
 	class User {
 		constructor(data = {}) {
@@ -7,7 +6,7 @@
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
-			this.responseObj = data.responseObj || {};
+			this.id = data.id || '';
 		}
 
 		setUser(data = {}) {
@@ -15,7 +14,8 @@
 			this.login = data.login || '';
 			this.score = data.score || 0;
 			this.password = data.password || '';
-			this.session = data.session || '';
+			this.isAuth = data.isAuth || 0;
+			this.id = data.id || '';
 		}
 
 		getUser() {
@@ -24,7 +24,7 @@
 				login: this.login,
 				score: this.score,
 				password: this.password,
-				session: this.session
+				id: this.id
 			};
 		}
 
@@ -38,6 +38,10 @@
 
 		getLogin() {
 			return this.login;
+		}
+
+		getID() {
+			return this.id;
 		}
 
 
@@ -70,15 +74,42 @@
 						},
 						body: JSON.stringify(curBody)
 					})
-					.then(function(data) {
-						let responseObj = { status: data.status};
-						resolve(responseObj);
-					})
-					.catch(function(error) {
-						console.log('Request failed', error);
-						let responseObj = { status: 0};
+					.then(
+						function(response) {
+							if (response.status !== 200) {
+								console.log('Looks like there was a problem. Status Code: ' +
+									response.status);
+								return;
+							}
+
+							// Examine the text in the response
+							response.json().then(function(data) {
+								console.log(data);
+							});
+							resolve(response.json());
+						}
+					)
+					.catch(function(err) {
+						console.log('Fetch Error :-S', err);
+						let responseObj = {
+							status: 0
+						};
 						reject(responseObj);
-					});
+					})
+					/*.then(function(response) {
+						console.log(response.json());
+						return response.json();
+  					})
+					.then(function(data) {
+						resolve(data);
+					})
+									.catch(function(error) {
+										console.log('Request failed', error);
+										let responseObj = {
+											status: 0
+										};
+										reject(responseObj);
+									});*/
 			})
 		}
 
