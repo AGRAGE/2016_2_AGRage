@@ -9,6 +9,7 @@
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
+			this.cookieCheck()
 			if (this.cookieCheck()) {
 				this.createElements();
 				this.addElements();
