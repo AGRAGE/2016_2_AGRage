@@ -74,7 +74,6 @@
 								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
-								resolve();
 
 						})
 						.catch((err) => {
