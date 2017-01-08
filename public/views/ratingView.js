@@ -46,7 +46,7 @@
 
 
 		table(responseObj) {
-			var str = "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" width = \"2000px\"  color = \"#8B0000\">";
+			var str = "<table class = \"table\" >";
 			responseObj.forEach(user => {
 				str+="<tr>";
 				str+="<td>" + user.username + "</td>";
