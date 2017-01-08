@@ -7,7 +7,6 @@
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
-			this.responseObj = data.responseObj || {};
 			this.id = data.id || '';
 		}
 
@@ -16,7 +15,7 @@
 			this.login = data.login || '';
 			this.score = data.score || 0;
 			this.password = data.password || '';
-			this.session = data.session || '';
+			this.isAuth = data.isAuth || 0;
 			this.id = data.id || '';
 		}
 
@@ -26,7 +25,6 @@
 				login: this.login,
 				score: this.score,
 				password: this.password,
-				session: this.session,
 				id: this.id
 			};
 		}
@@ -78,8 +76,7 @@
 						body: JSON.stringify(curBody)
 					})
 					.then(function(data) {
-						let responseObj = { status: data.status};
-						resolve(responseObj);
+						resolve(data);
 					})
 					.catch(function(error) {
 						console.log('Request failed', error);
