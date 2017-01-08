@@ -47,12 +47,13 @@
 
 		table(responseObj) {
 			var str = "<table class = \"table\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
-            var counter = 0;
+            var counter = 1;
 			responseObj.forEach(user => {
-                if (counter < 10){
+                if (counter < 11){
 
 
     				str+="<tr>";
+                    str+="<td padding-left: \"20px \">" + counter + "</td>";
     				str+="<td>" + user.username + "</td>";
     				str+="<td>" + user.rating + "</td>";
     				str+="</tr>";
