@@ -9,11 +9,13 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-regist');
+			this.backGround = document.getElementsByClassName('bg');
 			this.sender = new User();
 			this.createElements();
 			this.addElements();
 			this.addListeners();
 			this.hide();
+			this.resume();
 		}
 
 		createElements() {
@@ -66,27 +68,41 @@
 			this.registForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.registForm.getFormData();
-				if(this.validation(data)){
+				if (this.validation(data)) {
 					window.myUser = new User(data);
 					window.myUser.registration()
 						.then((responseObj) => {
-								window.myUser.setUser(responseObj);
-								window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(),"","","","/");
-								window.cookieName = window.myUser.getID();
-	                        	window.myUser.isAuth = 1;
-	                        	this.router.go('/menu/');
-	                    })
-						.catch((err) => {
-							 alert('Проблема с регистрацией: ' + err);
+							window.myUser.setUser(responseObj);
+							window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
+							window.cookieName = window.myUser.getID();
+							window.myUser.isAuth = 1;
+							this.router.go('/menu/');
 						})
-				}
-				else {
+						.catch((err) => {
+							alert('Проблема с регистрацией: ' + err);
+						})
+				} else {
 					alert('Неправильные ты, дядя Федор, данные вводишь!');
 				}
 			});
 		}
+		resume() {
+			super.resume();
 
-		validation(data){
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "";
+			}
+
+		}
+
+		pause() {
+			super.pause();
+
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "hidden";
+			}
+		}
+		validation(data) {
 			return true;
 		}
 	}

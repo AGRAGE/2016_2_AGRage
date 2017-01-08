@@ -1,67 +1,83 @@
-(function () {
-    // import
-    const Button = window.Button;
-    const View = window.View;
+(function() {
+	// import
+	const Button = window.Button;
+	const View = window.View;
 	const loginView = window.loginView;
-    const Cookie = window.Cookie;
+	const Cookie = window.Cookie;
 
-    class mainView extends View {
-        constructor(options = {}){
-            super(options);
-            this._el = document.querySelector('.js-main');
-            this.createElements();
-            this.addElements();
-            this.addListeners();
-            this.hide();
-            this.cookie = new Cookie();
+	class mainView extends View {
+		constructor(options = {}) {
+			super(options);
+			this._el = document.querySelector('.js-main');
+			this.createElements();
+			this.addElements();
+			this.addListeners();
+			this.hide();
+			this.cookie = new Cookie();
+			this.backGround = document.getElementsByClassName('bg');
+			this.resume();
 
+		}
 
-        }
-
-        createElements() {
-            this.buttonLogin = new Button({
-                el: document.createElement('button'),
+		createElements() {
+			this.buttonLogin = new Button({
+				el: document.createElement('button'),
 				classAttrs: ['mainLoginButton'],
-                text: 'ВОЙТИ',
-            });
+				text: 'ВОЙТИ',
+			});
 
-            this.buttonRegister = new Button({
-                el: document.createElement('button'),
+			this.buttonRegister = new Button({
+				el: document.createElement('button'),
 				classAttrs: ['mainRegistrationButton'],
-                text: 'РЕГИСТРАЦИЯ',
-            });
-        }
+				text: 'РЕГИСТРАЦИЯ',
+			});
+		}
 
-        addElements() {
+		addElements() {
 			this._el.appendChild(this.buttonLogin._get());
 			this._el.appendChild(this.buttonRegister._get());
-        }
+		}
 
-        addListeners() {
-
-
-            document.addEventListener("DOMContentLoaded", (event) => {
-                if (this.cookie.get_cookie("username")){
-                    console.log(this.cookie.get_cookie("username"));
-                    console.log('loged in');
-                    this.router.go('/menu');
-
-                }
-                else{
-                    console.log('unloged');
-                    this.router.go('/');
-                }
-            });
+		addListeners() {
 
 
-            this.buttonLogin._get().addEventListener('click', (event) => {
-                this.router.go('/login');
-            });
-            this.buttonRegister._get().addEventListener('click', (event) => {
-                this.router.go('/registration');
-            });
-        }
-    }
+			document.addEventListener("DOMContentLoaded", (event) => {
+				if (this.cookie.get_cookie("username")) {
+					console.log(this.cookie.get_cookie("username"));
+					console.log('loged in');
+					this.router.go('/menu');
 
-    window.mainView = mainView;
+				} else {
+					console.log('unloged');
+					this.router.go('/');
+				}
+			});
+
+
+			this.buttonLogin._get().addEventListener('click', (event) => {
+				this.router.go('/login');
+			});
+			this.buttonRegister._get().addEventListener('click', (event) => {
+				this.router.go('/registration');
+			});
+		}
+		resume() {
+			super.resume();
+
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "";
+			}
+
+		}
+
+		pause() {
+			super.pause();
+
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "hidden";
+			}
+		}
+	}
+
+	window.mainView = mainView;
 }());

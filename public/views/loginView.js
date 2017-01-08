@@ -13,11 +13,12 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-login');
+			this.backGround = document.getElementsByClassName('bg');
 			this.createElements();
 			this.addElements();
 			this.addListeners();
 			this.hide();
-
+			this.resume();
 		}
 
 		createElements() {
@@ -67,15 +68,15 @@
 					window.myUser = new User(data);
 					window.myUser.autentification()
 						.then((responseObj) => {
-								window.myUser.setUser(responseObj);
-								window.cookie= new Cookie(window.myUser.getID(), window.myUser.getLogin(),"","","","/");
-								window.cookieName = window.myUser.getID();
-								window.myUser.isAuth = 1;
-								this.router.go('/menu/');
+							window.myUser.setUser(responseObj);
+							window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
+							window.cookieName = window.myUser.getID();
+							window.myUser.isAuth = 1;
+							this.router.go('/menu/');
 
 						})
 						.catch((err) => {
-								alert('Проблема с аутентификацией: ' + err);
+							alert('Проблема с аутентификацией: ' + err);
 						})
 				} else {
 					alert('Неправильные ты, дядя Федор, данные вводишь!');
@@ -83,7 +84,22 @@
 			});
 
 		}
+		resume() {
+			super.resume();
 
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "";
+			}
+
+		}
+
+		pause() {
+			super.pause();
+
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "hidden";
+			}
+		}
 		validation(data) {
 			return true;
 		}
