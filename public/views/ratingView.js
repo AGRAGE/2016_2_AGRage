@@ -7,7 +7,7 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-rating');
-			this._el.hidden="";
+			this._el.hidden = "";
 			window.myUser = new User();
 
 			window.myUser.rating()
@@ -26,11 +26,9 @@
 			//console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
 
-            this.createElements();
-            this.addElements();
-            this.addListeners();
-            this.hide();
-            this.resume();
+			this.createElements();
+			this.addElements();
+			this.addListeners();
 		}
 
 		resume() {
@@ -55,41 +53,39 @@
 
 		table(responseObj) {
 			var str = "<table class = \"table\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
-            var counter = 1;
+			var counter = 1;
 			responseObj.forEach(user => {
-                if (counter < 11){
-
-
-    				str+="<tr>";
-                    str+="<td >" + counter + "</td>";
-    				str+="<td>" + user.username + "</td>";
-    				str+="<td>" + user.rating + "</td>";
-    				str+="</tr>";
-                    counter++;
-                }
+				if (counter < 11) {
+					str += "<tr>";
+					str += "<td >" + counter + "</td>";
+					str += "<td>" + user.username + "</td>";
+					str += "<td>" + user.rating + "</td>";
+					str += "</tr>";
+					counter++;
+				}
 
 			})
 			str += "</table>";
-			this._el.innerHTML = str;
+			this._el.insertAdjacentHTML("beforeBegin", str);
 		}
 
-        createElements() {
-            this.buttonBack = new Button({
-                el: document.createElement('button'),
-                classAttrs: ['BackButton'],
-                text: 'вернуться в меню',
-            });
-        }
+		createElements() {
+			this.buttonBack = new Button({
+				el: document.createElement('button'),
+				classAttrs: ['BackButton'],
+				text: 'вернуться в меню',
+			});
+		}
 
-        addElements() {
-            this._el.appendChild(this.buttonBack._get());
-        }
+		addElements() {
+			this._el.appendChild(this.buttonBack._get());
+		}
 
-        addListeners() {
-            this.buttonBack._get().addEventListener('click', (event) => {
-                this.router.go('/menu/');
-            });
-        }
+		addListeners() {
+			this.buttonBack._get().addEventListener('click', (event) => {
+				this.router.go('/menu/');
+			});
+		}
 	}
 
 	window.ratingView = ratingView;
