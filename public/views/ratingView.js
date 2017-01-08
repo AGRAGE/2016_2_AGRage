@@ -8,11 +8,15 @@
             super(options);
             this._el = document.querySelector('.js-rating');
 
+           window.myUser.rating()
+           .then((responseObj) => {
+                console.log(responseObj);
 
-            
-           this.sender = new User();
-           this.sender.rating();
-           console.log(this.sender.getLogin());
+            })
+            .catch((err) => {
+                alert('Неебучая проблема с атентификацией!!!' + err);
+            })
+           //console.log();
 			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
