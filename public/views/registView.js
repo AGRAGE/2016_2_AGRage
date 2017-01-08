@@ -75,8 +75,8 @@
 	                        	window.myUser.isAuth = 1;
 	                        	this.router.go('/menu/');
 	                    })
-						.catch(() => {
-							 alert('Неправильные ты, дядя Федор, данные вводишь!');
+						.catch((err) => {
+							 alert('Проблема с регистрацией: ' + err);
 						})
 				}
 				else {
