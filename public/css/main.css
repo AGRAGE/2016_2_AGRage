@@ -6,8 +6,8 @@ body {
 }
 
 .table{
-    width: 2000px
-    color: #8B0000
+    width: 2000px !important;
+    color: #8B0000 !important;
 }
 
 .js-canvas{
