@@ -48,18 +48,18 @@
 
 
         table(responseObj){
-            var html = '<table>';   
+            // var html = '<table>';   
 
-            responseObj.forEach(user => {
-                       // this._el.innerHTML = '<div> user.getLogin() <br> </div>';
-                console.log(user.username);
-                html += '<tr>';
-                html += '<td>'+user.username+'</td>' + '<td>'+user.rating+'</td>';
-                html += '</tr>';
-            })
-            html += '<td></td><td></td></tr>';
-            html +='</table>';
-            var i, j;
+            // responseObj.forEach(user => {
+            //            // this._el.innerHTML = '<div> user.getLogin() <br> </div>';
+            //     console.log(user.username);
+            //     html += '<tr>';
+            //     html += '<td>'+user.username+'</td>' + '<td>'+user.rating+'</td>';
+            //     html += '</tr>';
+            // })
+            // html += '<td></td><td></td></tr>';
+            // html +='</table>';
+            // var i, j;
         // Сначала нарисуем саму таблицу.
         // Внутренние кавычки (внутри тэгов) можно сделать одиночными,
         // а можно, как здесь, воспользоваться спецсимволом (см. урок 2)
