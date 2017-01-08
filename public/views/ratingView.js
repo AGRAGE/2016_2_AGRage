@@ -25,6 +25,11 @@
 			this.backGround[0].hidden = "";
 			//console.log();
 			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
+
+            this.createElements();
+            this.addElements();
+            this.addListeners();
+            this.hide();
 		}
 
 		resume() {
@@ -35,6 +40,8 @@
 			}
 
 		}
+
+
 
 		pause() {
 			super.pause();
@@ -64,6 +71,24 @@
 			str += "</table>";
 			this._el.innerHTML = str;
 		}
+
+        createElements() {
+            this.buttonBack = new Button({
+                el: document.createElement('button'),
+                classAttrs: ['BackButton'],
+                text: 'вернуться в меню',
+            });
+        }
+
+        addElements() {
+            this._el.appendChild(this.buttonBack._get());
+        }
+
+        addListeners() {
+            this.buttonBack._get().addEventListener('click', (event) => {
+                this.router.go('/menu/');
+            });
+        }
 	}
 
 	window.ratingView = ratingView;
