@@ -6,30 +6,37 @@
 
 	class menuView extends View {
 		constructor(options = {}) {
-
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			this.backGround[0].hidden = "";
-			this.createElements();
-			this.addElements();
-			this.addListeners();
-			this.hide();
-			this.resume();
+			if (this.cookieCheck()) {
+				this.createElements();
+				this.addElements();
+				this.addListeners();
+			}
+		}
+
+		cookieCheck() {
+			if (window.cookie == undefined) {
+				this.router = new Router();
+				this.router.go('/');
+				this.pause();
+				return false;
+			} else {
+				this.resume();
+				return true;
+			}
 		}
 
 		resume() {
 			super.resume();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
-
 		}
 
 		pause() {
 			super.pause();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
@@ -98,6 +105,8 @@
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
 				window.cookie.deleteCookie();
+				window.cookie = undefined;
+				this.pause();
 				this.router.go('/');
 			});
 		}
