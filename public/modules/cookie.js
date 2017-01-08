@@ -55,7 +55,7 @@
 		}
 
 		deleteCookie() {
-		  setCookie(window.cookieName, "", {
+		  this.setCookie(window.cookieName, "", {
 		    expires: -1
 		  })
 		}
