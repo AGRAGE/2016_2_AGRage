@@ -9,17 +9,17 @@
 
 			if (exp_y) {
 				var expires = new Date(exp_y, exp_m, exp_d);
-				cookie_string += "; expires=" + expires.toGMTString();
+				cookie_string += ";expires=" + expires.toGMTString();
 			}
 
 			if (path)
-				cookie_string += "; path=" + escape(path);
+				cookie_string += ";path=" + escape(path);
 
 			if (domain)
-				cookie_string += "; domain=" + escape(domain);
+				cookie_string += ";domain=" + escape(domain);
 
 			if (secure)
-				cookie_string += "; secure";
+				cookie_string += ";secure";
 			console.log(cookie_string);
 			document.cookie = cookie_string;
 			console.log(document.cookie);
