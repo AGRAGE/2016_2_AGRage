@@ -7,7 +7,7 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-rating');
-			this._el.hidden = "";
+			this.backGround = document.getElementsByClassName('bg');
 			if (this.cookieCheck()) {
 				window.myUser = new User();
 				window.myUser.rating()
