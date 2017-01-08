@@ -62,6 +62,12 @@
 				classAttrs: ['LoginButton'],
 				text: 'настройки',
 			});
+
+			this.buttonExit = new Button({
+				el: document.createElement('button'),
+				classAttrs: ['ExitButton'],
+				text: 'выход из профиля',
+			});
         }
 
         addElements() {
@@ -70,6 +76,7 @@
 			this._el.appendChild(this.buttonRating._get());
 			this._el.appendChild(this.buttonUserProfile._get());
 			this._el.appendChild(this.buttonConfig._get());
+			this._el.appendChild(this.buttonExit._get());
         }
 
         addListeners() {
@@ -87,6 +94,10 @@
 			});
 			this.buttonConfig._get().addEventListener('click', (event) => {
 				this.router.go('/config/');
+			});
+			this.buttonExit._get().addEventListener('click', (event) => {
+				window.cookie.deleteCookie();
+				this.router.go('/');
 			});
         }
     }
