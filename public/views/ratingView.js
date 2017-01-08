@@ -87,6 +87,7 @@
 
 		addListeners() {
 			this.buttonBack._get().addEventListener('click', (event) => {
+				this.pause();
 				this.router.go('/menu/');
 			});
 		}
