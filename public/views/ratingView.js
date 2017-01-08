@@ -49,7 +49,7 @@
 			var str = "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" width = \"2000px\" >";
 			responseObj.forEach(user => {
 				str+="<tr>";
-				str+="<td color = "red">" + user.username + "</td>";
+				str+="<td color = \"#8B0000\">" + user.username + "</td>";
 				str+="<td>" + user.rating + "</td>";
 				str+="</tr>";
 			})
