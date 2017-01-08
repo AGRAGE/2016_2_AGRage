@@ -25,7 +25,7 @@
 		}
 
 		cookieCheck() {
-			if (window.cookie == undefined) {
+			if (window.cookie === undefined) {
 				this.router = new Router();
 				this.router.go('/');
 				this.pause();
