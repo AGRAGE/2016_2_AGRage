@@ -17,6 +17,23 @@
             this.hide();
         }
 
+        resume() {
+            super.resume();
+
+            if (this.backGround[0]) {
+                this.backGround[0].hidden = "";
+            }
+
+        }
+
+        pause() {
+           super.pause();
+
+            if (this.backGround[0]) {
+                this.backGround[0].hidden = "hidden";
+           }
+        }
+
         createElements() {
             this.buttonSingleGame = new Button({
                 el: document.createElement('button'),

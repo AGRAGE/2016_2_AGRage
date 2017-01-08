@@ -63,16 +63,15 @@
 			this.loginForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.loginForm.getFormData();
-				this.sender = new User(data);
 				if (this.validation(data)) {
-					this.cookie = new Cookie("username", this.sender.getLogin());
-
 					//this.sender.autentification();
 					//this.sender.sendRequest('/login', 'POST', JSON.stringify(data))
 					this.sender.autentification()
 						.then((responseObj) => {
 							if (responseObj.status == 200) {
-								this.sender.isAuth = 1;
+								window.myUser = new User(responseObj);
+								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
+								myUser.isAuth = 1;
 								this.router.go('/menu/');
 
 							}

@@ -8,6 +8,7 @@
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
 			this.responseObj = data.responseObj || {};
+			this.id = data.id || '';
 		}
 
 		setUser(data = {}) {
@@ -16,6 +17,7 @@
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.session = data.session || '';
+			this.id = data.id || '';
 		}
 
 		getUser() {
@@ -24,7 +26,8 @@
 				login: this.login,
 				score: this.score,
 				password: this.password,
-				session: this.session
+				session: this.session,
+				id: this.id
 			};
 		}
 
@@ -38,6 +41,10 @@
 
 		getLogin() {
 			return this.login;
+		}
+
+		getID() {
+			return this.id;
 		}
 
 

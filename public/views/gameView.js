@@ -4,6 +4,7 @@
 	const View = window.View;
 	const Form = window.Form;
 	const Tower_defence = window.Tower_defence;
+	//const Router = window.Router;
 
 
 	class gameView extends View {
@@ -40,9 +41,14 @@
 		}
 
 		addListeners() {
+			console.log(this.router);
 			document.addEventListener("DOMContentLoaded", (event) => {
+				console.log(this.router);
 				window.gameRouter = this.router;
+				console.log(window.gameRouter);
 			});
+
+
 		}
 	}
 
