@@ -19,7 +19,7 @@
 
                 responseObj.forEach(user => {
                    // this._el.innerHTML = '<div> user.getLogin() <br> </div>';
-                   console.log(user.login);
+                   console.log(user.username);
                 })
 
             })
