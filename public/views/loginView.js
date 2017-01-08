@@ -69,15 +69,13 @@
 					window.myUser.autentification()
 						.then((responseObj) => {
 								window.myUser.setUser(responseObj);
-								console.log(myUser);
-								console.log(responseObj);
 								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
 
 						})
 						.catch((err) => {
-								alert('Неебучая проблема с атентификацией!!!' + err);
+								alert('Проблема с аутентификацией: ' + err);
 						})
 				} else {
 					alert('Неправильные ты, дядя Федор, данные вводишь!');

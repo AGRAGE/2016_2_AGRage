@@ -15,7 +15,7 @@
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
-			this.id = data.id || '';
+			this.id = data.id || 0;
 		}
 
 		getUser() {
