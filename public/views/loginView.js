@@ -63,21 +63,18 @@
 			this.loginForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.loginForm.getFormData();
-
 				if (this.validation(data)) {
 					window.myUser = new User(data);
 					window.myUser.autentification()
 						.then((responseObj) => {
 								window.myUser.setUser(responseObj);
-								console.log(myUser);
-								console.log(responseObj);
-								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
+								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin());
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
 
 						})
 						.catch((err) => {
-								alert('Неебучая проблема с атентификацией!!!' + err);
+								alert('Проблема с аутентификацией: ' + err);
 						})
 				} else {
 					alert('Неправильные ты, дядя Федор, данные вводишь!');

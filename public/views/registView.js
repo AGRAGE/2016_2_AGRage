@@ -66,18 +66,14 @@
 			this.registForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				let data = this.registForm.getFormData();
-				this.sender = new User(data);
 				if(this.validation(data)){
-					this.cookie = new Cookie("username", this.sender.getLogin());
-					//this.sender.sendRequest('/registration/', 'POST', JSON.stringify(data))
-					this.sender.registration()
+					window.myUser = new User(data);
+					window.myUser.registration()
 						.then((responseObj) => {
-							if (responseObj.status == 200){
-	                        	this.sender.isAuth = 1;
-								window.myUserSession = true;
-								console.log(myUserSession);
+								window.myUser.setUser(responseObj);
+								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin());
+	                        	window.myUser.isAuth = 1;
 	                        	this.router.go('/menu/');
-							}
 	                    })
 						.catch(() => {
 							 alert('Неправильные ты, дядя Федор, данные вводишь!');
