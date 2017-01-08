@@ -116,7 +116,7 @@
 		sendRequestList(to, curMethod, curBody = {}) {
 			return new Promise((resolve, reject) => {
 				//let responseObj = {};
-				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/list';
+				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
 				const myUrl = baseUrl + to;
 				fetch(myUrl, {
 						method: curMethod,
