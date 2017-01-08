@@ -53,7 +53,7 @@
 
 
     				str+="<tr>";
-                    str+="<td padding-left: \"20px \">" + counter + "</td>";
+                    str+="<td >" + counter + "</td>";
     				str+="<td>" + user.username + "</td>";
     				str+="<td>" + user.rating + "</td>";
     				str+="</tr>";
