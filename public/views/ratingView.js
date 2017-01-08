@@ -68,7 +68,7 @@
 
 			})
 			str += "</table>";
-			this._el.insertAdjacentHTML("beforeBegin", str);
+			this._el.insertAdjacentHTML("afterBegin", str);
 		}
 
 
