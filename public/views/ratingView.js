@@ -70,7 +70,7 @@
             document.write("<td>" + user.username + "</td>")
             document.write("<td>" + user.rating + "</td>")
             document.write("</tr>")
-        }
+        })
         document.write("</table>")
 
         // for (i = 2; i <= 10; i++)
