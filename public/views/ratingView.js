@@ -46,10 +46,10 @@
 
 
 		table(responseObj) {
-			var str = "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\">";
+			var str = "<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" width = "80%" >";
 			responseObj.forEach(user => {
 				str+="<tr>";
-				str+="<td>" + user.username + "</td>";
+				str+="<td color = "red">" + user.username + "</td>";
 				str+="<td>" + user.rating + "</td>";
 				str+="</tr>";
 			})
