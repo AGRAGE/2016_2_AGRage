@@ -75,7 +75,7 @@
 								console.log(myUser);
 								console.log(window.myUser.getID());
 								console.log(window.myUser.getLogin());
-								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin());
+								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(),"","","","/");
 	                        	window.myUser.isAuth = 1;
 	                        	this.router.go('/menu/');
 	                    })

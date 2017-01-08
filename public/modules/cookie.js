@@ -20,7 +20,7 @@
 
 			if (secure)
 				cookie_string += "; secure";
-
+			console.log(cookie_string);
 			document.cookie = cookie_string;
 			console.log(document.cookie);
 		}
