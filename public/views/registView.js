@@ -71,8 +71,8 @@
 					window.myUser.registration()
 						.then((responseObj) => {
 								window.myUser.setUser(responseObj);
-								this.cookie = new Cookie(myUser.getID(), myUser.getLogin());
-	                        	this.sender.isAuth = 1;
+								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin());
+	                        	window.myUser.isAuth = 1;
 	                        	this.router.go('/menu/');
 	                    })
 						.catch(() => {
