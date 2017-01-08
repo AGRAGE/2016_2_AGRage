@@ -11,6 +11,8 @@
             this.backGround = document.getElementsByClassName('bg');
             this.backGround[0].hidden = "";
 
+            window.myUser = new User();
+
            window.myUser.rating()
            .then((responseObj) => {
                 console.log(responseObj);
@@ -25,7 +27,7 @@
                 alert('Неебучая проблема с атентификацией!!!' + err);
             })
            //console.log();
-			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
+			//this._el.innerHTML = '<div> this.sender.getLogin() </div>';
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
 
