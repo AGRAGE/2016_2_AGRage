@@ -68,8 +68,8 @@
 					window.myUser.autentification()
 						.then((responseObj) => {
 								window.myUser.setUser(responseObj);
-								this.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(),"","","","/");
-								console.log(this.cookie);
+								window.cookie= new Cookie(window.myUser.getID(), window.myUser.getLogin(),"","","","/");
+								window.cookieName = window.myUser.getID();
 								window.myUser.isAuth = 1;
 								this.router.go('/menu/');
 
