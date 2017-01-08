@@ -7,9 +7,9 @@ body {
 
 .table{
     width: 500px !important;
-    color: #8B0000 !important;
-    background-color: #FFFFFF 
-    opacity: 0.5;
+    color: #FF0000 !important;
+    background-color: #FFFFFF !important;
+    opacity: 0.8 !important;
 }
 
 .js-canvas{
