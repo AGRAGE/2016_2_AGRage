@@ -75,6 +75,9 @@
 						},
 						body: JSON.stringify(curBody)
 					})
+					.then(function(response) {
+						return response.json();
+  					})
 					.then(function(data) {
 						resolve(data);
 					})
