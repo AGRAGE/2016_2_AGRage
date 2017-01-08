@@ -12,7 +12,7 @@
             this.backGround[0].hidden = "";
 			this._el.innerHTML = '<h1> Здесь будут настройки! </h1>';
         }
-    }
+    
 
         resume() {
             super.resume();
