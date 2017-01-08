@@ -86,7 +86,7 @@
 							response.json().then(function(data) {
 								console.log(data);
 							});
-							return response.json();
+							resolve(response.json());
 						}
 					)
 					.catch(function(err) {
