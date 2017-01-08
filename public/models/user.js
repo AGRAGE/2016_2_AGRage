@@ -82,9 +82,6 @@
 								return;
 							}
 							// Examine the text in the response
-							response.json().then(function(data) {
-								console.log(data);
-							});
 							resolve(response.json());
 						}
 					)
@@ -142,7 +139,7 @@
 		rating() {
 			return this.sendRequestList('rating/', 'POST', {
 				login: this.login,
-				
+
 			});
 		}
 	}
