@@ -2,7 +2,7 @@
 	class User {
 		constructor(data = {}) {
 			this.email = data.email || '';
-			this.login = data.login || '';
+			this.login = data.login || data.username || '';
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
@@ -11,7 +11,7 @@
 
 		setUser(data = {}) {
 			this.email = data.email || '';
-			this.login = data.login || '';
+			this.login = data.login || data.username  || '';
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
@@ -81,7 +81,7 @@
 									response.status);
 								return;
 							}
-							
+
 							// Examine the text in the response
 							resolve(response.json());
 						}
