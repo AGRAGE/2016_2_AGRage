@@ -7,6 +7,9 @@
         constructor(options = {}){
             super(options);
             this._el = document.querySelector('.js-rating');
+            this.backGround = document.getElementsByClassName('bg');
+            this.backGround[0].hidden = "";
+
 
 
 
@@ -52,8 +55,6 @@
 
         table(responseObj){
 
-            this.backGround = document.getElementsByClassName('bg');
-            this.backGround[0].hidden = "";
             // var html = '<table>';   
 
             // responseObj.forEach(user => {
