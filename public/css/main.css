@@ -6,8 +6,10 @@ body {
 }
 
 .table{
-    width: 2000px !important;
+    width: 500px !important;
     color: #8B0000 !important;
+    background-color: #FFFFFF 
+    opacity: 0.5;
 }
 
 .js-canvas{
