@@ -15,6 +15,11 @@
            .then((responseObj) => {
                 console.log(responseObj);
 
+                responseObj.forEach(user => {
+                    this._el.innerHTML = '<div> user.getLogin() <br> </div>';
+
+                })
+
             })
             .catch((err) => {
                 alert('Неебучая проблема с атентификацией!!!' + err);

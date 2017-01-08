@@ -11,7 +11,7 @@
             this.backGround[0].hidden = "";
 			this._el.innerHTML = '<h1> Здесь будет профиль игрока! </h1>';
         }
-    }
+    
 
         resume() {
             super.resume();
