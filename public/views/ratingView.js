@@ -12,6 +12,7 @@
             
            this.sender = new User();
            this.sender.rating();
+           console.log(this.sender.getLogin());
 			this._el.innerHTML = '<div> this.sender.getLogin() </div>';
             this._el.innerHTML = '<div> fsdgfhghfdg</div>';
         }
