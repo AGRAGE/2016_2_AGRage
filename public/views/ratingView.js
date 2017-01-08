@@ -47,11 +47,17 @@
 
 		table(responseObj) {
 			var str = "<table class = \"table\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
+            var counter = 0;
 			responseObj.forEach(user => {
+                if (counter === 9){
+                    break;
+                }
 				str+="<tr>";
 				str+="<td>" + user.username + "</td>";
 				str+="<td>" + user.rating + "</td>";
 				str+="</tr>";
+                counter++;
+
 			})
 			str += "</table>";
 			this._el.innerHTML = str;
