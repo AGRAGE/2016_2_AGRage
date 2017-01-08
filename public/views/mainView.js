@@ -9,14 +9,24 @@
 		constructor(options = {}) {
 			super(options);
 			this._el = document.querySelector('.js-main');
+			this.backGround = document.getElementsByClassName('bg');
+			this.cookieCheck();
 			this.createElements();
 			this.addElements();
 			this.addListeners();
-			this.hide();
-			this.cookie = new Cookie();
-			this.backGround = document.getElementsByClassName('bg');
-			this.resume();
 
+		}
+
+		cookieCheck(){
+			if (window.cookie != undefined){
+				this.pause();
+				this.router = new Router();
+				this.router.go('menu/');
+				console.log(window.cookie);
+			}
+			else {
+				this.resume();
+			}
 		}
 
 		createElements() {
@@ -39,21 +49,6 @@
 		}
 
 		addListeners() {
-
-
-			document.addEventListener("DOMContentLoaded", (event) => {
-				if (this.cookie.get_cookie("username")) {
-					console.log(this.cookie.get_cookie("username"));
-					console.log('loged in');
-					this.router.go('/menu');
-
-				} else {
-					console.log('unloged');
-					this.router.go('/');
-				}
-			});
-
-
 			this.buttonLogin._get().addEventListener('click', (event) => {
 				this.router.go('/login');
 			});
@@ -63,7 +58,6 @@
 		}
 		resume() {
 			super.resume();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
@@ -72,7 +66,6 @@
 
 		pause() {
 			super.pause();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}

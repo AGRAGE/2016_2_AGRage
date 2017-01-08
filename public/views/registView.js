@@ -10,12 +10,21 @@
 			super(options);
 			this._el = document.querySelector('.js-regist');
 			this.backGround = document.getElementsByClassName('bg');
+			this.cookieCheck();
 			this.sender = new User();
 			this.createElements();
 			this.addElements();
 			this.addListeners();
-			this.hide();
-			this.resume();
+		}
+
+		cookieCheck() {
+			if (window.cookie != undefined) {
+				this.pause();
+				this.router = new Router();
+				this.router.go('menu/');
+			} else {
+				this.resume();
+			}
 		}
 
 		createElements() {
@@ -88,7 +97,6 @@
 		}
 		resume() {
 			super.resume();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
@@ -97,7 +105,6 @@
 
 		pause() {
 			super.pause();
-
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
