@@ -59,21 +59,28 @@
             })
             html += '<td></td><td></td></tr>';
             html +='</table>';
-            // for(var i in ) {
-            //     if(cnt == 0) {
-            //         html += '<tr>';
-            //     }
-            //     html += '<td>'+products[i]['id']+'</td>' + '<td>'+products[i]['name']+'</td>';
-            //     cnt++;
-            //     if(cnt == 2) {
-            //         cnt = 0;
-            //         html += '</tr>';
-            //     }
-            // } 
-            // if(cnt != 0) {
-            //     html += '<td></td><td></td></tr>';
-            // }
-            // html +='</table>';
+            var i, j;
+        // Сначала нарисуем саму таблицу.
+        // Внутренние кавычки (внутри тэгов) можно сделать одиночными,
+        // а можно, как здесь, воспользоваться спецсимволом (см. урок 2)
+        document.write("<table border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\">")
+        
+        responseObj.forEach(user => {
+            document.write("<tr>");
+            document.write("<td>" + user.username + "</td>")
+            document.write("<td>" + user.rating + "</td>")
+            document.write("</tr>")
+        }
+        document.write("</table>")
+
+        // for (i = 2; i <= 10; i++)
+        // {document.write("<tr>");
+        //     for (j = 2; j < 10; j++)
+        //     {document.write("<td>" + "</td>")}
+        // document.write("</tr>")
+        // }
+        // document.write("</table>")
+        // } 
         }
     }
 
