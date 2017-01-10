@@ -19,9 +19,10 @@
 
 		cookieCheck() {
 			if (document.cookie != "") {
-				this.pause();
+
 				this.router = new Router();
 				this.router.go('menu/');
+				this.pause();
 			} else {
 				this.resume();
 			}
