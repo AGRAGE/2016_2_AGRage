@@ -10,12 +10,12 @@
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
 			console.log(window.cookie);
-			if (this.cookieCheck()) {
-				this.createElements();
-				this.addElements();
-				this.addListeners();
-				console.log("menu go");
-			}
+			//if (this.cookieCheck()) {
+			this.createElements();
+			this.addElements();
+			this.addListeners();
+			//	console.log("menu go");
+			//}
 		}
 
 		cookieCheck() {
