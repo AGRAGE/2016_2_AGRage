@@ -19,7 +19,7 @@
 		}
 
 		cookieCheck() {
-			if (window.cookie === undefined) {
+			if (document.cookie === "") {
 				this.router = new Router();
 				this.router.go('/');
 				this.pause();

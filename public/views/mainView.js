@@ -18,11 +18,10 @@
 		}
 
 		cookieCheck(){
-			if (window.cookie != undefined){
+			if (document.cookie > ""){
 				this.pause();
 				this.router = new Router();
 				this.router.go('menu/');
-				console.log(window.cookie);
 			}
 			else {
 				this.resume();
