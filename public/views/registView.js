@@ -10,7 +10,7 @@
 			super(options);
 			this._el = document.querySelector('.js-regist');
 			this.backGround = document.getElementsByClassName('bg');
-			this.cookieCheck();
+			//this.cookieCheck();
 			this.sender = new User();
 			this.createElements();
 			this.addElements();
@@ -82,9 +82,10 @@
 					window.myUser = new User(data);
 					window.myUser.registration()
 						.then((responseObj) => {
-							window.myUser.setUser(responseObj);
-							window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
-							window.cookieName = window.myUser.getID();
+							window.myUser.setUser(responseObj.bodey);
+							//window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
+							//window.cookieName = window.myUser.getID();
+							document.cookie = resposeObj.cookie;
 							window.myUser.isAuth = 1;
 							this.router.go('/menu/');
 						})
