@@ -11,9 +11,9 @@
 			this._el = document.querySelector('.js-main');
 			this.backGround = document.getElementsByClassName('bg');
 			//if (this.cookieCheck()) {
-				this.createElements();
-				this.addElements();
-				this.addListeners();
+			this.createElements();
+			this.addElements();
+			this.addListeners();
 			//}
 
 		}
