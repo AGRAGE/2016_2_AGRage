@@ -18,7 +18,7 @@
 		}
 
 		cookieCheck() {
-			if (document.cookie > "") {
+			if (document.cookie != "") {
 				this.pause();
 				this.router = new Router();
 				this.router.go('menu/');
