@@ -67,7 +67,7 @@
 				const myUrl = baseUrl + to;
 				fetch(myUrl, {
 						method: curMethod,
-						mode: 'cors',
+						//mode: 'cors',
 						credentials: 'same-origin',
 						headers: {
 							"Content-type": "application/json; charset=UTF-8",
