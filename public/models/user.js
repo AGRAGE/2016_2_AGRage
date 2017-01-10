@@ -68,7 +68,7 @@
 				fetch(myUrl, {
 						method: curMethod,
 						//mode: 'cors',
-						credentials: 'include',
+						credentials: 'isame-origin',
 						headers: {
 							"Content-type": "application/json; charset=UTF-8",
 						},
