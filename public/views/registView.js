@@ -82,10 +82,10 @@
 					window.myUser = new User(data);
 					window.myUser.registration()
 						.then((responseObj) => {
-							window.myUser.setUser(responseObj.bodey);
+							window.myUser.setUser(responseObj.body);
 							//window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
 							//window.cookieName = window.myUser.getID();
-							document.cookie = resposeObj.cookie;
+							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
 							this.router.go('/menu/');
 						})

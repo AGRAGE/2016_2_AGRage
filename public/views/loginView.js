@@ -83,7 +83,7 @@
 					window.myUser.autentification()
 						.then((responseObj) => {
 							window.myUser.setUser(responseObj.body);
-							document.cookie = responseObj.cookie;
+							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
 							this.router.go('/menu/');
 
