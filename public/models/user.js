@@ -85,7 +85,8 @@
 									response.status);
 								return;
 							}
-							resolve(response.json());
+							resolve(response._parseJSON);
+							//resolve(response.json());
 						}
 					)
 					.catch(function(err) {

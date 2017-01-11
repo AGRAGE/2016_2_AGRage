@@ -21,14 +21,14 @@
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
-				/*window.myUser.session()
+			window.myUser.session()
 				.then((responseObj) => {
 					console.log(responseObj);
 				})
 				.catch((err) => {
 					alert('Сессия не отвечает или временно недоступена. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
-*/
+
 			this.createElements();
 			//}
 		}
