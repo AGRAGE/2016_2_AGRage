@@ -54,11 +54,11 @@
 		}
 
 		pause() {
-				super.pause();
-				if (this.backGround[0]) {
-					this.backGround[0].hidden = "hidden";
-				}
+			super.pause();
+			if (this.backGround[0]) {
+				this.backGround[0].hidden = "hidden";
 			}
+		}
 
 		table(responseObj) {
 			var str = "<table class = \"table\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";

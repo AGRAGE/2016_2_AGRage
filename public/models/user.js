@@ -11,7 +11,7 @@
 
 		setUser(data = {}) {
 			this.email = data.email || '';
-			this.login = data.login || data.username  || '';
+			this.login = data.login || data.username || '';
 			this.score = data.score || 0;
 			this.password = data.password || '';
 			this.isAuth = data.isAuth || 0;
@@ -86,7 +86,7 @@
 								return;
 							}
 							var responseObj = {};
-							responseObj.cookie = response.cookie;
+							debugger;
 							responseObj.body = response.json();
 							console.log(response);
 							// Examine the text in the response
