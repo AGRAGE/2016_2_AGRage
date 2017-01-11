@@ -85,11 +85,7 @@
 									response.status);
 								return;
 							}
-							var responseObj = {};
-							responseObj.body = response.json();
-							console.log(response);
-							// Examine the text in the response
-							resolve(responseObj);
+							resolve(response.json());
 						}
 					)
 					.catch(function(err) {
