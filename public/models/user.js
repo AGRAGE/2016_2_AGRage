@@ -67,10 +67,11 @@
 				const myUrl = baseUrl + to;
 				fetch(myUrl, {
 						method: curMethod,
-						//mode: 'cors',
+						mode: 'cors',
 						credentials: 'isame-origin',
 						headers: {
 							"Content-type": "application/json; charset=UTF-8",
+							"Access-Control-Request-Method": "POST"
 						},
 						body: JSON.stringify(curBody)
 					})
