@@ -15,13 +15,13 @@
 			this.addElements();
 			this.addListeners();
 			window.myUser = new User();
-			window.myUser.session()
+			/*window.myUser.session()
 				.then((responseObj) => {
 					console.log(responseObj);
 				})
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
-				})
+				})*/
 			//}
 
 		}

@@ -86,7 +86,6 @@
 								return;
 							}
 							var responseObj = {};
-							debugger;
 							responseObj.body = response.json();
 							console.log(response);
 							// Examine the text in the response
