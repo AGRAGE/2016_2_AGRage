@@ -8,25 +8,25 @@
 			super(options);
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
-			//if (this.cookieCheck()) {
-			window.myUser = new User();
-			window.myUser.rating()
-				.then((responseObj) => {
-					console.log(responseObj);
-					this.table(responseObj);
-					this.addElements();
-					this.addListeners();
-				})
-				.catch((err) => {
-					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
-				})
-			this.createElements();
+			if (this.cookieCheck()) {
+				window.myUser = new User();
+				window.myUser.rating()
+					.then((responseObj) => {
+						console.log(responseObj);
+						this.table(responseObj);
+						this.addElements();
+						this.addListeners();
+					})
+					.catch((err) => {
+						alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
+					})
+				this.createElements();
 
-			//}
+			}
 		}
 
 		cookieCheck() {
-			if (document.cookie === "") {
+			if (window.cookie === undefined) {
 				this.router = new Router();
 				this.router.go('/');
 				this.pause();
@@ -72,13 +72,13 @@
 		}
 
 
-		createElements() {
-			this.buttonBack = new Button({
-				el: document.createElement('button'),
-				classAttrs: ['LoginButton'],
-				text: 'вернуться в меню',
-			});
-		}
+        createElements() {
+            this.buttonBack = new Button({
+                el: document.createElement('button'),
+                classAttrs: ['LoginButton'],
+                text: 'вернуться в меню',
+            });
+        }
 
 
 		addElements() {
