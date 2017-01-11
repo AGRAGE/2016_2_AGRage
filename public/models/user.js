@@ -61,7 +61,7 @@
 		}
 
 		session() {
-			return this.sendRequest('login/', 'POST', {});
+			return this.sendRequest('session/', 'POST', {});
 		}
 		sendRequest(to, curMethod, curBody = {}) {
 			return new Promise((resolve, reject) => {

@@ -18,7 +18,6 @@
 			window.myUser.session()
 				.then((responseObj) => {
 					console.log(responseObj);
-					this.table(responseObj);
 					this.addElements();
 					this.addListeners();
 				})
