@@ -26,7 +26,7 @@
 					console.log(responseObj);
 				})
 				.catch((err) => {
-					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
+					alert('Сессия не отвечает или временно недоступена. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
 
 
@@ -54,12 +54,11 @@
 		}
 
 		pause() {
-			super.pause();
-			if (this.backGround[0]) {
-				this.backGround[0].hidden = "hidden";
+				super.pause();
+				if (this.backGround[0]) {
+					this.backGround[0].hidden = "hidden";
+				}
 			}
-		}
-
 
 		table(responseObj) {
 			var str = "<table class = \"table\" border=\"1\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
