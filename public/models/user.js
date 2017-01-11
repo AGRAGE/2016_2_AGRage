@@ -85,10 +85,9 @@
 									response.status);
 								return;
 							}
-							//resolve(response.json());
+							resolve(response.json());
 						}
 					)
-					.then(resolve(this._parseJSON))
 					.catch(function(err) {
 						console.log('Fetch Error :-S', err);
 						let responseObj = {
