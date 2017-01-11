@@ -70,11 +70,7 @@
 						mode: 'cors',
 						credentials: "include",
 						headers: {
-							"Content-type": "application/json; charset=UTF-8",
-							"Access-Control-Request-Method": "POST",
-							"Access-Control-Allow-Credentials": "true",
-							"Access-Control-Allow-Origin": "https://towerdefensepvp.herokuapp.com/",
-							"Access-Control-Allow-Headers": "application/json; charset=UTF-8"
+							"Content-Type": "application/json; charset=UTF-8",
 						},
 						body: JSON.stringify(curBody)
 					})
