@@ -10,22 +10,23 @@
 			super(options);
 			this._el = document.querySelector('.js-main');
 			this.backGround = document.getElementsByClassName('bg');
-			this.cookieCheck();
+			//if (this.cookieCheck()) {
 			this.createElements();
 			this.addElements();
 			this.addListeners();
+			//}
 
 		}
 
-		cookieCheck(){
-			if (window.cookie != undefined){
-				this.pause();
+		cookieCheck() {
+			if (document.cookie != "") {
 				this.router = new Router();
 				this.router.go('menu/');
-				console.log(window.cookie);
-			}
-			else {
+				this.pause();
+				return false;
+			} else {
 				this.resume();
+				return false;
 			}
 		}
 

@@ -68,22 +68,26 @@
 				fetch(myUrl, {
 						method: curMethod,
 						mode: 'cors',
-						credentials: 'include',
+						credentials: "include",
 						headers: {
-							"Content-type": "application/json; charset=UTF-8"
+							"Content-Type": "application/json; charset=UTF-8",
 						},
 						body: JSON.stringify(curBody)
 					})
 					.then(
 						function(response) {
+							console.log(response);
 							if (response.status !== 200) {
 								console.log('Looks like there was a problem. Status Code: ' +
 									response.status);
 								return;
 							}
-
+							var responseObj = {};
+							responseObj.cookie = response.cookie;
+							responseObj.body = response.json();
+							console.log(response);
 							// Examine the text in the response
-							resolve(response.json());
+							resolve(responseObj);
 						}
 					)
 					.catch(function(err) {

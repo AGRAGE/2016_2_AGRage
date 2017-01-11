@@ -10,7 +10,7 @@
 			super(options);
 			this._el = document.querySelector('.js-regist');
 			this.backGround = document.getElementsByClassName('bg');
-			this.cookieCheck();
+			//this.cookieCheck();
 			this.sender = new User();
 			this.createElements();
 			this.addElements();
@@ -18,10 +18,11 @@
 		}
 
 		cookieCheck() {
-			if (window.cookie != undefined) {
-				this.pause();
+			if (document.cookie != "") {
+
 				this.router = new Router();
 				this.router.go('menu/');
+				this.pause();
 			} else {
 				this.resume();
 			}
@@ -81,9 +82,10 @@
 					window.myUser = new User(data);
 					window.myUser.registration()
 						.then((responseObj) => {
-							window.myUser.setUser(responseObj);
-							window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
-							window.cookieName = window.myUser.getID();
+							window.myUser.setUser(responseObj.body);
+							//window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
+							//window.cookieName = window.myUser.getID();
+							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
 							this.router.go('/menu/');
 						})

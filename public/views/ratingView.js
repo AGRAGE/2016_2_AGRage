@@ -9,7 +9,7 @@
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
 			if (this.cookieCheck()) {
-				//window.myUser = new User();
+				//`window.myUser = new User();
 				window.myUser.rating()
 					.then((responseObj) => {
 						console.log(responseObj);
