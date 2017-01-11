@@ -20,6 +20,13 @@
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
+			window.myUser.session()
+				.then((responseObj) => {
+					console.log(responseObj);
+				})
+				.catch((err) => {
+					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
+				})
 			this.createElements();
 
 			//}
