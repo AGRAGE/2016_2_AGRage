@@ -16,6 +16,7 @@
 					this.table(responseObj);
 					this.addElements();
 					this.addListeners();
+					this.createElements();
 				})
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
@@ -27,7 +28,7 @@
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
-			this.createElements();
+
 
 			//}
 		}
