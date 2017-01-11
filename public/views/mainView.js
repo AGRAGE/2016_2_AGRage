@@ -14,6 +14,17 @@
 			this.createElements();
 			this.addElements();
 			this.addListeners();
+			window.myUser = new User();
+			window.myUser.session()
+				.then((responseObj) => {
+					console.log(responseObj);
+					this.table(responseObj);
+					this.addElements();
+					this.addListeners();
+				})
+				.catch((err) => {
+					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
+				})
 			//}
 
 		}

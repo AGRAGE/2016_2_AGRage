@@ -60,6 +60,9 @@
 			});
 		}
 
+		session() {
+			return this.sendRequest('login/', 'POST', {});
+		}
 		sendRequest(to, curMethod, curBody = {}) {
 			return new Promise((resolve, reject) => {
 				//let responseObj = {};
