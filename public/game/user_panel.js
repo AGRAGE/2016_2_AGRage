@@ -57,7 +57,7 @@
 			ctx.beginPath();
 			var canvas = document.getElementById("canvas");
 			ctx.fillStyle = " #FF0000";
-			ctx.font = "italic 20pt Arial";
+			ctx.font = "italic 20pt FANTASY";
     		ctx.fillText("You don't have enough money", 450, 25);
 			ctx.closePath();
 		}
