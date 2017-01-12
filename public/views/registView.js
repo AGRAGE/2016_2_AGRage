@@ -82,7 +82,6 @@
 					window.myUser = new User(data);
 					window.myUser.registration()
 						.then((responseObj) => {
-							window.myUser.setUser(responseObj.body);
 							window.myUser.autentification()
 								.then((responseObj) => {
 									window.myUser.isAuth = 1;
