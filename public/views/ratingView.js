@@ -9,31 +9,12 @@
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
 			//if (this.cookieCheck()) {
-			this.rating()
-				.then((responseObj) => {
-					console.log(responseObj);
-					this.table(responseObj);
-				})
-				.catch((err) => {
-					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
-				})
+			this.newRating();
 			this.createElements();
 			this.addElements();
 			this.addListeners();
 
 			//}
-		}
-
-		cookieCheck() {
-			if (window.cookie === undefined) {
-				this.router = new Router();
-				this.router.go('/');
-				this.pause();
-				return false;
-			} else {
-				this.resume();
-				return true;
-			}
 		}
 
 		resume() {
@@ -125,7 +106,23 @@
 			})
 		}
 
+		newRating() {
+			function ratingCheck() { // (3)
+				if (xhr.readyState != 4) return;
+				if (xhr.status == 200) {
+					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					this.table(data);
+					//return data;
+					return true;
+				}
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/logout/', true);
+			xhr.withCredentials = true;
+			xhr.send(null);
+			xhr.onreadystatechange = logoutCheck.bind(this);
 
+		}
 
 		rating() {
 			return this.sendRequest('rating/', 'POST', {}, "include");
