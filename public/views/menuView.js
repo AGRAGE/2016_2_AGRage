@@ -11,16 +11,6 @@
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
 			this.cookieCheck();
-
-			/*if (this.cookieCheck()) {
-				this.createElements();
-				this.addElements();
-				this.addListeners();
-			} else {
-				this.pause();
-				this.router = new Router();
-				this.router.go('/');
-			}*/
 		}
 
 		cookieCheck() {
@@ -36,7 +26,7 @@
 					console.log(xhr.status);
 				} else {
 					console.log(xhr.status);
-					this.pause();
+					//this.pause();
 					this.router = new Router();
 					this.router.go('/');
 				}
