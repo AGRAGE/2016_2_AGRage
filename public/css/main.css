@@ -92,7 +92,8 @@ html {
     margin-left: 10px;
     width: 31px;
     height: 30px;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    padding: 0px;
 
 }
 
@@ -106,7 +107,8 @@ html {
     margin-left: 10px;
     width: 31px;
     height: 30px;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
+    padding: 0px;
 
 }
 
