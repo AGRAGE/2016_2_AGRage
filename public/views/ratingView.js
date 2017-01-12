@@ -71,49 +71,23 @@
 			});
 		}
 
-		sendRequest(to, curMethod, curBody = {}, cookie) {
-			return new Promise((resolve, reject) => {
-				//let responseObj = {};
-				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
-				const myUrl = baseUrl + to;
-				fetch(myUrl, {
-						method: curMethod,
-						mode: 'cors',
-						credentials: cookie,
-						headers: {
-							"Content-Type": "application/json; charset=UTF-8",
-						},
-						body: JSON.stringify(curBody)
-					})
-					.then(
-						function(response) {
-							console.log(response);
-							if (response.status !== 200) {
-								console.log('Looks like there was a problem. Status Code: ' +
-									response.status);
-								return;
-							}
-							resolve(response.json());
-						}
-					)
-					.catch(function(err) {
-						console.log('Fetch Error :-S', err);
-						let responseObj = {
-							status: 0
-						};
-						reject(responseObj);
-					})
-			})
-		}
 
 		newRating() {
 			function ratingCheck() { // (3)
 				if (xhr.readyState != 4) return;
+				this.pause();
+				this.createElements();
+				this.addElements();
+				this.addListeners();
 				if (xhr.status == 200) {
+					this.resume();
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
 					this.table(data);
 					//return data;
 					return true;
+				} else {
+					this.router = new Router();
+					this.router.go('/');
 				}
 			}
 			var xhr = new XMLHttpRequest();
