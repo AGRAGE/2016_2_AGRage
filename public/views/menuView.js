@@ -9,24 +9,40 @@
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			//if (this.cookieCheck()) {
-			this.createElements();
-			this.addElements();
-			this.addListeners();
-			//	console.log("menu go");
-			//}
+			if (this.cookieCheck()) {
+				this.createElements();
+				this.addElements();
+				this.addListeners();
+			} else {
+				this.pause();
+				this.router = new Router();
+				this.router.go('/');
+			}
 		}
 
 		cookieCheck() {
-			if (document.cookie === "") {
-				this.router = new Router();
-				this.router.go('/');
-				this.pause();
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
+			xhr.withCredentials = true;
+			xhr.send(null);
+			xhr.onreadystatechange = function() { // (3)
+				if (xhr.readyState != 4) return;
+				if (xhr.status == 200) {
+					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					this.cookieCheck = data;
+					console.log(this.cookieCheck);
+				}
+				if (xhr.status == 403) {
+					this.cookieCheck = {};
+					console.log(this.cookieCheck);
+				}
+			}
+			if (this.cookieCheck === {}) {
 				return false;
 			} else {
-				this.resume();
 				return true;
 			}
+
 		}
 
 		resume() {
@@ -125,10 +141,9 @@
 			xhr.send(null);
 			xhr.onreadystatechange = function() { // (3)
 				if (xhr.readyState != 4) return;
-				if (xhr.status != 200) {
-					return (xhr.status + ': ' + xhr.statusText);
-				} else {
-					return (xhr.responseText);
+				if (xhr.status == 200) {
+					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					return data;
 				}
 
 			}
