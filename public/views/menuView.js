@@ -29,16 +29,16 @@
 				if (xhr.readyState != 4) return;
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
-					this.cookieCheck = data;
-					console.log("1 "+this.cookieCheck);
+					this.cookieCheckData = data;
+					console.log("1 "+this.cookieCheckData);
 				}
 				if (xhr.status == 403) {
 					this.cookieCheck = {};
-					console.log("2 "+this.cookieCheck);
+					console.log("2 "+this.cookieCheckData);
 				}
 			}
-			console.log("3 "+this.cookieCheck);
-			if (this.cookieCheck === {}) {
+			console.log("3 "+this.cookieCheckData);
+			if (this.cookieCheckData === {}) {
 				return false;
 			} else {
 				return true;
