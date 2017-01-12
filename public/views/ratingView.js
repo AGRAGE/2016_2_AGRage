@@ -22,7 +22,7 @@
 				})
 			this.logout()
 				.then((responseObj) => {
-					console.log("logout done with result: "responseObj);
+					console.log("logout done with result: " + responseObj);
 				})
 				.catch((err) => {
 					alert('logout не отвечает' + err);
