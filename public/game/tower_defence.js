@@ -502,7 +502,7 @@
 			ctx.beginPath();
 			var canvas = document.getElementById("canvas");
 			ctx.fillStyle = " #FF0000";
-			ctx.font = "italic 60pt Arial";
+			ctx.font = "italic 60pt FANTASY";
 			ctx.fillText(words, 500, 300);
 			ctx.closePath();
 
