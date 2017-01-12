@@ -117,10 +117,10 @@
 				}
 			}
 			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/logout/', true);
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/rating/', true);
 			xhr.withCredentials = true;
 			xhr.send(null);
-			xhr.onreadystatechange = logoutCheck.bind(this);
+			xhr.onreadystatechange = ratingCheck.bind(this);
 
 		}
 
