@@ -10,6 +10,7 @@
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
 			this.cookieCheck();
+			console.log("menuView constructor start");
 			/*if (this.cookieCheck()) {
 				this.createElements();
 				this.addElements();
@@ -25,7 +26,6 @@
 			function checkUsability() {
 				console.log(xhr.readyState);
 				if (xhr.readyState != 4) {
-
 					return;
 				}
 				if (xhr.status == 200) {
