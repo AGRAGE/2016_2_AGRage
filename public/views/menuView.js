@@ -167,19 +167,19 @@
 
 		addListeners() {
 			this.buttonSingleGame._get().addEventListener('click', (event) => {
-				this.router.go('/game/');
+				this.router.go('/game');
 			});
 			this.buttonSearchGame._get().addEventListener('click', (event) => {
-				this.router.go('/searchGame/');
+				this.router.go('/searchGame');
 			});
 			this.buttonRating._get().addEventListener('click', (event) => {
-				this.router.go('/rating/');
+				this.router.go('/rating');
 			});
 			this.buttonUserProfile._get().addEventListener('click', (event) => {
-				this.router.go('/profile/');
+				this.router.go('/profile');
 			});
 			this.buttonConfig._get().addEventListener('click', (event) => {
-				this.router.go('/config/');
+				this.router.go('/config');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
 				if(this.logout2()){

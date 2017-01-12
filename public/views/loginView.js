@@ -26,7 +26,7 @@
 			if (document.cookie != "") {
 
 				this.router = new Router();
-				this.router.go('menu/');
+				this.router.go('/menu');
 				this.pause();
 				return false;
 			} else {
@@ -86,7 +86,7 @@
 							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
 							this.pause();
-							this.router.go('/menu/');
+							this.router.go('/menu');
 
 						})
 						.catch((err) => {

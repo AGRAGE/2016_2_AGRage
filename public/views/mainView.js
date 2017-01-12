@@ -29,7 +29,7 @@
 		cookieCheck() {
 			if (document.cookie != "") {
 				this.router = new Router();
-				this.router.go('menu/');
+				this.router.go('/menu');
 				this.pause();
 				return false;
 			} else {
