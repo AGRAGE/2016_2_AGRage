@@ -87,11 +87,12 @@ html {
     z-index: 1;
     top: 0px;
     left: 0px;
-    background-image: url("flag.png");
+    background-image: url("flag.jpg");
     margin-top: 0px;
     margin-left: 10px;
-    width: 80px;
-    height: 118px;
+    width: 31px;
+    height: 30px;
+    background-repeat: no-repeat
 
 }
 
@@ -100,11 +101,12 @@ html {
     z-index: 1;
     top: 0px;
     left: 0px;
-    background-image: url("flag.png");
+    background-image: url("flag.jpg");
     margin-top: 0px;
     margin-left: 10px;
-    width: 80px;
-    height: 118px;
+    width: 31px;
+    height: 30px;
+    background-repeat: no-repeat
 
 }
 
