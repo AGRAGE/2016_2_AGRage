@@ -110,7 +110,7 @@
 			function ratingCheck() { // (3)
 				if (xhr.readyState != 4) return;
 				if (xhr.status == 200) {
-					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
 					this.table(data);
 					//return data;
 					return true;

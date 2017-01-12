@@ -141,7 +141,7 @@
 			function logoutCheck() { // (3)
 				if (xhr.readyState != 4) return;
 				if (xhr.status == 200) {
-					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
 					//return data;
 					return true;
 				}
