@@ -139,7 +139,7 @@
 
 		}
 		logout() {
-			return this.sendRequest('logout/', 'POST', {}, "same-origin");
+			return this.sendRequest('logout/', 'POST', {}, "include");
 
 		}
 	}
