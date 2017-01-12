@@ -82,6 +82,32 @@ html {
     height: 118px;
 }
 
+.ExitButton {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background-image: url("arrow.png");
+    margin-top: 0px;
+    margin-left: 10px;
+    width: 80px;
+    height: 118px;
+
+}
+
+.ExitButton:hover {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    background-image: url("arrow.png");
+    margin-top: 0px;
+    margin-left: 10px;
+    width: 80px;
+    height: 118px;
+
+}
+
 .divform {
     width: 300px;
     margin: auto;

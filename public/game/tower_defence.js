@@ -414,11 +414,20 @@
 				classAttrs: ['HiringButton2'],
 				text: ' ',
 			});
+
+			this.buttonExit = new Button({
+				el: document.createElement('exit_button'),
+				classAttrs: ['ExitButton'],
+				text: ' ',
+			});
+
+
 		}
 
 		addElements() {
 			this._el.appendChild(this.buttonUnit1._get());
 			this._el.appendChild(this.buttonUnit2._get());
+			this._el.appendChild(this.buttonExit._get());
 		}
 
 		addListeners() {
@@ -455,9 +464,9 @@
 						spriteType: 2
 					});
 				}
-
-
-
+			});
+			this.buttonExit._get().addEventListener('click', (event) => {
+				this.router.go('/menu/');
 			});
 		}
 
