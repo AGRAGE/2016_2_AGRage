@@ -10,9 +10,6 @@
 			this.backGround = document.getElementsByClassName('bg');
 			//if (this.cookieCheck()) {
 			this.newRating();
-			this.createElements();
-			this.addElements();
-			this.addListeners();
 
 			//}
 		}
