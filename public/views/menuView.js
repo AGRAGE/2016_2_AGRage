@@ -106,8 +106,6 @@
 				this.router.go('/config/');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				window.cookie.deleteCookie();
-				window.cookie = undefined;
 				this.pause();
 				this.router.go('/');
 			});
