@@ -19,14 +19,13 @@
 				if (xhr.readyState != 4) {
 					return;
 				}
+				this.pause();
+				this.createElements();
+				this.addElements();
+				this.addListeners();
 				if (xhr.status == 200) {
-					this.createElements();
-					this.addElements();
-					this.addListeners();
-					console.log(xhr.status);
+					this.resume();
 				} else {
-					console.log(xhr.status);
-					//this.pause();
 					this.router = new Router();
 					this.router.go('/');
 				}
