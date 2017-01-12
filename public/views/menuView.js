@@ -9,7 +9,8 @@
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			if (this.cookieCheck()) {
+			this.cookieCheck();
+			/*if (this.cookieCheck()) {
 				this.createElements();
 				this.addElements();
 				this.addListeners();
@@ -17,7 +18,7 @@
 				this.pause();
 				this.router = new Router();
 				this.router.go('/');
-			}
+			}*/
 		}
 
 		cookieCheck() {
@@ -25,25 +26,18 @@
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
 			xhr.withCredentials = true;
 			xhr.send(null);
-			xhr.onreadystatechange = function() { // (3)
+			xhr.onreadystatechange = function() {
 				if (xhr.readyState != 4) return;
 				if (xhr.status == 200) {
-					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
-					this.cookieCheckData = data;
-					console.log("1 "+this.cookieCheckData);
-				}
-				if (xhr.status == 403) {
-					this.cookieCheck = {};
-					console.log("2 "+this.cookieCheckData);
+					this.createElements();
+					this.addElements();
+					this.addListeners();
+				} else if (xhr.status == 403) {
+					this.pause();
+					this.router = new Router();
+					this.router.go('/');
 				}
 			}
-			console.log("3 "+this.cookieCheckData);
-			if (this.cookieCheckData === {}) {
-				return false;
-			} else {
-				return true;
-			}
-
 		}
 
 		resume() {
