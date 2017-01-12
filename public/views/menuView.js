@@ -32,7 +32,9 @@
 					this.createElements();
 					this.addElements();
 					this.addListeners();
+					console.log(xhr.status);
 				} else if (xhr.status == 403) {
+					console.log(xhr.status);
 					this.pause();
 					this.router = new Router();
 					this.router.go('/');
