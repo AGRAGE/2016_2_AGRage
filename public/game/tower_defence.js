@@ -62,6 +62,8 @@
 			this.poverty = false;
 
 			this.end = false;
+
+			this.give_up =false;
 		}
 
 		/**
@@ -123,8 +125,12 @@
 		 * @param  {number} dt
 		 */
 		exec(dt) {
+
+
+
 			let keys = this.keys;
 			this.clear();
+
 
 			if (this.poverty === true) {
 				this.user_panel.incrementCounter(dt);
@@ -362,10 +368,17 @@
 				unit.drawHp(this.ctx);
 			})
 
-
+			console.log(this.give_up);
 			//рисуем разрушенную башню
-			if (this.tower.getHp() > 0)
+			if(this.give_up === true){				
+				this.tower.draw_destroyed(this.ctx);
+				this.battle_end(this.ctx, "You lose((((");
+				console.log("finish");
+			}	
+
+			else if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
+			
 			else {
 				//alert("Вы проиграли!");
 				this.tower.draw_destroyed(this.ctx);
@@ -466,7 +479,8 @@
 				}
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				new Router().go('/menu/');
+				this.end = true;
+				this.give_up = true;
 			});
 		}
 
