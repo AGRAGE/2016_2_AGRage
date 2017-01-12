@@ -27,7 +27,10 @@
 			xhr.withCredentials = true;
 			xhr.send(null);
 			xhr.onreadystatechange = function() {
-				if (xhr.readyState != 4) return;
+				if (xhr.readyState != 4) {
+					console.log(xhr.readyState);
+					return;
+				}
 				if (xhr.status == 200) {
 					this.createElements();
 					this.addElements();
