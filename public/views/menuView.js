@@ -118,12 +118,21 @@
 			return this.sendRequest('logout/', 'POST', {}, "include");
 
 		}
-		logout2(){
+		logout2() {
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/logout/', true);
 			xhr.withCredentials = true;
 			xhr.send(null);
-			alert( xhr.responseText );
+			xhr.onreadystatechange = function() { // (3)
+				if (xhr.readyState != 4) return;
+				if (xhr.status != 200) {
+					return (xhr.status + ': ' + xhr.statusText);
+				} else {
+					return (xhr.responseText);
+				}
+
+			}
+
 		}
 
 		addElements() {
@@ -152,13 +161,6 @@
 				this.router.go('/config/');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				this.logout()
-					.then((responseObj) => {
-						console.log("logout done with result: " + responseObj);
-					})
-					.catch((err) => {
-						alert('logout не отвечает' + err);
-					})
 				this.logout2();
 			});
 		}
