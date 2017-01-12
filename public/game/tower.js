@@ -21,13 +21,13 @@
 					result.x = false;
 				}
 				else if(spriteType === 1){
-					if (coord + 210 > width || coord < 210) {
+					if (coord + 230 > width || coord < 160) {
 					result.x = true;	
 					this.hp -= damage;	
 					}
 				}
 				else {
-					if (coord + 260 > width || coord < 260) {
+					if (coord + 260 > width || coord < 160) {
 						result.x = true;	
 						this.hp -= damage;
 					}
