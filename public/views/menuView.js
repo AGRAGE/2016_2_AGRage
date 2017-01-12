@@ -27,8 +27,9 @@
 			xhr.withCredentials = true;
 			xhr.send(null);
 			xhr.onreadystatechange = function() {
+				console.log(xhr.readyState);
 				if (xhr.readyState != 4) {
-					console.log(xhr.readyState);
+
 					return;
 				}
 				if (xhr.status == 200) {
