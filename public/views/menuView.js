@@ -43,7 +43,7 @@
 					this.router = new Router();
 					this.router.go('/');
 				}
-			}.call(this);
+			}
 		}
 
 		resume() {
