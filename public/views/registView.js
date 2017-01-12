@@ -84,7 +84,7 @@
 						.then((responseObj) => {
 							window.myUser.setUser(responseObj.body);
 							window.myUser.autentification()
-								.then()((responseObj) => {
+								.then((responseObj) => {
 									window.myUser.isAuth = 1;
 									this.pause();
 									this.router.go('/menu');
