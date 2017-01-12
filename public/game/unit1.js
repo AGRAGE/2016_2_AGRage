@@ -84,7 +84,7 @@
 
 
 				if (this.spriteType == 1 || this.spriteType == 3) {
-					if (this.x + 210 > width || this.x - 210 < 0) {
+					if (this.x + 230 > width || this.x - 160 < 0) {
 						result.x = true;
 						this.vx = 0;
 						if (this.spriteNeedChange == 0) {
@@ -101,7 +101,7 @@
 					}
 
 				} else if ((this.spriteType == 2) || (this.spriteType == 4)) {
-				if (this.x + 260 > width || this.x - 260 < 0) {
+				if (this.x + 260 > width || this.x - 160 < 0) {
 					result.x = true;
 					this.vx = 0;
 					if (this.spriteNeedChange == 0) {
