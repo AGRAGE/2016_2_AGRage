@@ -22,11 +22,7 @@
 		}
 
 		cookieCheck() {
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
-			xhr.withCredentials = true;
-			xhr.send(null);
-			xhr.onreadystatechange = function() {
+			function checkUsability() {
 				console.log(xhr.readyState);
 				if (xhr.readyState != 4) {
 
@@ -44,6 +40,11 @@
 					this.router.go('/');
 				}
 			}
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
+			xhr.withCredentials = true;
+			xhr.send(null);
+			xhr.onreadystatechange = checkUsability.bind(this);
 		}
 
 		resume() {
