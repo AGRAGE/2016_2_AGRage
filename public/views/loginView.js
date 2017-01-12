@@ -85,6 +85,7 @@
 							window.myUser.setUser(responseObj.body);
 							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
+							this.pause();
 							this.router.go('/menu/');
 
 						})

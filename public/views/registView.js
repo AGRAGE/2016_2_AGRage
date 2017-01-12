@@ -87,6 +87,7 @@
 							//window.cookieName = window.myUser.getID();
 							//document.cookie = responseObj.cookie;
 							window.myUser.isAuth = 1;
+							this.pause();
 							this.router.go('/menu/');
 						})
 						.catch((err) => {

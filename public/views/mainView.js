@@ -59,9 +59,11 @@
 
 		addListeners() {
 			this.buttonLogin._get().addEventListener('click', (event) => {
+				this.pause();
 				this.router.go('/login');
 			});
 			this.buttonRegister._get().addEventListener('click', (event) => {
+				this.pause();
 				this.router.go('/registration');
 			});
 		}
