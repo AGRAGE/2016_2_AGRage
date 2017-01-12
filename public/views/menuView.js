@@ -138,20 +138,23 @@
 
 		}
 		logout2() {
+			function logoutCheck() { // (3)
+				if (xhr.readyState != 4) return;
+				if (xhr.status == 200) {
+					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
+					//return data;
+					return true;
+				}
+			}
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/logout/', true);
 			xhr.withCredentials = true;
 			xhr.send(null);
-			xhr.onreadystatechange = function() { // (3)
-				if (xhr.readyState != 4) return;
-				if (xhr.status == 200) {
-					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
-					return data;
-				}
-
-			}
+			xhr.onreadystatechange = logoutCheck.bind(this);
 
 		}
+
+
 
 		addElements() {
 			this._el.appendChild(this.buttonSingleGame._get());
@@ -179,7 +182,10 @@
 				this.router.go('/config/');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				this.logout2();
+				if(this.logout2()){
+					this.router = new Router();
+					this.router.go('/');
+				};
 			});
 		}
 	}
