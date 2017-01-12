@@ -97,7 +97,7 @@
 			});
 		}
 
-		sendRequest(to, curMethod, curBody = {}) {
+		sendRequest(to, curMethod, curBody = {}, cookie) {
 			return new Promise((resolve, reject) => {
 				//let responseObj = {};
 				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
@@ -105,7 +105,7 @@
 				fetch(myUrl, {
 						method: curMethod,
 						mode: 'cors',
-						credentials: "include",
+						credentials: cookie,
 						headers: {
 							"Content-Type": "application/json; charset=UTF-8",
 						},
@@ -135,11 +135,11 @@
 
 
 		rating() {
-			return this.sendRequest('rating/', 'POST', {});
+			return this.sendRequest('rating/', 'POST', {}, "include");
 
 		}
 		logout() {
-			return this.sendRequest('logout/', 'POST', {});
+			return this.sendRequest('logout/', 'POST', {}, "same-origin");
 
 		}
 	}
