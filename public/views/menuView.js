@@ -142,6 +142,8 @@
 				if (xhr.readyState != 4) return;
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
+					this.router = new Router();
+					this.router.go('/');
 					//return data;
 					return true;
 				}
@@ -182,10 +184,7 @@
 				this.router.go('/config');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				if(this.logout2()){
-					this.router = new Router();
-					this.router.go('/');
-				};
+				this.logout2();
 			});
 		}
 	}
