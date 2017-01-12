@@ -30,13 +30,14 @@
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? $.parseJSON(xhr.responseText) : {};
 					this.cookieCheck = data;
-					console.log(this.cookieCheck);
+					console.log("1 "+this.cookieCheck);
 				}
 				if (xhr.status == 403) {
 					this.cookieCheck = {};
-					console.log(this.cookieCheck);
+					console.log("2 "+this.cookieCheck);
 				}
 			}
+			console.log("3 "+this.cookieCheck);
 			if (this.cookieCheck === {}) {
 				return false;
 			} else {
