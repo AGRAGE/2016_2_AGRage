@@ -83,12 +83,12 @@
 					window.myUser.registration()
 						.then((responseObj) => {
 							window.myUser.setUser(responseObj.body);
-							//window.cookie = new Cookie(window.myUser.getID(), window.myUser.getLogin(), "", "", "", "/");
-							//window.cookieName = window.myUser.getID();
-							//document.cookie = responseObj.cookie;
-							window.myUser.isAuth = 1;
-							this.pause();
-							this.router.go('/menu/');
+							window.myUser.autentification()
+								.then()((responseObj) => {
+									window.myUser.isAuth = 1;
+									this.pause();
+									this.router.go('/menu');
+								})
 						})
 						.catch((err) => {
 							alert('Проблема с регистрацией: ' + err);
