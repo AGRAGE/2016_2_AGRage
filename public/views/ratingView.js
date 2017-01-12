@@ -20,13 +20,7 @@
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
-			this.logout()
-				.then((responseObj) => {
-					console.log("logout done with result: " + responseObj);
-				})
-				.catch((err) => {
-					alert('logout не отвечает' + err);
-				})
+
 			this.createElements();
 			//}
 		}
@@ -136,10 +130,6 @@
 
 		rating() {
 			return this.sendRequest('rating/', 'POST', {}, "include");
-
-		}
-		logout() {
-			return this.sendRequest('logout/', 'POST', {}, "include");
 
 		}
 	}

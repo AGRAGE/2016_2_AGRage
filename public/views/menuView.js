@@ -9,7 +9,6 @@
 			super(options);
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			console.log(window.cookie);
 			//if (this.cookieCheck()) {
 			this.createElements();
 			this.addElements();
@@ -80,6 +79,53 @@
 			});
 		}
 
+		sendRequest(to, curMethod, curBody = {}, cookie) {
+			return new Promise((resolve, reject) => {
+				//let responseObj = {};
+				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
+				const myUrl = baseUrl + to;
+				fetch(myUrl, {
+						method: curMethod,
+						mode: 'cors',
+						credentials: cookie,
+						headers: {
+							"Content-Type": "application/json; charset=UTF-8",
+						},
+						body: JSON.stringify(curBody)
+					})
+					.then(
+						function(response) {
+							console.log(response);
+							if (response.status !== 200) {
+								console.log('Looks like there was a problem. Status Code: ' +
+									response.status);
+								return;
+							}
+							resolve(response.json());
+						}
+					)
+					.catch(function(err) {
+						console.log('Fetch Error :-S', err);
+						let responseObj = {
+							status: 0
+						};
+						reject(responseObj);
+					})
+			})
+		}
+
+		logout() {
+			return this.sendRequest('logout/', 'POST', {}, "include");
+
+		}
+		logout2(){
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/logout/', true);
+			xhr.withCredentials = true;
+			xhr.send(null);
+			alert( xhr.responseText );
+		}
+
 		addElements() {
 			this._el.appendChild(this.buttonSingleGame._get());
 			this._el.appendChild(this.buttonSearchGame._get());
@@ -106,8 +152,14 @@
 				this.router.go('/config/');
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				this.pause();
-				this.router.go('/');
+				this.logout()
+					.then((responseObj) => {
+						console.log("logout done with result: " + responseObj);
+					})
+					.catch((err) => {
+						alert('logout не отвечает' + err);
+					})
+				this.logout2();
 			});
 		}
 	}
