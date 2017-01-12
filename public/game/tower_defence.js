@@ -466,7 +466,7 @@
 				}
 			});
 			this.buttonExit._get().addEventListener('click', (event) => {
-				this.router.go('/menu/');
+				new Router().go('/menu/');
 			});
 		}
 
