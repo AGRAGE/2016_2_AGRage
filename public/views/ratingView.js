@@ -9,8 +9,7 @@
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
 			//if (this.cookieCheck()) {
-			window.myUser = new User();
-			window.myUser.rating()
+			this.rating()
 				.then((responseObj) => {
 					console.log(responseObj);
 					this.table(responseObj);
@@ -21,14 +20,6 @@
 				.catch((err) => {
 					alert('Рейтинг не отвечает или временно недоступен. Перезвоните позже. Пип. Пип. Пип ' + err);
 				})
-			/*window.myUser.session()
-				.then((responseObj) => {
-					console.log(responseObj);
-				})
-				.catch((err) => {
-					alert('Сессия не отвечает или временно недоступена. Перезвоните позже. Пип. Пип. Пип ' + err);
-				})
-*/
 			this.createElements();
 			//}
 		}
@@ -97,6 +88,48 @@
 				this.pause();
 				this.router.go('/menu/');
 			});
+		}
+
+		sendRequest(to, curMethod, curBody = {}) {
+			return new Promise((resolve, reject) => {
+				//let responseObj = {};
+				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
+				const myUrl = baseUrl + to;
+				fetch(myUrl, {
+						method: curMethod,
+						mode: 'cors',
+						credentials: "same-origin",
+						headers: {
+							"Content-Type": "application/json; charset=UTF-8",
+						},
+						body: JSON.stringify(curBody)
+					})
+					.then(
+						function(response) {
+							console.log(response);
+							if (response.status !== 200) {
+								console.log('Looks like there was a problem. Status Code: ' +
+									response.status);
+								return;
+							}
+							resolve(response.json());
+						}
+					)
+					.catch(function(err) {
+						console.log('Fetch Error :-S', err);
+						let responseObj = {
+							status: 0
+						};
+						reject(responseObj);
+					})
+			})
+		}
+
+
+
+		rating() {
+			return this.sendRequest('rating/', 'POST', {});
+
 		}
 	}
 
