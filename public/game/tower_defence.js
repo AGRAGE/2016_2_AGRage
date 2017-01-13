@@ -91,10 +91,14 @@
 				exec = this.exec.bind(this);
 
 			function step() {
-				var now = Date.now(),
-					dt = now - (time || now);
+			//	var now = Date.now(),
+			//		dt = now - (time || now);
+				var time = new Date(16);
 
-				time = now;
+				var dt = time.getUTCMilliseconds();
+		//		time = now;
+
+				//console.log(dt);
 
 				if (!isStopped()) {
 					requestAnimationFrame(step);

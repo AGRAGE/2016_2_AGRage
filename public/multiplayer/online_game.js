@@ -29,9 +29,41 @@
 	  		let tower = {};
 	  		tower.Id = 1;
 	  		tower.Health = 1000;
-	  		console.log(this.messaging);
+	  		//console.log(this.messaging);
 	  		this.messaging.TowerHpMessage(tower);
 	  	}
+
+	  	startLoop() {
+			let time,
+				isStopped = this.isStopped.bind(this),
+				exec = this.exec.bind(this);
+
+			function step() {
+				var now = Date.now(),
+					dt = now - (time || now);
+
+				time = now;
+
+				if (!isStopped()) {
+					requestAnimationFrame(step);
+					exec(dt);
+				} else {
+
+					// console.log(window.gameRouter);
+					// window.gameRouter.go('/menu/');
+
+					//window.gameRouter.go('/menu/');
+					new Router().go('/menu');
+
+
+					//this.router.go('/menu/');
+
+				}
+
+			}
+			step();
+		}
+
 	}
 
 

@@ -42,24 +42,24 @@
           console.log(responseContent.myMessage);
           return;
       }
-      if(message.type === "ru.mail.park.mechanics.requests.BoardMapForUsers$Request"){
-          console.log("Wow. Seems loke game been started");
-          content = JSON.parse(message.content);
-          this.StartGameEvent.content = content;
-          document.dispatchEvent(this.StartGameEvent);
-      }
-      if(message.type === "ru.mail.park.mechanics.requests.NeighborsMessage$Request"){
-        console.log("Получены соседи клетки!");
-        content = JSON.parse(message.content);
-        this.GetNeighborsEvent.content = content;
-        document.dispatchEvent(this.GetNeighborsEvent);
-      }
-      if(message.type === "ru.mail.park.mechanics.requests.PiratMoveMessage$Request") {
-        console.log("О_о сервер, ход другого игрока");
-        content = JSON.parse(message.content);
-        this.MovementEvent.content = content;
-        document.dispatchEvent(this.MovementEvent);
-      }
+      // if(message.type === "ru.mail.park.mechanics.requests.BoardMapForUsers$Request"){
+      //     console.log("Wow. Seems loke game been started");
+      //     content = JSON.parse(message.content);
+      //     this.StartGameEvent.content = content;
+      //     document.dispatchEvent(this.StartGameEvent);
+      // }
+      // if(message.type === "ru.mail.park.mechanics.requests.NeighborsMessage$Request"){
+      //   console.log("Получены соседи клетки!");
+      //   content = JSON.parse(message.content);
+      //   this.GetNeighborsEvent.content = content;
+      //   document.dispatchEvent(this.GetNeighborsEvent);
+      // }
+      // if(message.type === "ru.mail.park.mechanics.requests.PiratMoveMessage$Request") {
+      //   console.log("О_о сервер, ход другого игрока");
+      //   content = JSON.parse(message.content);
+      //   this.MovementEvent.content = content;
+      //   document.dispatchEvent(this.MovementEvent);
+      // }
     }
   }
 
