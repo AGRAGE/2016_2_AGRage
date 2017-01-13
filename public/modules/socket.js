@@ -5,7 +5,7 @@
 
   class GameSocket {
     constructor(){
-      this.socket = new WebSocket("wss://java-heroku-test-victor.herokuapp.com/game");
+      this.socket = new WebSocket("wss://agragebackend.herokuapp.com/api/game/");
       this.messaging = new MessagingTools(this.socket);
 
       this.StartGameEvent = new CustomEvent("StartGame", { content : {}});
@@ -24,7 +24,7 @@
     onSocketOpen(){
       console.log('Info: WebSocket connection opened.');
       console.log('Info: Waiting for another player...');
-      this.messaging.sendJoinGameMsg();
+      //this.messaging.sendJoinGameMsg();
     }
 
     onSocketClose(){
