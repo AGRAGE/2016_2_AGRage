@@ -24,7 +24,7 @@
     onSocketOpen(){
       console.log('Info: WebSocket connection opened.');
       console.log('Info: Waiting for another player...');
-      this.messaging.sendJoinGameMsg();
+      //this.messaging.sendJoinGameMsg();
     }
 
     onSocketClose(){

@@ -25,11 +25,12 @@
 
 	  	}
 
-	  	game_start(){
+	  	start(){
 	  		let tower = {};
 	  		tower.Id = 1;
 	  		tower.Health = 1000;
-	  		this.messaging.TowerHpMessage(tower);
+	  		console.log(this.messaging);
+	  		this.messaging.sendTowerHp(tower);
 	  	}
 	}
 
