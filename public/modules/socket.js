@@ -1,7 +1,7 @@
   (function() {
   'use strict';
   
-    class Tower_defence {
+    class Socket {
 
     this.ws = new WebSocket(address);
 
@@ -112,5 +112,5 @@
       };
     }
     //export
-  window.Tower_defence = Tower_defence;
+  window.Socket = Socket;
 })();

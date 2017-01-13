@@ -74,9 +74,9 @@
 			ctx.closePath();
 		}
 
-		drawHp(ctx){
+		drawHp(ctx, color){
 
-			ctx.fillStyle = "red";
+			ctx.fillStyle = color;
 			ctx.fillRect(this.x + 40, this.y - 20, (this.hp / 10), 20);
 		}
 
