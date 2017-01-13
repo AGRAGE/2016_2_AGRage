@@ -58,12 +58,13 @@
 					this.loginButton.disabled = false;
 					this.loginButton.innerHTML = "Войти";
 					this.errorMessage.hidden = false;
-					this.errorMessage.innerHTML = "Неправильный логин или пароль. попробуйте еще раз!";
+					this.errorMessage.innerHTML = "Неправильный логин или пароль. Попробуйте еще раз!";
 				}
 			};
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/login/', true);
 			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.timeout = 10000;
 			xhr.withCredentials = true;
 			console.log(JSON.stringify(data));
 			xhr.send(JSON.stringify(data));
@@ -120,7 +121,7 @@
 			this.loginForm._get().addEventListener('submit', event => {
 				event.preventDefault();
 				this.loginButton.disabled = true;
-				this.loginButton.innerHTML = "Пожалуйста, подождите";
+				this.loginButton.innerHTML = "Пожалуйста, подождите...";
 				let data = this.loginForm.getFormData();
 				if (this.validation(data)) {
 					/*window.myUser = new User(data);

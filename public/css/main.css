@@ -11,8 +11,9 @@ body {
   border-radius: 4px;
   color: #F50017;
   background-color: #dff0d8;
-width: 300px;
-position: center;
+  width: 300px;
+margin: auto;
+text-align: center;
 }
 
 .profileTable{
