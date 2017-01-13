@@ -1,10 +1,10 @@
-let express = require('express');
+/*let express = require('express');*/
 let parser = require('body-parser');
 let app = express();
-let technoDoc = require('techno-gendoc');
+/*let technoDoc = require('techno-gendoc');*/
 let path = require('path');
 
-let technolibs = require('technolibs');
+/*let technolibs = require('technolibs');*/
 
 app.use('/game', express.static('public', {maxAge: 1}));
 app.use('/chat', express.static('public', {maxAge: 1}));
@@ -17,13 +17,13 @@ app.use('/profile', express.static('public', {maxAge: 1}));
 app.use('/config', express.static('public', {maxAge: 1}));
 app.use('/', express.static('public', { maxAge: 1 }));
 
-technoDoc.generate(require('./api'), 'public');
+/*technoDoc.generate(require('./api'), 'public');*/
 
 app.use(parser.json());
 app.use('/libs', express.static('node_modules'));
 
 
-app.get('/api/session', (req, res) => {
+/*app.get('/api/session', (req, res) => {
 	res.send(technoDoc.mock(require('./api/scheme/Session')))
 });
 
@@ -43,22 +43,20 @@ app.get('/api/messages', function (req, res) {
 		technoDoc.mock(require('./api/scheme/Message')),
 		technoDoc.mock(require('./api/scheme/Message'))
 	])
-});
+});*/
 
-app.listen(process.env.PORT || 3000, () => {
+/*app.listen(process.env.PORT || 3000, () => {
 	console.log(`App started on port ${process.env.PORT || 3000}`);
-});
+});*/
 
-/*const https = require('https');
-const fs = require('fs');
-
-const options = {
-  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
-  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
+var fs = require('fs');
+var https = require('https');
+var options = {
+   key  : fs.readFileSync('server.key'),
+   cert : fs.readFileSync('server.crt')
 };
 
-https.createServer(options, (req, res) => {
-  res.writeHead(200);
-  res.end('hello world\n');
-}).listen(3000);
-*/
+
+https.createServer(options, app).listen(3000, function () {
+   console.log('Started!');
+});
