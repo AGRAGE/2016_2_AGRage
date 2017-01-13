@@ -1,6 +1,5 @@
 (function() {
 	'use strict';
-	//Витя пес
 	// import
 	const Block = window.Block;
 	const Button = window.Button;

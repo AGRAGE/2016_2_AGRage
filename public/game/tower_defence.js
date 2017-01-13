@@ -105,9 +105,9 @@
 					// window.gameRouter.go('/menu/');
 
 					//window.gameRouter.go('/menu/');
-					new Router().go('/menu/');
-					
-					
+					new Router().go('/menu');
+
+
 					//this.router.go('/menu/');
 
 				}
@@ -372,15 +372,15 @@
 
 			console.log(this.give_up);
 			//рисуем разрушенную башню
-			if(this.give_up === true){				
+			if(this.give_up === true){
 				this.tower.draw_destroyed(this.ctx);
 				this.battle_end(this.ctx, "You lose((((");
 				console.log("finish");
-			}	
+			}
 
 			else if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
-			
+
 			else {
 				//alert("Вы проиграли!");
 				this.tower.draw_destroyed(this.ctx);
