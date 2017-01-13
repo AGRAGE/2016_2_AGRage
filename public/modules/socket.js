@@ -5,7 +5,7 @@
 
   class GameSocket {
     constructor(){
-      this.socket = new WebSocket("wss://java-heroku-test-victor.herokuapp.com/game");
+      this.socket = new WebSocket("wss://agragebackend.herokuapp.com/api/game/");
       this.messaging = new MessagingTools(this.socket);
 
       this.StartGameEvent = new CustomEvent("StartGame", { content : {}});
