@@ -156,10 +156,11 @@
 					if (this.bot.get_money() >= 15) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
-							x: 1000,
+							x: 1050,
 							hp: 100,
 							damage: 50,
-							spriteType: 3
+							spriteType: 3,
+							color: "blue"
 						});
 						this.bot.losing_money(15);
 					}
@@ -167,10 +168,11 @@
 					if (this.bot.get_money() >= 30) {
 						this.bot_units[this.bot_units.length] = new Unit1({
 							vx: -0.1,
-							x: 1000,
+							x: 1020,
 							hp: 200,
 							damage: 100,
-							spriteType: 4
+							spriteType: 4,
+							color: "blue"
 						});
 						this.bot.losing_money(30);
 					}
@@ -385,7 +387,7 @@
 				this.battle_end(this.ctx, "You lose((((");
 				this.end = true;
 			}
-			this.tower.drawHp(this.ctx);
+			this.tower.drawHp(this.ctx, "red");
 
 			if (this.bot_tower.getHp() > 0)
 				this.bot_tower.draw(this.ctx);
@@ -395,7 +397,7 @@
 				this.battle_end(this.ctx, "You win!!!!")
 				this.end = true;
 			}
-			this.bot_tower.drawHp(this.ctx);
+			this.bot_tower.drawHp(this.ctx, "blue");
 
 			this.user_panel.draw(this.ctx);
 

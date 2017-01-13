@@ -22,7 +22,7 @@
 			constructor(data = {}
 			) {
 				this.vx = data.vx || 0.1;
-				this.x = data.x || 270;
+				this.x = data.x || 160;
 				this.y = data.y || 300;
 				this.hp = data.hp || 10;
 				this.counter = data.counter || 0;
@@ -35,6 +35,7 @@
 				this.enemy_damage = 0;
 				this.toDestroy = false;
 				this.battle_number = 0;
+				this.color = data.color || "red"
 
 				//это бег гладиатора
 				//this.sprite = new Sprite('gladiator_arena_sprites.gif', [0, 220], [85, 60], 0.005, [0, 1, 2, 3, 4, 5]);
@@ -133,7 +134,7 @@
 
 		drawHp(ctx) {
 
-			ctx.fillStyle = "red";
+			ctx.fillStyle = this.color;
 			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4 * 0.1), 3);
 		}
 

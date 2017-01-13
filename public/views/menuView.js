@@ -161,7 +161,7 @@
 				this.router.go('/game/');
 			});
 			this.buttonSearchGame._get().addEventListener('click', (event) => {
-				this.router.go('/searchGame');
+				this.router.go('/game_online');
 			});
 			this.buttonRating._get().addEventListener('click', (event) => {
 				this.router.go('/rating');

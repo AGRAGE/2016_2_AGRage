@@ -21,7 +21,7 @@
 		.addRoute('/login',loginView)
 		.addRoute('/registration',registView)
 		.addRoute('/menu',menuView)
-		.addRoute('/searchGame',searchGameView)
+		.addRoute('/game_online',onlineGameView)
 		.addRoute('/rating',ratingView)
 		.addRoute('/profile',profileView)
 		.addRoute('/config',configView)
