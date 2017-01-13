@@ -10,7 +10,7 @@
 	const View = window.View;
 
 
-	class Tower_defence {
+	class TD_online {
 
 		/**
 		 * Конструктор
@@ -133,5 +133,5 @@
 
 
 	//export
-	window.Tower_defence = Tower_defence;
+	window.TD_online = TD_online;
 })();
