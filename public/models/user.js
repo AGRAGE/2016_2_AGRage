@@ -63,6 +63,7 @@
 		session() {
 			return this.sendRequest('session/', 'POST', {});
 		}
+
 		sendRequest(to, curMethod, curBody = {}) {
 			return new Promise((resolve, reject) => {
 				//let responseObj = {};
@@ -85,6 +86,9 @@
 									response.status);
 								return;
 							}
+							//var responseObj = {};
+							//var responseObj.body = response.json();
+							//var responseObj.status = response.status;
 							resolve(response.json());
 						}
 					)

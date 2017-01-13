@@ -8,7 +8,6 @@
 			super(options);
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
-
 			this.tableExist = false;
 			//if (this.cookieCheck()) {
 			//this.newRating();
