@@ -10,7 +10,7 @@ body {
     color: #FF0000 !important;
     background-color: #FFFFFF !important;
     opacity: 0.8 !important;
-    
+
 }
 
 .table td{
@@ -20,6 +20,8 @@ body {
 .js-canvas{
 	position: absolute;
     left: 0px;
+	height: 720px;
+    width: 1280px;
 }
 
 html {
@@ -27,6 +29,7 @@ html {
     font-size: 62.5%;
     height: 100%;
     width: 100%;
+
 }
 
 .js-menu{

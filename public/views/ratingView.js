@@ -8,6 +8,7 @@
 			super(options);
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
+
 			this.tableExist = false;
 			//if (this.cookieCheck()) {
 			//this.newRating();
@@ -26,10 +27,10 @@
 
 		pause() {
 			super.pause();
-			this.counter = true;
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
+
 		}
 
 		table(responseObj) {
