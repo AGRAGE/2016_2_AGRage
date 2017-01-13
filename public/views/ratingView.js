@@ -8,9 +8,10 @@
 			super(options);
 			this._el = document.querySelector('.js-rating');
 			this.backGround = document.getElementsByClassName('bg');
-			//if (this.cookieCheck()) {
-			this.newRating();
 
+			this.tableExist = false;
+			//if (this.cookieCheck()) {
+			//this.newRating();
 			//}
 		}
 
@@ -19,7 +20,9 @@
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
-
+			if (!this.tableExist) {
+				this.newRating();
+			}
 		}
 
 		pause() {
@@ -27,6 +30,7 @@
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "hidden";
 			}
+
 		}
 
 		table(responseObj) {
@@ -63,23 +67,23 @@
 
 		addListeners() {
 			this.buttonBack._get().addEventListener('click', (event) => {
-				this.pause();
 				this.router.go('/menu');
 			});
 		}
 
 
+
 		newRating() {
 			function ratingCheck() { // (3)
 				if (xhr.readyState != 4) return;
-				this.pause();
-				this.createElements();
-				this.addElements();
-				this.addListeners();
+
 				if (xhr.status == 200) {
-					this.resume();
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
+					this.createElements();
+					this.addElements();
+					this.addListeners();
 					this.table(data);
+					this.tableExist = true;
 					//return data;
 					return true;
 				} else {
@@ -87,6 +91,7 @@
 					this.router.go('/');
 				}
 			}
+			console.log("send for rating");
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/rating/', true);
 			xhr.withCredentials = true;

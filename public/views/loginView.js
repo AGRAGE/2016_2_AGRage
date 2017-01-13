@@ -100,6 +100,7 @@
 		}
 		resume() {
 			super.resume();
+	
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}

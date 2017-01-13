@@ -49,6 +49,7 @@
 		 */
 		show(options = {}) {
 			this._el.hidden = "";
+			console.log("show");
 		}
 
 		/**
