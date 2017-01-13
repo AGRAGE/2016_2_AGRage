@@ -10,8 +10,8 @@
 			console.log("menuView constructor start");
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			this.tableExist = true;
-			this.cookieCheck();
+			this.cookieChecked = false;
+
 		}
 
 		cookieCheck() {
@@ -20,13 +20,11 @@
 				if (xhr.readyState != 4) {
 					return;
 				}
-				this.pause();
-				this.createElements();
-				this.addElements();
-				this.addListeners();
-				this.newProfile();
+				//this.newProfile();
 				if (xhr.status == 200) {
-					this.resume();
+					this.createElements();
+					this.addElements();
+					this.addListeners();
 				} else {
 					this.router = new Router();
 					this.router.go('/');
@@ -41,6 +39,11 @@
 
 		resume() {
 			super.resume();
+			if (!this.cookieChecked) {
+				this.cookieCheck();
+				this.newProfile();
+			}
+			//this.newProfile();
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
@@ -127,7 +130,7 @@
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
 					this.table(data);
-					this.tableExist = true;
+					this.cookieChecked = true;
 					//return data;
 					return true;
 				} else {
