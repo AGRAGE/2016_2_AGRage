@@ -5,6 +5,16 @@ body {
     margin: 0;
 }
 
+.profileTable{
+	width: 100px !important;
+    color: #FF0000 !important;
+    background-color: #FFFFFF !important;
+    opacity: 0.8 !important;
+	position: absolute;
+	right: 200px;
+	top: 30px;
+}
+
 .table{
     width: 500px !important;
     color: #FF0000 !important;

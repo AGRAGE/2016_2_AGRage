@@ -10,6 +10,7 @@
 			console.log("menuView constructor start");
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
+			this.tableExist = true;
 			this.cookieCheck();
 		}
 
@@ -23,6 +24,7 @@
 				this.createElements();
 				this.addElements();
 				this.addListeners();
+				this.newProfile();
 				if (xhr.status == 200) {
 					this.resume();
 				} else {
@@ -87,45 +89,8 @@
 			});
 		}
 
-		sendRequest(to, curMethod, curBody = {}, cookie) {
-			return new Promise((resolve, reject) => {
-				//let responseObj = {};
-				const baseUrl = 'https://agragebackend.herokuapp.com/api/user/';
-				const myUrl = baseUrl + to;
-				fetch(myUrl, {
-						method: curMethod,
-						mode: 'cors',
-						credentials: cookie,
-						headers: {
-							"Content-Type": "application/json; charset=UTF-8",
-						},
-						body: JSON.stringify(curBody)
-					})
-					.then(
-						function(response) {
-							console.log(response);
-							if (response.status !== 200) {
-								console.log('Looks like there was a problem. Status Code: ' +
-									response.status);
-								return;
-							}
-							resolve(response.json());
-						}
-					)
-					.catch(function(err) {
-						console.log('Fetch Error :-S', err);
-						let responseObj = {
-							status: 0
-						};
-						reject(responseObj);
-					})
-			})
-		}
 
-		logout() {
-			return this.sendRequest('logout/', 'POST', {}, "include");
 
-		}
 		logout2() {
 			function logoutCheck() { // (3)
 				if (xhr.readyState != 4) return;
@@ -143,6 +108,40 @@
 			xhr.send(null);
 			xhr.onreadystatechange = logoutCheck.bind(this);
 
+		}
+
+		table(responseObj) {
+			var str = "<table class = \"profileTable\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
+			str += "<tr>";
+			str += "<td >Здравствуйте,</td>";
+			str += "<td >" + responseObj.username + "</td>";
+			str += "</tr>";
+			str += "</table>";
+			this._el.insertAdjacentHTML("afterBegin", str);
+		}
+
+		newProfile() {
+			function profileCheck() { // (3)
+				if (xhr.readyState != 4) return;
+
+				if (xhr.status == 200) {
+					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
+					this.table(data);
+					this.tableExist = true;
+					//return data;
+					return true;
+				} else {
+					this.router = new Router();
+					this.router.go('/');
+				}
+			}
+			console.log("send for rating");
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
+			xhr.withCredentials = true;
+			xhr.send(null);
+			xhr.onreadystatechange = profileCheck.bind(this);
+			return xhr.responseText;
 		}
 
 
