@@ -45,6 +45,18 @@ app.get('/api/messages', function (req, res) {
 	])
 });*/
 
-app.listen(process.env.PORT || 3000, () => {
+/*app.listen(process.env.PORT || 3000, () => {
 	console.log(`App started on port ${process.env.PORT || 3000}`);
+});*/
+
+var fs = require('fs');
+var https = require('https');
+var options = {
+   key  : fs.readFileSync('server.key'),
+   cert : fs.readFileSync('server.crt')
+};
+
+
+https.createServer(options, app).listen(process.env.PORT || 3000, function () {
+   console.log('Started!');
 });
