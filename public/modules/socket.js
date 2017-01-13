@@ -3,28 +3,16 @@
   
     class Socket {
 
-    this.ws = new WebSocket(address);
+    constructor(){
+        this.ws = new WebSocket(address);
 
-      this.id = -1;
-      this.players = {};
+        this.id = -1;
+        this.players = {};
 
-      this.addObject();
-      this.connect();
-      this.createPostProcessing();
+        this.connect();
 
-      this.createPlayer();
     }
 
-    addObject() {
-      new WHS.Box({
-        geometry: [10 + Math.random() * 90, 10 + Math.random() * 90, 10 + Math.random() * 90],
-        material: {
-          color: UTILS.$colors.mesh,
-          kind: 'lambert'
-        },
-        position: [Math.random() * 1000 - 500, 0, Math.random() * 1000 - 500]
-      }).addTo(this.world);
-    }
 
     connect() {
       this.ws.onopen = () => {
