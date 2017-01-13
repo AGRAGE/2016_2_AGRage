@@ -15,8 +15,7 @@
 
     const View = window.View;
     const Form = window.Form;
-    const Tower_defence = window.Tower_defence;
-    //const Router = window.Router;
+    const TD_online = window.TD_online;
 
 
     class onlineGameView extends View {
@@ -42,7 +41,7 @@
             super.resume();
             this._initCanvas();
 
-            this._game = new Tower_defence({
+            this._game = new TD_online({
                 ctx: this.canvas.getContext('2d'),
                 width: +this.canvas.width,
                 height: +this.canvas.height
