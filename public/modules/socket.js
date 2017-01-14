@@ -19,8 +19,10 @@
 			this.socket.onmessage = this.onSocketMessage.bind(this);*/
 			sock.onopen = function() {
 				console.log('open');
-				sock.send('test');
-				sock.close();
+				//sock.send('test');
+			};
+			sock.onclose= function() {
+				console.log('close');
 			};
 
 		}

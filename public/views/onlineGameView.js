@@ -66,7 +66,6 @@
                         width: +this.canvas.width,
                         height: +this.canvas.height
                     });
-
                     this._game.start();
                     window.isGame = true;
                     return true;

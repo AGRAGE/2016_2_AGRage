@@ -9,8 +9,13 @@
 	const Router = window.Router;
 	const View = window.View;
 
+	const MessagingTools = window.MessagingTools;
+	const GameSocket = window.GameSocket;
 
-	class mTower_defence {
+	// const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+	// const address = `${protocol}//${location.host}/api/game`;
+
+	class TD_online {
 
 		/**
 		 * Конструктор
@@ -28,6 +33,7 @@
 			this.user_panel = new mUser_panel({});
 			this.bot = new mBot({});
 
+			this.socket = new GameSocket();
 			//this.counter = 1;
 
 			this.bot_units = [];
@@ -63,7 +69,7 @@
 
 			this.end = false;
 
-			this.give_up =false;
+			this.give_up = false;
 		}
 
 		/**
@@ -91,12 +97,12 @@
 				exec = this.exec.bind(this);
 
 			function step() {
-			//	var now = Date.now(),
-			//		dt = now - (time || now);
+				//	var now = Date.now(),
+				//		dt = now - (time || now);
 				var time = new Date(16);
 
 				var dt = time.getUTCMilliseconds();
-		//		time = now;
+				//		time = now;
 
 				//console.log(dt);
 
@@ -231,7 +237,7 @@
 						unit.nullCounter();
 						//console.log('1');
 					}
-					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true)  && (unit.getBattle_number() === bot_unit.getBattle_number())) {
+					if ((bot_unit.getCounter() > 2000) && (bot_unit.get_battle_status() === true) && (unit.getBattle_number() === bot_unit.getBattle_number())) {
 						unit.battle();
 						bot_unit.nullCounter();
 						//console.log('2');
@@ -376,13 +382,11 @@
 
 			console.log(this.give_up);
 			//рисуем разрушенную башню
-			if(this.give_up === true){
+			if (this.give_up === true) {
 				this.tower.draw_destroyed(this.ctx);
 				this.battle_end(this.ctx, "You lose((((");
 				console.log("finish");
-			}
-
-			else if (this.tower.getHp() > 0)
+			} else if (this.tower.getHp() > 0)
 				this.tower.draw(this.ctx);
 
 			else {
@@ -513,10 +517,11 @@
 			ctx.closePath();
 
 		}
+
 	}
 
 
 
 	//export
-	window.mTower_defence = mTower_defence;
+	window.TD_online = TD_online;
 })();
