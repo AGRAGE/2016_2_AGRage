@@ -20,7 +20,7 @@
           this.socket.send(JSON.stringify(getPingMessage));
         };
 
-        TowerHpMessage(tower){
+        sendTowerHpMessage(tower){
           let TowerHpMessage = {}
           TowerHpMessage.type ="ru.agrage.project.Mechanics.Requests;";
           TowerHpMessage.content = JSON.stringify(tower);
