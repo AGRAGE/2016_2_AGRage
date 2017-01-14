@@ -2,7 +2,7 @@
 	'use strict';
 
 
-	class User_panel {
+	class mUser_panel {
 
 		/**
 		 * Конструктор класса Unit1
@@ -42,7 +42,7 @@
 		draw (ctx) {
 			ctx.beginPath();
 			var canvas = document.getElementById("canvas");
-			
+
 			var image = new Image();
 			image.src = "money.gif";
 			ctx.drawImage(image, 50, 1, 30, 30);
@@ -67,5 +67,5 @@
 	}
 
 	//export
-	window.User_panel = User_panel;
+	window.mUser_panel = mUser_panel;
 })();
