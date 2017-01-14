@@ -49,7 +49,7 @@
             super.pause();
             this.gameBackGround[0].hidden = "hidden";
         }
-        
+
 
 
 

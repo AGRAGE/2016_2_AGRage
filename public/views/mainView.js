@@ -32,14 +32,16 @@
 					this.router.go('/menu');
 					//return data;
 					return true;
+				} else if (xhr.status == 500) {
+					this.errorMessage.hidden = false;
 				} else {
 					this.createElements();
 					this.addElements();
 					this.addListeners();
 					this.cookieChecked = true;
-
 				}
 			}
+
 			console.log("send for session");
 			var xhr = new XMLHttpRequest();
 			xhr.open('POST', 'https://agragebackend.herokuapp.com/api/user/session/', true);
@@ -60,11 +62,17 @@
 				classAttrs: ['mainRegistrationButton'],
 				text: 'РЕГИСТРАЦИЯ',
 			});
+			var errorMessage = document.createElement('div');
+			errorMessage.className = "errorMessage";
+			errorMessage.innerHTML = "Сервер не отвечает или временно недоступен. Перезвоните позже. Пип.Пип.Пип...";
+			this.errorMessage = errorMessage;
 		}
 
 		addElements() {
 			this._el.appendChild(this.buttonLogin._get());
 			this._el.appendChild(this.buttonRegister._get());
+			this.errorMessage.hidden = true;
+			this._el.appendChild(this.errorMessage);
 		}
 
 		addListeners() {

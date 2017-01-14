@@ -66,4 +66,3 @@
   window.GameSocket = GameSocket;
 
 })();
-

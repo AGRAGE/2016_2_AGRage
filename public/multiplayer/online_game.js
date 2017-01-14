@@ -29,7 +29,6 @@
 	  		let tower = {};
 	  		tower.Id = 1;
 	  		tower.Health = 1000;
-	  		//console.log(this.messaging);
 	  		this.messaging.TowerHpMessage(tower);
 	  	}
 
@@ -67,9 +66,9 @@
 	}
 
 
- 
 
-		
+
+
 	//export
 	window.TD_online = TD_online;
 })();
