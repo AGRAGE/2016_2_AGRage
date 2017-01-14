@@ -59,6 +59,11 @@
 					this.loginButton.innerHTML = "Войти";
 					this.errorMessage.hidden = false;
 					this.errorMessage.innerHTML = "Неправильный логин или пароль. Попробуйте еще раз!";
+				}	else {
+					this.loginButton.disabled = false;
+					this.loginButton.innerHTML = "Войти";
+					this.errorMessage.hidden = false;
+					this.errorMessage.innerHTML = "Сервер не доступен. Попробуйте еще раз!";
 				}
 			};
 			var xhr = new XMLHttpRequest();

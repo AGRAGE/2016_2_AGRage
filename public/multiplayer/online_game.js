@@ -20,7 +20,7 @@
 	  	constructor(options) {
 
             let socket = new GameSocket();
-            this.messaging = socket.getMessaging();
+            //this.messaging = socket.getMessaging();
 
 
 	  	}
@@ -29,9 +29,8 @@
 	  		let tower = {};
 	  		tower.Id = 1;
 	  		tower.Health = 1000;
-	  		//console.log(this.messaging);
-	  		this.messaging.sendTowerHpMessage(tower);
-	  	}
+	  		//this.messaging.TowerHpMessage(tower);
+
 
 	  	startLoop() {
 			let time,
@@ -67,9 +66,9 @@
 	}
 
 
- 
 
-		
+
+
 	//export
 	window.TD_online = TD_online;
 })();
