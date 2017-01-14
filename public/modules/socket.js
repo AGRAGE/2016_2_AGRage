@@ -1,47 +1,54 @@
-  (function(){
-  'use strict'
+(function() {
+	'use strict'
 
-  const MessagingTools = window.MessagingTools;
+	const MessagingTools = window.MessagingTools;
 
-  class GameSocket {
-    constructor(){
-      this.socket = new WebSocket("wss://agragebackend.herokuapp.com/api/game/");
-      this.messaging = new MessagingTools(this.socket);
+	class GameSocket {
+		constructor() {
 
-      this.StartGameEvent = new CustomEvent("StartGame", { content : {}});
-      this.GetNeighborsEvent = new CustomEvent("GetNeighbors", { content : {}});
-      this.MovementEvent = new CustomEvent("Movement", {content : {}});
+			var sock = new SockJS('https://agragebackend.herokuapp.com/api/game/');
+			/*this.socket = new WebSocket("wss://agragebackend.herokuapp.com/api/game/");
+			this.messaging = new MessagingTools(this.socket);
 
-      this.socket.onopen = this.onSocketOpen.bind(this);
-      this.socket.onclose = this.onSocketClose;
-      this.socket.onmessage = this.onSocketMessage.bind(this);
-    }
+			this.StartGameEvent = new CustomEvent("StartGame", { content : {}});
+			this.GetNeighborsEvent = new CustomEvent("GetNeighbors", { content : {}});
+			this.MovementEvent = new CustomEvent("Movement", {content : {}});
 
-    getMessaging(){
-      return this.messaging;
-    }
+			this.socket.onopen = this.onSocketOpen.bind(this);
+			this.socket.onclose = this.onSocketClose;
+			this.socket.onmessage = this.onSocketMessage.bind(this);*/
+			sock.onopen = function() {
+				console.log('open');
+				sock.send('test');
+				sock.close();
+			};
 
-    onSocketOpen(){
-      console.log('Info: WebSocket connection opened.');
-      console.log('Info: Waiting for another player...');
-      //this.messaging.sendJoinGameMsg();
-    }
+		}
 
-    onSocketClose(){
-      console.log('Info: WebSocket closed.');
-    }
+		getMessaging() {
+			return this.messaging;
+		}
 
-    onSocketMessage(event){
-      let content = {};
+		onSocketOpen() {
+			console.log('Info: WebSocket connection opened.');
+			console.log('Info: Waiting for another player...');
+			//this.messaging.sendJoinGameMsg();
+		}
+
+		onSocketClose() {
+			console.log('Info: WebSocket closed.');
+		}
+
+		onSocketMessage(event) {
+			/*  let content = {};
       let responseContent = {};
       let response = {};
       let message = JSON.parse(event.data);
-      if(message.type === "ru.mail.park.websocket.MessageToClient$Request") {
+      //if(message.type === "ru.mail.park.websocket.MessageToClient$Request")
           content = JSON.parse(message.content);
           responseContent.myMessage = content.myMessage;
           console.log(responseContent.myMessage);
           return;
-      }
       // if(message.type === "ru.mail.park.mechanics.requests.BoardMapForUsers$Request"){
       //     console.log("Wow. Seems loke game been started");
       //     content = JSON.parse(message.content);
@@ -60,9 +67,10 @@
       //   this.MovementEvent.content = content;
       //   document.dispatchEvent(this.MovementEvent);
       // }
-    }
-  }
+	  */
+		}
+	}
 
-  window.GameSocket = GameSocket;
+	window.GameSocket = GameSocket;
 
 })();

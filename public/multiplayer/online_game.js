@@ -20,7 +20,7 @@
 	  	constructor(options) {
 
             let socket = new GameSocket();
-            this.messaging = socket.getMessaging();
+            //this.messaging = socket.getMessaging();
 
 
 	  	}
@@ -29,7 +29,7 @@
 	  		let tower = {};
 	  		tower.Id = 1;
 	  		tower.Health = 1000;
-	  		this.messaging.TowerHpMessage(tower);
+	  		//this.messaging.TowerHpMessage(tower);
 	  	}
 
 	  	startLoop() {
