@@ -1,16 +1,16 @@
 (function() {
 	'use strict';
-	const Unit1 = window.Unit1;
-	const keyMaster = window.keyMaster;
-	const Tower = window.Tower;
+	const mUnit1 = window.mUnit1;
+	const mkeyMaster = window.mkeyMaster;
+	const mTower = window.mTower;
 	const GameButton = window.GameButton;
-	const User_panel = window.User_panel;
-	const Bot = window.Bot;
+	const mUser_panel = window.mUser_panel;
+	const mBot = window.mBot;
 	const Router = window.Router;
 	const View = window.View;
 
 
-	class Tower_defence {
+	class mTower_defence {
 
 		/**
 		 * Конструктор
@@ -25,21 +25,21 @@
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
-			this.user_panel = new User_panel({});
-			this.bot = new Bot({});
+			this.user_panel = new mUser_panel({});
+			this.bot = new mBot({});
 
 			//this.counter = 1;
 
 			this.bot_units = [];
 			this.units = [];
 			//this.units[0] = new Unit1({});
-			this.tower = new Tower({
+			this.tower = new mTower({
 				x: 0,
 				y: 60,
 				hp: 1000
 			});
 
-			this.bot_tower = new Tower({
+			this.bot_tower = new mTower({
 				x: 1100,
 				y: 60,
 				hp: 1000
@@ -47,7 +47,7 @@
 
 
 			this.readyToShot = true;
-			this.key = new keyMaster();
+			this.key = new mkeyMaster();
 
 			this.poscoord = poscoord;
 
@@ -158,7 +158,7 @@
 				var i = this.bot.command();
 				if (i === 1) {
 					if (this.bot.get_money() >= 15) {
-						this.bot_units[this.bot_units.length] = new Unit1({
+						this.bot_units[this.bot_units.length] = new mUnit1({
 							vx: -0.1,
 							x: 1050,
 							hp: 100,
@@ -170,7 +170,7 @@
 					}
 				} else {
 					if (this.bot.get_money() >= 30) {
-						this.bot_units[this.bot_units.length] = new Unit1({
+						this.bot_units[this.bot_units.length] = new mUnit1({
 							vx: -0.1,
 							x: 1020,
 							hp: 200,
@@ -459,7 +459,7 @@
 				} else {
 
 					this.user_panel.losing_money(15);
-					this.units[this.units.length] = new Unit1({
+					this.units[this.units.length] = new mUnit1({
 						hp: 100,
 						damage: 50,
 						spriteType: 1
@@ -477,7 +477,7 @@
 				} else {
 
 					this.user_panel.losing_money(30);
-					this.units[this.units.length] = new Unit1({
+					this.units[this.units.length] = new mUnit1({
 						hp: 200,
 						damage: 100,
 						spriteType: 2
@@ -518,5 +518,5 @@
 
 
 	//export
-	window.Tower_defence = Tower_defence;
+	window.mTower_defence = mTower_defence;
 })();

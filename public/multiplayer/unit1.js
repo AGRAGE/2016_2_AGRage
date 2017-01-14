@@ -1,21 +1,21 @@
 (function() {
 		'use strict';
-		const Sprite = window.Sprite;
+		const mSprite = window.mSprite;
 
 		//это удар скелета
-		const spriteSkeletonFight = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
+		const spriteSkeletonFight = new mSprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
 
 		//симметричный удар скелета
-		const spriteSkeletonFightReverse = new Sprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
+		const spriteSkeletonFightReverse = new mSprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
 
 		//это удар огра
-		const spriteOgrFight = new Sprite('DnD-OgreLeader.png', [255, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
+		const spriteOgrFight = new mSprite('DnD-OgreLeader.png', [255, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
 
 		//симметричный удар огра
-		const spriteOgrFightReverse = new Sprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
+		const spriteOgrFightReverse = new mSprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
 
 
-		class Unit1 {
+		class mUnit1 {
 			/**
 			 * Конструктор класса Unit1
 			 */
@@ -44,13 +44,13 @@
 				//this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
 
 				if (this.spriteType === 1) {
-					this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
+					this.sprite = new mSprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
 				} else if (this.spriteType === 2) {
-					this.sprite = new Sprite('DnD-OgreLeader.png', [318.4, 216], [96, 92], 0.007, [6, 5, 4, 3, 2, 1, 0]);
+					this.sprite = new mSprite('DnD-OgreLeader.png', [318.4, 216], [96, 92], 0.007, [6, 5, 4, 3, 2, 1, 0]);
 				} else if (this.spriteType === 3) {
-					this.sprite = new Sprite('SkeletonReverse.png', [335, 335], [55, 60], 0.005, [2, 1, 0]);
+					this.sprite = new mSprite('SkeletonReverse.png', [335, 335], [55, 60], 0.005, [2, 1, 0]);
 				} else if (this.spriteType === 4) {
-					this.sprite = new Sprite('DnD-OgreLeaderReverse.png', [34, 216], [96, 92], 0.007, [0, 1, 2, 3, 4, 5, 6]);;
+					this.sprite = new mSprite('DnD-OgreLeaderReverse.png', [34, 216], [96, 92], 0.007, [0, 1, 2, 3, 4, 5, 6]);;
 				}
 
 
@@ -91,12 +91,12 @@
 						if (this.spriteNeedChange == 0) {
 							this.spriteNeedChange = 1;
 							if (this.spriteType == 1) {
-								this.sprite = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
+								this.sprite = new mSprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
 							} else if (this.spriteType == 3) {
-								this.sprite = new Sprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
+								this.sprite = new mSprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
 							}
 						}
-						
+
 						this.stopped = true;
 
 					}
@@ -108,9 +108,9 @@
 					if (this.spriteNeedChange == 0) {
 						this.spriteNeedChange = 1;
 						if (this.spriteType == 2) {
-							this.sprite = new Sprite('DnD-OgreLeader.png', [255, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
+							this.sprite = new mSprite('DnD-OgreLeader.png', [255, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
 						} else if (this.spriteType == 4) {
-							this.sprite = new Sprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
+							this.sprite = new mSprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
 						}
 					}
 
@@ -138,7 +138,7 @@
 			ctx.fillRect((this.x + 10), (this.y - 5), (this.hp * 4 * 0.1), 3);
 		}
 
-		
+
 
 		get_damage() {
 			//console.log(this.damage);
@@ -149,26 +149,26 @@
 		changeSprite(battleStatus){
 			if(battleStatus) {
 				if (this.spriteType === 1) {
-					this.sprite = new Sprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
+					this.sprite = new mSprite('Skeleton.gif', [0, 170], [60, 75], 0.003, [0, 1]);
 				}
 				else if (this.spriteType === 2) {
-					this.sprite = new Sprite('DnD-OgreLeader.png', [230, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
+					this.sprite = new mSprite('DnD-OgreLeader.png', [230, 950], [136, 92], 0.007, [5, 4, 0, 4, 5]);
 				}else if (this.spriteType === 3) {
-					this.sprite = new Sprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
+					this.sprite = new mSprite('SkeletonReverse.png', [380, 170], [60, 75], 0.003, [0, 1]);
 				}else if (this.spriteType === 4) {
-					this.sprite = new Sprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
+					this.sprite = new mSprite('DnD-OgreLeaderReverse.png', [0, 950], [126, 92], 0.007, [5, 4, 0, 4, 5]);
 				}
 			}
 			else{
 				if (this.spriteType === 1) {
-					this.sprite = new Sprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
+					this.sprite = new mSprite('Skeleton.gif', [0, 335], [55, 60], 0.005, [0, 1, 2]);
 				} else if (this.spriteType === 2) {
-					this.sprite = new Sprite('DnD-OgreLeader.png', [318.4, 216], [96, 92], 0.007, [6, 5, 4, 3, 2, 1, 0]);
+					this.sprite = new mSprite('DnD-OgreLeader.png', [318.4, 216], [96, 92], 0.007, [6, 5, 4, 3, 2, 1, 0]);
 				} else if (this.spriteType === 3) {
-					this.sprite = new Sprite('SkeletonReverse.png', [335, 335], [55, 60], 0.005, [2, 1, 0]);
+					this.sprite = new mSprite('SkeletonReverse.png', [335, 335], [55, 60], 0.005, [2, 1, 0]);
 				} else if (this.spriteType === 4) {
-					this.sprite = new Sprite('DnD-OgreLeaderReverse.png', [34, 216], [96, 92], 0.007, [0, 1, 2, 3, 4, 5, 6]);;
-				}			
+					this.sprite = new mSprite('DnD-OgreLeaderReverse.png', [34, 216], [96, 92], 0.007, [0, 1, 2, 3, 4, 5, 6]);;
+				}
 			}
 		}
 
@@ -218,7 +218,7 @@
 		}
 
 		setBattle_number(num){
-			this.battle_number = num; 
+			this.battle_number = num;
 		}
 
 
@@ -242,5 +242,5 @@
 	}
 
 	//export
-	window.Unit1 = Unit1;
+	window.mUnit1 = mUnit1;
 })();

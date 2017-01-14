@@ -1,11 +1,11 @@
 (function() {
 	'use strict';
-	const Unit1 = window.Unit1;
-	const keyMaster = window.keyMaster;
-	const Tower = window.Tower;
+	const mUnit1 = window.mUnit1;
+	const mkeyMaster = window.mkeyMaster;
+	const mTower = window.mTower;
 	const GameButton = window.GameButton;
-	const User_panel = window.User_panel;
-	const Bot = window.Bot;
+	const mUser_panel = window.mUser_panel;
+	const mBot = window.mBot;
 	const Router = window.Router;
 	const View = window.View;
 
@@ -17,22 +17,22 @@
 
 	class TD_online {
 
-	  	constructor(options) {
+		constructor(options) {
 
-            let socket = new GameSocket();
-            //this.messaging = socket.getMessaging();
-
-
-	  	}
-
-	  	start(){
-	  		let tower = {};
-	  		tower.Id = 1;
-	  		tower.Health = 1000;
-	  		//this.messaging.TowerHpMessage(tower);
+			let socket = new GameSocket();
+			//this.messaging = socket.getMessaging();
 
 
-	  	startLoop() {
+		}
+
+		start() {
+			let tower = {};
+			tower.Id = 1;
+			tower.Health = 1000;
+			//this.messaging.TowerHpMessage(tower);
+		}
+
+		startLoop() {
 			let time,
 				isStopped = this.isStopped.bind(this),
 				exec = this.exec.bind(this);

@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	class Tower {
+	class mTower {
 
 		/**
 		 * Конструктор класса Tower
@@ -14,7 +14,7 @@
 
 
 		checkcollision ({width, height}, action = 'reflect', coord, damage, spriteType) {
-			let result = {};	
+			let result = {};
 
 				if(this.hp <= 0){
 					this.hp = 0;
@@ -22,18 +22,18 @@
 				}
 				else if(spriteType === 1){
 					if (coord + 230 > width || coord < 160) {
-					result.x = true;	
-					this.hp -= damage;	
+					result.x = true;
+					this.hp -= damage;
 					}
 				}
 				else {
 					if (coord + 260 > width || coord < 160) {
-						result.x = true;	
+						result.x = true;
 						this.hp -= damage;
 					}
 				}
 
-			
+
 			this[action](result);
 		}
 
@@ -60,7 +60,7 @@
 			ctx.beginPath();
 
 			var image = new Image();
-			image.src = "tower.png"; 
+			image.src = "tower.png";
 
 			ctx.drawImage(image, this.x, this.y, 180, 360);
 			ctx.closePath();
@@ -68,7 +68,7 @@
 
 		draw_destroyed(ctx){
 			var image = new Image();
-			image.src = "destroyed.png"; 
+			image.src = "destroyed.png";
 
 			ctx.drawImage(image, this.x + 30, this.y, 150, 360);
 			ctx.closePath();
@@ -84,9 +84,9 @@
 
 
 
-		
+
 	}
 
 	//export
-	window.Tower = Tower;
+	window.mTower = mTower;
 })();

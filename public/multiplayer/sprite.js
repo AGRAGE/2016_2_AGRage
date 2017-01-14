@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	class Sprite {
+	class mSprite {
 
 		constructor(url, pos, size, speed, frames, dir, once) {
 			this.pos = pos;
@@ -54,5 +54,5 @@
 				this.size[0], this.size[1]);
 		}
 	}
-	window.Sprite = Sprite;
+	window.mSprite = mSprite;
 })();

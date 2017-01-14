@@ -6,7 +6,7 @@
 	/**
 	 * Модуль для опреления нажатых клавиш
 	 */
-	class keyMaster {
+	class mkeyMaster {
 
 		/**
 		 * Конструктор класса KeyMaster
@@ -56,5 +56,5 @@
 	}
 
 	//export
-	window.keyMaster = keyMaster;
+	window.mkeyMaster = mkeyMaster;
 })();

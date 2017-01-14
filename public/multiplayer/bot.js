@@ -1,11 +1,11 @@
 (function () {
 	'use strict';
 
-	const Unit1 = window.Unit1;
-	const Tower = window.Tower;
+	const mUnit1 = window.mUnit1;
+	const mTower = window.mTower;
 
 
-	class Bot {
+	class mBot {
 
 		constructor ({min = 1, max = 2, counter = 0, money = 100}) {
 			this.min = min;
@@ -52,5 +52,5 @@
 
 
 	//export
-	window.Bot = Bot;
+	window.mBot = mBot;
 })();
