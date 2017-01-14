@@ -10,7 +10,7 @@
 			console.log("menuView constructor start");
 			this._el = document.querySelector('.js-menu');
 			this.backGround = document.getElementsByClassName('bg');
-			this.cookieChecked = false;
+			this.buttonsExist = false;
 
 		}
 
@@ -22,9 +22,7 @@
 				}
 				//this.newProfile();
 				if (xhr.status == 200) {
-					this.createElements();
-					this.addElements();
-					this.addListeners();
+
 				} else {
 					this.router = new Router();
 					this.router.go('/');
@@ -39,10 +37,10 @@
 
 		resume() {
 			super.resume();
-			if (!this.cookieChecked) {
+			//if (!this.cookieChecked) {
 				this.cookieCheck();
 				this.newProfile();
-			}
+			//}
 			//this.newProfile();
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
@@ -90,6 +88,10 @@
 				classAttrs: ['LoginButton'],
 				text: 'выход из профиля',
 			});
+
+			var profile = document.createElement('div');
+			profile.className = "myProfile";
+			this.profile = profile;
 		}
 
 
@@ -120,7 +122,8 @@
 			str += "<td >" + responseObj.username + "</td>";
 			str += "</tr>";
 			str += "</table>";
-			this._el.insertAdjacentHTML("afterBegin", str);
+			//this._el.insertAdjacentHTML("afterBegin", str);
+			this.profile.innerHTML = str;
 		}
 
 		newProfile() {
@@ -129,8 +132,13 @@
 
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
+					if(!this.buttonsExist){
+						this.createElements();
+						this.addElements();
+						this.addListeners();
+					}
 					this.table(data);
-					this.cookieChecked = true;
+					this.buttonsExist = true;
 					//return data;
 					return true;
 				} else {
@@ -156,6 +164,7 @@
 			this._el.appendChild(this.buttonUserProfile._get());
 			this._el.appendChild(this.buttonConfig._get());
 			this._el.appendChild(this.buttonExit._get());
+			this._el.appendChild(this.profile);
 		}
 
 		addListeners() {
