@@ -31,19 +31,21 @@
 			this.ctx = ctx;
 			this.width = width;
 			this.height = height;
-			this.user_panel = new mUser_panel({});
+			this.user_panel = new User_panel({});
+			this.bot = new Bot({});
+
 			//this.counter = 1;
 
-			this.enemy_units = [];
+			this.bot_units = [];
 			this.units = [];
 			//this.units[0] = new Unit1({});
-			this.tower = new mTower({
+			this.tower = new Tower({
 				x: 0,
 				y: 60,
 				hp: 1000
 			});
 
-			this.enemy_tower = new mTower({
+			this.bot_tower = new Tower({
 				x: 1100,
 				y: 60,
 				hp: 1000
