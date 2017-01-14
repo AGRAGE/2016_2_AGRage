@@ -118,13 +118,22 @@
 		table(responseObj) {
 			var str = "<table class = \"profileTable\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\" align=\"center\" >";
 			str += "<tr>";
-			str += "<td >Здравствуйте,</td>";
-			str += "<td >" + responseObj.username + "</td>";
+			str += "<td >Здравствуйте, " + responseObj.username + "</td>";
+			str += "</tr>";
+			str += "<tr>";
+			str += "<td >Побед: 2</td>";
+			str += "</tr>";
+			str += "<tr>";
+			str += "<td >Поражений: 3</td>";
+			str += "</tr>";
+			str += "<tr>";
+			str += "<td >Ничьих: 1</td>";
 			str += "</tr>";
 			str += "</table>";
 			//this._el.insertAdjacentHTML("afterBegin", str);
 			this.profile.innerHTML = str;
 		}
+
 
 		newProfile() {
 			function profileCheck() { // (3)
