@@ -19,9 +19,9 @@
 			if (this.backGround[0]) {
 				this.backGround[0].hidden = "";
 			}
-			if (!this.tableExist) {
-				this.newRating();
-			}
+			//if (!this.tableExist) {
+			this.newRating();
+			//}
 		}
 
 		pause() {
@@ -46,8 +46,8 @@
 				}
 
 			})
-			str += "</table>";
-			this._el.insertAdjacentHTML("afterBegin", str);
+			this.myTable.innerHTML = str;
+			//this._el.insertAdjacentHTML("afterBegin", str);
 		}
 
 
@@ -57,11 +57,16 @@
 				classAttrs: ['LoginButton'],
 				text: 'вернуться в меню',
 			});
+			var table = document.createElement('div');
+			table.className = "myTable";
+			this.myTable = table;
 		}
 
 
 		addElements() {
+			this._el.appendChild(this.myTable);
 			this._el.appendChild(this.buttonBack._get());
+
 		}
 
 		addListeners() {
@@ -78,9 +83,12 @@
 
 				if (xhr.status == 200) {
 					var data = xhr.responseText != "" ? JSON.parse(xhr.responseText) : {};
-					this.createElements();
-					this.addElements();
-					this.addListeners();
+
+					if (!this.tableExist) {
+						this.createElements();
+						this.addElements();
+						this.addListeners();
+					}
 					this.table(data);
 					this.tableExist = true;
 					//return data;
